@@ -1,0 +1,21 @@
+import Navbar from "../ui/dashboard/navbar/navbar"
+import Sidebar from "../ui/dashboard/sidebar/sidebar"
+import styles from '../ui/dashboard.module.css'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <div className={styles.container}>
+        <div className={styles.menu}>
+            <Sidebar/>
+        </div>
+        <div className={styles.content}>
+            <Navbar />
+            {children}
+        </div>
+    </div>
+  )
+}
