@@ -1,6 +1,5 @@
 import Navbar from "../ui/dashboard/navbar/navbar"
 import Sidebar from "../ui/dashboard/sidebar/sidebar"
-import styles from '../ui/dashboard/dashboard.module.css'
 
 export default function RootLayout({
   children,
@@ -8,11 +7,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className={styles.container}>
-        <div className={styles.menu}>
+    <div className="flex">
+        <div className="w-1/6 h-screen bg-[--bgSoft] p-4">
             <Sidebar/>
         </div>
-        <div className={styles.content}>
+        <div className="">
             <Navbar />
             {children}
         </div>
