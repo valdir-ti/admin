@@ -1,5 +1,5 @@
 import { MdAnalytics, MdAttachMoney, MdDashboard, MdHelpCenter, MdLogout, MdOutlineSettings, MdPeople, MdShoppingBag, MdSupervisedUserCircle, MdWork } from 'react-icons/md'
-import MenuLink from '../menuLink/page';
+import MenuLink from '../menuLink/menulink';
 import Image from 'next/image';
 
 export default function Sidebar() {
