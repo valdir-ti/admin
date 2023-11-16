@@ -1,4 +1,4 @@
-import { MdAnalytics, MdAttachMoney, MdDashboard, MdHelpCenter, MdOutlineSettings, MdPeople, MdShoppingBag, MdSupervisedUserCircle, MdWork } from 'react-icons/md'
+import { MdAnalytics, MdAttachMoney, MdDashboard, MdHelpCenter, MdLogout, MdOutlineSettings, MdPeople, MdShoppingBag, MdSupervisedUserCircle, MdWork } from 'react-icons/md'
 import MenuLink from '../menuLink/page';
 import Image from 'next/image';
 
@@ -92,6 +92,10 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
+      <button className='flex items-center p-3 m-2 gap-2 cursor-pointer rounded-md text-[--textSoft] font-bold text-sm hover:bg-[--bgHover] bg-transparent border-0 w-[90%] ml-4'>
+        <MdLogout />
+        Logout
+      </button>
     </div>
   )
 }
