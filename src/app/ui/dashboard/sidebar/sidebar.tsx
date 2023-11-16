@@ -69,13 +69,13 @@ export default function Sidebar() {
 
   return (
     <div className="sticky">
-      <div className='flex gap-4 mb-4 items-center'>
+      <div className='flex gap-4 mb-4 ml-2 items-center'>
         <Image 
           src='/noavatar.png' 
           alt='avatar'
           width={50} 
           height={50} 
-          className='rounded-full object-cover'
+          className='rounded-full object-cover cursor-pointer'
         />
         <div className='flex flex-col'>
           <span className='font-bold'>Valdir Silva</span>

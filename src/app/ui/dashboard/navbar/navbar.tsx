@@ -16,9 +16,9 @@ export default function Navbar() {
           <input type="text" placeholder='Search...' className='bg-transparent border-0 text-[--bgHover] outline-none'/>
         </div>
         <div className='flex gap-4'>
-          <MdOutlineChat size={20} />
-          <MdNotifications size={20} />
-          <MdPublic size={20} />
+          <MdOutlineChat size={20} className="cursor-pointer"/>
+          <MdNotifications size={20} className="cursor-pointer"/>
+          <MdPublic size={20} className="cursor-pointer"/>
         </div>
       </div>
     </div>
