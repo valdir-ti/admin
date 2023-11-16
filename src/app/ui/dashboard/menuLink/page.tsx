@@ -14,15 +14,17 @@ type MenuLinkProps = {
 
 export default function MenuLink({ item }: MenuLinkProps) {
 
+    const {icon, path, title} = item
+
     const pathName = usePathname()
 
     return (
         <Link 
-            href={item.path} 
-            className={`p-3 flex items-center gap-3 m-1 rounded-md hover:bg-[--bgHover] ${pathName === item.path && 'bg-[--bgHover]'}`}
+            href={path} 
+            className={`p-3 flex items-center gap-3 m-1 rounded-md hover:bg-[--bgHover] ${pathName === path && 'bg-[--bgHover]'}`}
         >
-            {item.icon}
-            {item.title}
+            {icon}
+            {title}
         </Link>
     )
 }
