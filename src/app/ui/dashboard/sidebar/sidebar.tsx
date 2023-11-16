@@ -92,7 +92,7 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
-      <button className='flex items-center p-3 m-2 gap-2 cursor-pointer rounded-md text-[--textSoft] font-bold text-sm hover:bg-[--bgHover] bg-transparent border-0 w-[90%] ml-4'>
+      <button className='flex items-center p-3 m-2 gap-2 cursor-pointer rounded-md text-[--textSoft] font-bold text-sm hover:bg-[--bgHover] bg-transparent border-0 w-[88%] ml-4'>
         <MdLogout />
         Logout
       </button>
