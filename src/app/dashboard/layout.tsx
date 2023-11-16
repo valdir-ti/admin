@@ -11,7 +11,7 @@ export default function RootLayout({
         <div className="w-1/6 h-screen bg-[--bgSoft] p-4">
             <Sidebar/>
         </div>
-        <div className="w-5/6 p-2">
+        <div className="w-5/6 p-4">
             <Navbar />
             {children}
         </div>
