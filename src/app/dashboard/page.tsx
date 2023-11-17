@@ -6,7 +6,7 @@ import Transactions from "../ui/dashboard/transactions/transactions";
 export default function Home() {
   return (
     <div className="flex justify-between gap-4 mt-4">
-      <div className="w-9/12 gap-4">
+      <div className="w-9/12 gap-2">
         <div className="flex justify-between">
           <Card/>
           <Card/>
