@@ -19,7 +19,7 @@ export default function Home() {
           <Chart />
         </div>
       </div>
-      <div className="w-3/12">
+      <div className="w-3/12 pr-1">
         <RightBar />
       </div>
     </div>
