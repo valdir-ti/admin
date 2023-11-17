@@ -9,7 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <div className="flex">
-        <div className="w-1/6 min-h-max bg-[--bgSoft] p-4">
+        <div className="w-1/6 min-h-screen bg-[--bgSoft] p-4">
             <Sidebar/>
         </div>
         <div className="w-5/6 p-4">

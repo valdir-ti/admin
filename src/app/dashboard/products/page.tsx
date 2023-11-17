@@ -8,7 +8,7 @@ export default function Home() {
     <div className="mt-4 bg-[--bgSoft] p-4 rounded-md">
       <div className="flex items-center justify-between mb-4">
         <Search placeholder="Search for a product..." />
-        <Link href="/dashboard/users/add">
+        <Link href="/dashboard/products/add">
           <button 
             className="p-2 bg-[--purpleColor] rounded-md text-white border-0 cursor-pointer"
           >
