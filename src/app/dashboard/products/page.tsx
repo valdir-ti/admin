@@ -47,16 +47,16 @@ export default function Home() {
             <td>36</td>
             <td>
               <div className="gap-2 flex">
-                <Link href="/">
+                <Link href="/dashboard/products/hashtesteproduto">
                   <button 
-                    className="p-1 min-w-[60px] text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md"
+                    className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md min-w-[80px]"
                   >
                     View
                   </button>
                 </Link>
                 <Link href="/">
                   <button
-                    className="p-1 min-w-[60px] text-[--text] border-0 cursor-pointer bg-red-600 rounded-md"
+                    className="p-1 text-[--text] border-0 cursor-pointer bg-red-600 rounded-md min-w-[80px]"
                   >
                     Delete
                   </button>
