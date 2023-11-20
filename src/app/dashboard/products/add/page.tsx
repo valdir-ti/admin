@@ -17,10 +17,10 @@ export default function AddProduct() {
                     id="category"
                     className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
                 >
-                    <option value="general" className="text-[--bg]">Choose a category</option>
-                    <option value="kitchen" className="text-[--bg]">kitchen</option>
-                    <option value="phone" className="text-[--bg]">phone</option>
-                    <option value="computer" className="text-[--bg]">computer</option>
+                    <option value="general" className="text-[--text]">Choose a category</option>
+                    <option value="kitchen" className="text-[--text]">kitchen</option>
+                    <option value="phone" className="text-[--text]">phone</option>
+                    <option value="computer" className="text-[--text]">computer</option>
                 </select>
                 <input
                     type="number"

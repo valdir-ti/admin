@@ -40,18 +40,18 @@ export default function AddUser() {
                     id="isAdmin"
                     className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
                 >
-                    <option value='false' selected className="text-[--bg]">is Admin?</option>
-                    <option value='true' className="text-[--bg]">yes</option>
-                    <option value='false' className="text-[--bg]">no</option>
+                    <option value='false' selected className="text-[--text]">is Admin?</option>
+                    <option value='true' className="text-[--text]">yes</option>
+                    <option value='false' className="text-[--text]">no</option>
                 </select>
                 <select
                     name="isActive"
                     id="isActive"
                     className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
                 >
-                    <option value='false' className="text-[--bg]">is Active?</option>
-                    <option value='true' className="text-[--bg]">yes</option>
-                    <option value='false' className="text-[--bg]">no</option>
+                    <option value='false' className="text-[--text]">is Active?</option>
+                    <option value='true' className="text-[--text]">yes</option>
+                    <option value='false' className="text-[--text]">no</option>
                 </select>
                 <textarea
                     name="address"

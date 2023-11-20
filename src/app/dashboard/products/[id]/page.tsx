@@ -4,9 +4,9 @@ export default function EditProduct() {
   return (
     <div className="flex gap-8">
         <div className="w-2/6 p-12 bg-[--bgSoft] rounded-md mt-6 h-max">
-            <div className="w-[100%] h-[300px] font-bold">
+            <div className="w-[100%] h-[300px] font-bold flex items-center justify-center flex-col">
                 <Image alt="" src="/noproduct.jpg" width={300} height={180}/>
-                <h4 className="mt-2 text-[textSoft]">Iphone</h4>
+                <h4 className="mt-2 text-[--textSoft] w-[75%]">Iphone</h4>
             </div>
         </div>
         <div className="w-4/6 p-12 bg-[--bgSoft] rounded-md mt-6">

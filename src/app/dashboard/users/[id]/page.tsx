@@ -4,9 +4,9 @@ export default function EditUser() {
   return (
     <div className="flex gap-8">
         <div className="w-2/6 p-12 bg-[--bgSoft] rounded-md mt-6 h-max">
-            <div className="w-[100%] h-[300px] font-bold">
+            <div className="w-[100%] h-[300px] font-bold flex items-center justify-center flex-col">
                 <Image alt="" src="/noavatar.png" width={300} height={180}/>
-                <h4 className="mt-2 text-[textSoft]">John Doe</h4>
+                <h4 className="mt-2 text-[--textSoft] w-[75%]">John Doe</h4>
             </div>
         </div>
         <div className="w-4/6 p-12 bg-[--bgSoft] rounded-md mt-6">
@@ -31,13 +31,13 @@ export default function EditUser() {
                 <label htmlFor="isAdmin" className="text-xs">is Admin?</label>
                 <select name="isAdmin" id="isAdmin" className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2">
                     <option value='true'>Yes</option>
-                    <option value='false'>Noe</option>
+                    <option value='false'>No</option>
                 </select>
 
                 <label htmlFor="isActive" className="text-xs">is Active</label>
                 <select name="isActive" id="isActive" className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2">
                     <option value='true'>Yes</option>
-                    <option value='false'>Noe</option>
+                    <option value='false'>No</option>
                 </select>
 
                 <button className="w-full p-2 bg-teal-600 text-[--text] mt-4 rounded-md border-0">Submit</button>
