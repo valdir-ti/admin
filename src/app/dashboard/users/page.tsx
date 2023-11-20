@@ -1,9 +1,29 @@
+'use client'
+
+import { useEffect, useState } from "react";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import Search from "@/app/ui/dashboard/search/search";
 import Image from "next/image";
 import Link from "next/link";
+import { format, parseISO } from 'date-fns'
+import { User } from "@/app/types";
 
 export default function Home() {
+
+  const [users, setUsers] = useState<User[]>([])
+
+  useEffect(() => {
+
+    const getData = async () => {
+      const query = await fetch(process.env.NEXT_PUBLIC_API_URL + 'users')
+      const response = await query.json()
+      setUsers(response.data)
+    }
+
+    getData()
+    
+  }, [])
+
   return (
     <div className="mt-4 bg-[--bgSoft] p-4 rounded-md">
       <div className="flex items-center justify-between mb-4">
@@ -28,42 +48,52 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/noavatar.png"
-                  alt="John Doe"
-                  width={40}
-                  height={40}
-                  className="rounded-full object-cover"
-                />
-                John Doe
-              </div>
-            </td>
-            <td>john@mail.com</td>
-            <td>13.10.2023</td>
-            <td>Admin</td>
-            <td>Active</td>
-            <td>
-              <div className="gap-2 flex">
-                <Link href="/dashboard/users/hashteste">
-                  <button
-                    className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md min-w-[80px]"
-                  >
-                    View
-                  </button>
-                </Link>
-                <Link href="/">
-                  <button
-                    className="p-1 text-[--text] border-0 cursor-pointer bg-red-600 rounded-md min-w-[80px]"
-                  >
-                    Delete
-                  </button>
-                </Link>
-              </div>
-            </td>
-          </tr>
+          {users.map(user => {
+
+            const parsedDate = parseISO(user.createdAt);
+            const formattedDate = format(parsedDate, 'dd.MM.yyyy')
+
+            return (
+              <>
+                <tr>
+                  <td>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Image
+                        src="/noavatar.png"
+                        alt="John Doe"
+                        width={36}
+                        height={36}
+                        className="rounded-full object-cover"
+                      />
+                      {user.name}
+                    </div>
+                  </td>
+                  <td>{user.email}</td>
+                  <td>{formattedDate}</td>
+                  <td>{user.isAdmin ? 'Admin' : 'User'}</td>
+                  <td>{user.isActive ? 'Active' : 'Not Active'}</td>
+                  <td>
+                    <div className="gap-2 flex">
+                      <Link href={`/dashboard/users/${user._id}`}>
+                        <button
+                          className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md min-w-[80px]"
+                        >
+                          View
+                        </button>
+                      </Link>
+                      <Link href="/">
+                        <button
+                          className="p-1 text-[--text] border-0 cursor-pointer bg-red-600 rounded-md min-w-[80px]"
+                        >
+                          Delete
+                        </button>
+                      </Link>
+                    </div>
+                  </td>
+                </tr>
+              </>
+            )
+          })}
         </tbody>
       </table>
       <Pagination disabled={true} />
