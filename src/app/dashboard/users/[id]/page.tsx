@@ -30,14 +30,14 @@ export default function EditUser() {
 
                 <label htmlFor="isAdmin" className="text-xs">is Admin?</label>
                 <select name="isAdmin" id="isAdmin" className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2">
-                    <option value={true}>Yes</option>
-                    <option value={false}>Noe</option>
+                    <option value='true'>Yes</option>
+                    <option value='false'>Noe</option>
                 </select>
 
                 <label htmlFor="isActive" className="text-xs">is Active</label>
                 <select name="isActive" id="isActive" className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2">
-                    <option value={true}>Yes</option>
-                    <option value={false}>Noe</option>
+                    <option value='true'>Yes</option>
+                    <option value='false'>Noe</option>
                 </select>
 
                 <button className="w-full p-2 bg-teal-600 text-[--text] mt-4 rounded-md border-0">Submit</button>
