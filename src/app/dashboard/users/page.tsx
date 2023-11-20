@@ -14,6 +14,8 @@ export default function Home() {
 
   useEffect(() => {
 
+    console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL);
+
     const getData = async () => {
       const query = await fetch(process.env.NEXT_PUBLIC_API_URL + 'users')
       const response = await query.json()
@@ -21,7 +23,7 @@ export default function Home() {
     }
 
     getData()
-    
+
   }, [])
 
   return (
@@ -55,7 +57,7 @@ export default function Home() {
 
             return (
               <>
-                <tr>
+                <tr key={user._id}>
                   <td>
                     <div className="flex items-center gap-2 mb-2">
                       <Image
