@@ -1,17 +1,12 @@
+import Input from "@/app/ui/dashboard/input/input";
+
 export default function AddProduct() {
     return (
         <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
             <form
                 className="flex flex-wrap justify-between"
             >
-                <input
-                    type="text"
-                    placeholder="title"
-                    name="title"
-                    required
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    autoComplete="off"
-                />
+                <Input placeholder="title" name="title" />
                 <select
                     name="category"
                     id="category"
@@ -22,39 +17,15 @@ export default function AddProduct() {
                     <option value="phone" className="text-[--text]">phone</option>
                     <option value="computer" className="text-[--text]">computer</option>
                 </select>
-                <input
-                    type="number"
-                    name="price"
-                    placeholder="price"
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    autoComplete="off"
-                />
-                <input
-                    type="number"
-                    name="stock"
-                    placeholder="stock"
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    autoComplete="off"
-                />
-                <input
-                    type="text"
-                    name="color"
-                    placeholder="color"
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    autoComplete="off"
-                />
-                <input
-                    type="number"
-                    name="size"
-                    placeholder="size"
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    autoComplete="off"
-                />
+                <Input placeholder="price" name="price" type="number"/>
+                <Input placeholder="stock" name="stock" type="number"/>
+                <Input placeholder="color" name="color"/>
+                <Input placeholder="size" name="size" type="number"/>
                 <textarea
                     name="desc"
                     id="desc"
                     cols={30}
-                    rows={10}
+                    rows={3}
                     className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
                 >
                     Description

@@ -1,40 +1,15 @@
+import Input from "@/app/ui/dashboard/input/input";
+
 export default function AddUser() {
     return (
         <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
             <form
                 className="flex flex-wrap justify-between"
             >
-                <input
-                    type="text"
-                    placeholder="name"
-                    name="name"
-                    required
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    autoComplete="off"
-                />
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="email"
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    autoComplete="off"
-                    required
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    autoComplete="off"
-                    required
-                />
-                <input
-                    type="text"
-                    name="phone"
-                    placeholder="phone"
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    autoComplete="off"
-                />
+                <Input placeholder="name" name="name" required/>
+                <Input placeholder="email" name="email" type="email"/>
+                <Input placeholder="password" name="password" type="password" required/>
+                <Input placeholder="phone" name="phone" required/>
                 <select
                     name="isAdmin"
                     id="isAdmin"
@@ -57,7 +32,7 @@ export default function AddUser() {
                     name="address"
                     id="address"
                     cols={30}
-                    rows={10}
+                    rows={3}
                     className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
                 >
                     Address
