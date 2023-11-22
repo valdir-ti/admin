@@ -13,17 +13,12 @@ export default function Home() {
   const [users, setUsers] = useState<User[]>([])
 
   useEffect(() => {
-
-    console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL);
-
     const getData = async () => {
       const query = await fetch(process.env.NEXT_PUBLIC_API_URL + 'users')
       const response = await query.json()
       setUsers(response.data)
     }
-
     getData()
-
   }, [])
 
   return (
