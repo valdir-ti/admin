@@ -46,10 +46,9 @@ export default function AddProduct() {
                     id="desc"
                     cols={30}
                     rows={3}
+                    defaultValue='Description'
                     className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                >
-                    Description
-                </textarea>
+                ></textarea>
                 <button
                     className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer"
                 >

@@ -61,10 +61,8 @@ export default function AddUser() {
                     cols={30}
                     rows={3}
                     className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                >
-                    Address
-                </textarea>
-
+                    defaultValue='Address'
+                ></textarea>
                 <button
                     className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer"
                 >
