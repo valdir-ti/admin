@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import Search from "@/app/ui/dashboard/search/search";
 import Image from "next/image";
@@ -51,8 +51,8 @@ export default function Home() {
             const formattedDate = format(parsedDate, 'dd.MM.yyyy')
 
             return (
-              <>
-                <tr key={user._id}>
+              <Fragment key={user._id}>
+                <tr>
                   <td>
                     <div className="flex items-center gap-2 mb-2">
                       <Image
@@ -88,7 +88,7 @@ export default function Home() {
                     </div>
                   </td>
                 </tr>
-              </>
+              </Fragment>
             )
           })}
         </tbody>
