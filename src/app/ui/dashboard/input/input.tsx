@@ -1,17 +1,24 @@
 import { InputHTMLAttributes } from "react"
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement>{}
+interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
+  label: string
+  name: string
+}
 
-export default function Input({ type = "text", placeholder, name, required, autoComplete = "off", min = "1" }: InputProps) {
+export default function Input({ name, label, ...rest }: InputProps) {
   return (
-    <input
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        required={required}
-        className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-        autoComplete={autoComplete} 
-        min={min}
-    />
+    <div className="flex flex-col w-[48%]">
+      <label 
+        htmlFor={name}
+        className="cursor-pointer mb-1"
+      >
+        {label}
+      </label>
+      <input
+        id={name}
+        {...rest}
+        className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
+      />
+    </div>
   )
 }
