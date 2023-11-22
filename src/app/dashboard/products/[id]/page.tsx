@@ -11,9 +11,9 @@ export default function EditProduct() {
                         width="0"
                         height="0"
                         sizes="100vw"
-                        className="w-full h-auto"
+                        className="w-[280px] h-auto"
                     />
-                    <h4 className="mt-2 text-[--textSoft] w-full">Iphone</h4>
+                    <h4 className="mt-2 text-[--textSoft]">Iphone</h4>
                 </div>
             </div>
             <div className="w-4/6 p-12 bg-[--bgSoft] rounded-md mt-6">
