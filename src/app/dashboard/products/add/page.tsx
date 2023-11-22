@@ -4,23 +4,32 @@ export default function AddProduct() {
     return (
         <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
             <form
-                className="flex flex-wrap justify-between"
+                className="flex flex-col"
             >
-                <Input placeholder="title" name="title" />
-                <select
-                    name="category"
-                    id="category"
-                    className="w-[48%] p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                >
-                    <option value="general" className="text-[--text]">Choose a category</option>
-                    <option value="kitchen" className="text-[--text]">kitchen</option>
-                    <option value="phone" className="text-[--text]">phone</option>
-                    <option value="computer" className="text-[--text]">computer</option>
-                </select>
-                <Input placeholder="price" name="price" type="number"/>
-                <Input placeholder="stock" name="stock" type="number"/>
-                <Input placeholder="color" name="color"/>
-                <Input placeholder="size" name="size" type="number"/>
+                <div className="flex justify-between">
+                    <Input placeholder="title" name="title" required label="Title"/>
+                    <div className="flex flex-col w-[48%]">
+                        <label htmlFor="category" className="cursor-pointer mb-1">Category</label>
+                        <select
+                            name="category"
+                            id="category"
+                            className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
+                            >
+                            <option value="general" className="text-[--text]">Choose a category</option>
+                            <option value="kitchen" className="text-[--text]">Kitchen</option>
+                            <option value="phone" className="text-[--text]">Phone</option>
+                            <option value="computer" className="text-[--text]">Computer</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="flex justify-between">
+                    <Input placeholder="price" name="price" type="number" min='1' label="Price" />
+                    <Input placeholder="stock" name="stock" type="number" min='1' label="Stock" />
+                </div>
+                <div className="flex justify-between">
+                    <Input placeholder="color" name="color" label="Color" />
+                    <Input placeholder="size" name="size" type="number" min='1' label="Size" />
+                </div>
                 <textarea
                     name="desc"
                     id="desc"
