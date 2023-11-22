@@ -55,14 +55,7 @@ export default function AddUser() {
                         label="isActive" 
                     />
                 </div>
-                <textarea
-                    name="address"
-                    id="address"
-                    cols={30}
-                    rows={3}
-                    className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                    defaultValue='Address'
-                ></textarea>
+                <Input isMultiline name="address" id="address" defaultValue="Address" label="Address"/>
                 <button
                     className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer"
                 >

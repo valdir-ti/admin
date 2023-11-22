@@ -41,14 +41,7 @@ export default function AddProduct() {
                     <Input placeholder="color" name="color" label="Color" />
                     <Input placeholder="size" name="size" type="number" min='1' label="Size" />
                 </div>
-                <textarea
-                    name="desc"
-                    id="desc"
-                    cols={30}
-                    rows={3}
-                    defaultValue='Description'
-                    className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
-                ></textarea>
+                <Input isMultiline name="desc" id="desc" defaultValue="Description" label="Description"/>
                 <button
                     className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer"
                 >
