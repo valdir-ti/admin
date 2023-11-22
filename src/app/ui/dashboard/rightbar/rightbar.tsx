@@ -6,7 +6,7 @@ export default function RightBar() {
     <div className="flex flex-1 flex-col mr-2">
       <div className="relative bg-gradient-to-b from-[--bgHover] p-4 rounded-md">
         <div className="absolute bottom-0 right-0 w-[50%] h-[50%]">
-          <Image src='/astronaut.png' alt="astronaut" fill className="object-fill opacity-20"/>
+          <Image src='/astronaut.png' alt="astronaut" width={180} height={180} className="object-fill opacity-20"/>
         </div>
         <div className="ml-2 flex flex-col gap-4">
           <span className="font-bold">💥 Available Now</span>
@@ -23,7 +23,7 @@ export default function RightBar() {
       </div>
       <div className="relative bg-gradient-to-b from-[--bgHover] p-4 rounded-md mt-2">
         <div className="absolute bottom-0 right-0 w-[50%] h-[50%]">
-          <Image src='/astronaut.png' alt="astronaut" fill className="object-fill opacity-20"/>
+          <Image src='/astronaut.png' alt="astronaut" width={180} height={180} className="object-fill opacity-20"/>
         </div>
         <div className="ml-2 flex flex-col gap-4">
           <span className="font-bold">🌟 Available Now</span>
