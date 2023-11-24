@@ -17,14 +17,16 @@ export default function UsersTableBody({ data }: UsersTableProps) {
                 const parsedDate = parseISO(user.createdAt);
                 const formattedDate = format(parsedDate, 'dd.MM.yyyy')
 
+                const userImage = user.image || "/noavatar.png"
+
                 return (
                     <Fragment key={user._id}>
                         <tr>
                             <td>
                                 <div className="flex items-center gap-2 mb-2">
                                     <Image
-                                        src="/noavatar.png"
-                                        alt="John Doe"
+                                        src={userImage}
+                                        alt={user.name}
                                         width={36}
                                         height={36}
                                         className="rounded-full object-cover"

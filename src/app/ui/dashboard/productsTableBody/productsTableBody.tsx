@@ -9,6 +9,7 @@ type ProductsTableProps = {
 }
 
 export default function ProductsTableBody({ data }: ProductsTableProps) {
+  
     return (
 
         <tbody>
@@ -17,13 +18,15 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
             const parsedDate = parseISO(product.createdAt);
             const formattedDate = format(parsedDate, 'dd.MM.yyyy')
 
+            const productImage = product.image || "/noproduct.jpg"
+
             return (<Fragment key={product._id}>
               <tr>
                 <td>
                   <div className="flex items-center gap-2">
                     <Image
-                      src="/noproduct.jpg"
-                      alt="John Doe"
+                      src={productImage}
+                      alt={product.title}
                       width={40}
                       height={40}
                       className="rounded-full object-cover"
