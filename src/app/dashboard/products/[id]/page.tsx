@@ -9,7 +9,7 @@ export default async function EditProduct({
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}products/${id}`, { cache: 'no-cache' })
     const product = await response.json()
 
-    const { data: { title, description, price, stock, image, size, category, isActive } } = product
+    const { title, description, price, stock, image, size, category } = product
     const productImage = image || "/noproduct.png"
 
     return (

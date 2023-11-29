@@ -31,7 +31,7 @@ export default async function Home() {
             <td>Action</td>
           </tr>
         </thead>
-        <ProductsTableBody data={data.data} />
+        <ProductsTableBody data={data} />
       </table>
       <Pagination disabled={true} />
     </div>
