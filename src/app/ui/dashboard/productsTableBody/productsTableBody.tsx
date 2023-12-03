@@ -1,8 +1,8 @@
-import { Product } from "@/app/types";
-import { format, parseISO } from "date-fns";
-import Image from "next/image";
-import Link from "next/link";
 import { Fragment } from "react";
+import { format, parseISO } from "date-fns";
+import Link from "next/link";
+import ZoomImage from "../zoomImage/zoomImage";
+import { Product } from "@/app/types";
 
 type ProductsTableProps = {
   data: Array<Product>;
@@ -22,13 +22,7 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
             <tr>
               <td>
                 <div className="flex items-center gap-2 mb-2 mt-2">
-                  <Image
-                    src={productImage}
-                    alt={product.title}
-                    width={36}
-                    height={36}
-                    className="cursor-pointer rounded-sm"
-                  />
+                  <ZoomImage image={productImage} title={product.title} />
                   {product.title}
                 </div>
               </td>
