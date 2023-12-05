@@ -22,7 +22,7 @@ export default async function EditProduct({
                         width="0"
                         height="0"
                         sizes="100vw"
-                        className="w-auto h-auto"
+                        className="w-auto h-auto rounded-md"
                     />
                     <h4 className="mt-2 text-[--textSoft]">{title}</h4>
                 </div>
