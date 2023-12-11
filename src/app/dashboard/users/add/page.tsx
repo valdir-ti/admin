@@ -1,67 +1,70 @@
 'use client'
 
-import Input from "@/app/ui/dashboard/input/input";
-import SelectBox, { SelectBoxOptionsProps } from "@/app/ui/dashboard/selectbox/selectbox";
-import { ChangeEvent, useState } from "react";
+import { addUser } from "./add-user-action"
+import { toast } from "react-toastify"
 
-const isAdminOptions = ['isAdmin', 'yes', 'no']
-const isActiveOptions = ['isActive', 'yes', 'no']
+export default function Home() {
 
-export default function AddUser() {
-
-    const adminOptions: SelectBoxOptionsProps[] = [
-        ...isAdminOptions.map((option) => ({ label: option, value: option }))
-    ]
-
-    const activeOptions: SelectBoxOptionsProps[] = [
-        ...isActiveOptions.map((option) => ({ label: option, value: option }))
-    ]
-
-    const [isAdminValue, setIsAdminValue] = useState('')
-    const [isActiveValue, setIsActiveValue] = useState('')
-
-    const onChangeAdmin = (event: ChangeEvent<HTMLSelectElement>) => {
-        setIsAdminValue(event.target.value)
-    }
-
-    const onChangeActive = (event: ChangeEvent<HTMLSelectElement>) => {
-        setIsActiveValue(event.target.value)
+    const addUserClientAction = async (formData: FormData) => {
+        const result = await addUser(formData)
+        if (result?.error) {
+            toast.error(result?.error)
+        } else {
+            toast.success('User added')
+        }
     }
 
     return (
         <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
             <form
+                action={addUserClientAction}
                 className="flex flex-col"
             >
                 <div className="flex justify-between">
-                    <Input placeholder="name" name="name" required label="Name" />
-                    <Input placeholder="email" name="email" type="email" label="Email" />
+                    <div className="flex flex-col w-[49%]">
+                        <label htmlFor="name">Name</label>
+                        <input placeholder="name" name="name" id="name" required autoComplete="off" className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600" />
+                    </div>
+                    <div className="flex flex-col w-[49%]">
+                        <label htmlFor="email">Email</label>
+                        <input placeholder="email" name="email" id="email" type="email" autoComplete="off" className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600" />
+                    </div>
                 </div>
                 <div className="flex justify-between">
-                    <Input placeholder="password" name="password" type="password" required label="Password" />
-                    <Input placeholder="phone" name="phone" required label="Phone" />
+                    <div className="flex flex-col w-[48%]">
+                        <label htmlFor="password">Password</label>
+                        <input placeholder="password" name="password" id="password" type="password" required className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600" />
+                    </div>
+                    <div className="flex flex-col w-[48%]">
+                        <label htmlFor="phone">Phone</label>
+                        <input placeholder="phone" name="phone" id="phone" autoComplete="off" className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600" />
+                    </div>
                 </div>
                 <div className="flex justify-between">
-                    <SelectBox 
-                        options={adminOptions} 
-                        onChange={onChangeAdmin} 
-                        value={isAdminValue} 
-                        label="isAdmin" 
-                    />
-                    <SelectBox 
-                        options={activeOptions} 
-                        onChange={onChangeActive} 
-                        value={isActiveValue} 
-                        label="isActive" 
-                    />
+                    <div className="flex flex-col w-[48%]">
+                        <label htmlFor="isAdmin">IsAdmin?</label>
+                        <select name="isAdmin" id="isAdmin" className={`p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600 mt-2 w-full`}>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div className="flex flex-col w-[48%]">
+                        <label htmlFor="isActive">IsActive</label>
+                        <select name="isActive" id="isActive" className={`p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600 mt-2 w-full`}>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
                 </div>
-                <Input isMultiline name="address" id="address" defaultValue="Address" label="Address"/>
+                <div className="flex flex-col w-full">
+                    <label htmlFor="address">Address</label>
+                    <textarea name="address" id="address" defaultValue="Address" className="w-full p-6 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600" />
+                </div>
                 <button
                     className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer"
                 >
                     Submit
                 </button>
-
             </form>
         </div>
     )

@@ -13,3 +13,8 @@ export async function getUsers() {
     const { data } = await api.get('/users')
     return data
 }
+
+export async function createUser(user: unknown) {
+    const data  = await api.post('/users', user)
+    return data
+}
