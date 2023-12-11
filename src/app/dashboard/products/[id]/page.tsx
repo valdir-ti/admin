@@ -1,3 +1,4 @@
+import { getProduct } from "@/app/services/api-products";
 import Image from "next/image";
 
 export default async function EditProduct({
@@ -5,10 +6,7 @@ export default async function EditProduct({
 }: {
     params: { id: string }
 }) {
-
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}products/${id}`, { cache: 'no-cache' })
-    const product = await response.json()
-
+    const product = await getProduct(id)
     const { title, description, price, stock, image, size, category } = product
     const productImage = image || "/noproduct.png"
 

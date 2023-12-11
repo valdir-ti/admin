@@ -1,3 +1,4 @@
+import { getUser } from "@/app/services/api-users";
 import Image from "next/image";
 
 export default async function EditUser({
@@ -5,12 +6,8 @@ export default async function EditUser({
 }: {
   params: { id: string };
 }) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}users/${id}`,
-    { cache: "no-cache" }
-  );
-  const user = await response.json();
 
+  const user = await getUser(id)
   const { name, email, password, phone, address, image, isActive, isAdmin } =
     user;
   const userImage = image || "/noavatar.png";
