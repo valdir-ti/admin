@@ -8,7 +8,7 @@ export default async function EditProduct({
 }) {
     const product = await getProduct(id)
     const { title, description, price, stock, image, size, category } = product
-    const productImage = image || "/noproduct.png"
+    const productImage = image || "/noproduct.jpg"
 
     return (
         <div className="flex gap-8">
