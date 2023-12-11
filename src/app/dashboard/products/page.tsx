@@ -2,11 +2,11 @@ import Link from "next/link";
 import Search from "@/app/ui/dashboard/search/search";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import ProductsTableBody from "@/app/ui/dashboard/productsTableBody/productsTableBody";
+import { getProducts } from "@/app/services/api-products";
 
 export default async function Home() {
 
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + 'products', { cache: "no-cache" })
-  const data = await response.json()
+  const data = await getProducts()
 
   return (
     <div className="mt-4 bg-[--bgSoft] p-4 rounded-md">

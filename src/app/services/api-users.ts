@@ -8,3 +8,8 @@ export async function getUser(id: string) {
     const { data } = await api.get(`/users/${id}`)
     return data
 }
+
+export async function getUsers() {
+    const { data } = await api.get('/users')
+    return data
+}

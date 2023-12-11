@@ -8,3 +8,8 @@ export async function getProduct(id: string) {
     const { data } = await api.get(`/products/${id}`)
     return data
 }
+
+export async function getProducts() {
+    const { data } = await api.get('/products')
+    return data
+}

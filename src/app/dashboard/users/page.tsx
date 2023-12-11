@@ -2,12 +2,10 @@ import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import Search from "@/app/ui/dashboard/search/search";
 import Link from "next/link";
 import UsersTableBody from "@/app/ui/dashboard/usersTableBody/usersTableBody";
+import { getUsers } from "@/app/services/api-users";
 
 export default async function Home() {
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "users", {
-    cache: "no-cache",
-  });
-  const data = await response.json();
+  const data = await getUsers()
 
   return (
     <div className="mt-4 bg-[--bgSoft] p-4 rounded-md">
