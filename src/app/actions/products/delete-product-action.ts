@@ -3,7 +3,7 @@
 import { deleteProduct } from "@/app/services/api-products"
 import { getErrorMessage } from "@/app/utils/getErrorMessage"
 import { revalidatePath } from "next/cache"
-import { redirect } from 'next/navigation'
+
 
 export const deleteProductAction = async (formData: FormData) => {
     const id = formData.get("id")
@@ -15,5 +15,4 @@ export const deleteProductAction = async (formData: FormData) => {
         }
     }
     revalidatePath("/dashboard/products")
-    redirect('/dashboard/products')
 }

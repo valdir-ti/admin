@@ -10,6 +10,7 @@ import ZoomImage from "../zoomImage/zoomImage";
 import { Product } from "@/app/types";
 import { deleteProductAction } from "@/app/actions/products/delete-product-action";
 import DeleteButton from "../delete-button/delete-button";
+import { redirect } from 'next/navigation'
 
 type ProductsTableProps = {
   data: Array<Product>;
@@ -23,6 +24,7 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
       toast.error(result?.error)
     } else {
       toast.success('Product deleted')
+      redirect('/dashboard/products')
     }
   }
 

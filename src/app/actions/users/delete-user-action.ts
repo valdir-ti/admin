@@ -15,5 +15,4 @@ export const deleteUserAction = async (formData: FormData) => {
         }
     }
     revalidatePath("/dashboard/users")
-    redirect('/dashboard/users')
 }

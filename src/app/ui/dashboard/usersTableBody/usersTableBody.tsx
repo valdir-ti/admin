@@ -4,8 +4,9 @@ import { Fragment } from "react";
 import { toast } from "react-toastify"
 import { format, parseISO } from "date-fns";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 
 import { User } from "@/app/types";
 import { deleteUserAction } from "../../../actions/users/delete-user-action";
@@ -23,6 +24,7 @@ export default function UsersTableBody({ data }: UsersTableProps) {
       toast.error(result?.error)
     } else {
       toast.success('User deleted')
+      redirect('/dashboard/users')
     }
   }
 
