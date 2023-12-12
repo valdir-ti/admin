@@ -1,14 +1,32 @@
+'use client'
+
 import { Fragment } from "react";
 import { format, parseISO } from "date-fns";
+import { toast } from "react-toastify"
+
 import Link from "next/link";
+
 import ZoomImage from "../zoomImage/zoomImage";
 import { Product } from "@/app/types";
+import { deleteProductAction } from "@/app/actions/products/delete-product-action";
+import DeleteButton from "../delete-button/delete-button";
 
 type ProductsTableProps = {
   data: Array<Product>;
 };
 
 export default function ProductsTableBody({ data }: ProductsTableProps) {
+
+  const deleteProductClientAction = async (formData: FormData) => {
+    const result = await deleteProductAction(formData)
+    if (result?.error) {
+      toast.error(result?.error)
+    } else {
+      toast.success('Product deleted')
+    }
+  }
+
+
   return (
     <tbody>
       {data.map((product) => {
@@ -37,11 +55,7 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
                       View
                     </button>
                   </Link>
-                  <Link href="/">
-                    <button className="p-1 text-[--text] border-0 cursor-pointer bg-red-600 rounded-md min-w-[80px]">
-                      Delete
-                    </button>
-                  </Link>
+                  <DeleteButton action={deleteProductClientAction} id={product._id} />
                 </div>
               </td>
             </tr>

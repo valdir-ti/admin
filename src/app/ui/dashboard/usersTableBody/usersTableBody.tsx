@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { User } from "@/app/types";
-import { deleteUserAction } from "../../../actions/users/user-delete-action";
+import { deleteUserAction } from "../../../actions/users/delete-user-action";
 import DeleteButton from "../delete-button/delete-button";
 
 type UsersTableProps = {
