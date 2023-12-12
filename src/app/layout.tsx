@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <ToastContainer />
+        <ToastContainer autoClose={1000} />
         {children}
       </body>
     </html>
