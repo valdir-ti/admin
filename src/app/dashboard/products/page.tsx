@@ -1,11 +1,10 @@
-import Link from "next/link";
-import Search from "@/app/ui/dashboard/search/search";
-import Pagination from "@/app/ui/dashboard/pagination/pagination";
-import ProductsTableBody from "@/app/ui/dashboard/productsTableBody/productsTableBody";
-import { getProducts } from "@/app/services/api-products";
+import Link from 'next/link'
+import Search from '@/app/ui/dashboard/search/search'
+import Pagination from '@/app/ui/dashboard/pagination/pagination'
+import ProductsTableBody from '@/app/ui/dashboard/productsTableBody/productsTableBody'
+import { getProducts } from '@/app/services/api-products'
 
 export default async function Home() {
-
   const data = await getProducts()
 
   return (
@@ -13,9 +12,7 @@ export default async function Home() {
       <div className="flex items-center justify-between mb-4">
         <Search placeholder="Search for a product..." />
         <Link href="/dashboard/products/add">
-          <button
-            className="p-2 bg-[--purpleColor] rounded-md text-white border-0 cursor-pointer"
-          >
+          <button className="p-2 bg-[--purpleColor] rounded-md text-white border-0 cursor-pointer">
             Add New
           </button>
         </Link>

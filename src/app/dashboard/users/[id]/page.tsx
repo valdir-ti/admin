@@ -1,16 +1,15 @@
-import { getUser } from "@/app/services/api-users";
-import Image from "next/image";
+import { getUser } from '@/app/services/api-users'
+import Image from 'next/image'
 
 export default async function EditUser({
-  params: { id },
+  params: { id }
 }: {
-  params: { id: string };
+  params: { id: string }
 }) {
-
   const user = await getUser(id)
   const { name, email, password, phone, address, image, isActive, isAdmin } =
-    user;
-  const userImage = image || "/noavatar.png";
+    user
+  const userImage = image || '/noavatar.png'
 
   return (
     <div className="flex gap-8">
@@ -125,5 +124,5 @@ export default async function EditUser({
         </form>
       </div>
     </div>
-  );
+  )
 }

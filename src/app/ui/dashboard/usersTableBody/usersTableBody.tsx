@@ -1,22 +1,21 @@
 'use client'
 
-import { Fragment } from "react";
-import { toast } from "react-toastify"
-import { format, parseISO } from "date-fns";
+import { Fragment } from 'react'
+import { toast } from 'react-toastify'
+import { format, parseISO } from 'date-fns'
 
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link'
+import Image from 'next/image'
 
-import { User } from "@/app/types";
-import { deleteUserServerAction } from "../../../actions/users/delete-user-action";
-import DeleteButton from "../delete-button/delete-button";
+import { User } from '@/app/types'
+import { deleteUserServerAction } from '../../../actions/users/delete-user-action'
+import DeleteButton from '../delete-button/delete-button'
 
 type UsersTableProps = {
-  data: Array<User>;
-};
+  data: Array<User>
+}
 
 export default function UsersTableBody({ data }: UsersTableProps) {
-
   const deleteUserClientAction = async (formData: FormData) => {
     const result = await deleteUserServerAction(formData)
     if (result?.error) {
@@ -29,10 +28,10 @@ export default function UsersTableBody({ data }: UsersTableProps) {
   return (
     <tbody>
       {data?.map((user) => {
-        const parsedDate = parseISO(user.createdAt);
-        const formattedDate = format(parsedDate, "dd.MM.yyyy");
+        const parsedDate = parseISO(user.createdAt)
+        const formattedDate = format(parsedDate, 'dd.MM.yyyy')
 
-        const userImage = user.image || "/noavatar.png";
+        const userImage = user.image || '/noavatar.png'
 
         return (
           <Fragment key={user._id}>
@@ -51,8 +50,8 @@ export default function UsersTableBody({ data }: UsersTableProps) {
               </td>
               <td>{user.email}</td>
               <td>{formattedDate}</td>
-              <td>{user.isAdmin ? "Admin" : "User"}</td>
-              <td>{user.isActive ? "Active" : "Not Active"}</td>
+              <td>{user.isAdmin ? 'Admin' : 'User'}</td>
+              <td>{user.isActive ? 'Active' : 'Not Active'}</td>
               <td>
                 <div className="gap-2 flex">
                   <Link href={`/dashboard/users/${user._id}`}>
@@ -65,8 +64,8 @@ export default function UsersTableBody({ data }: UsersTableProps) {
               </td>
             </tr>
           </Fragment>
-        );
+        )
       })}
     </tbody>
-  );
+  )
 }

@@ -1,7 +1,5 @@
-import LoadingUI from "@/app/ui/dashboard/loading/loading";
+import LoadingUI from '@/app/ui/dashboard/loading/loading'
 
 export default function Loading() {
-  return (
-    <LoadingUI />
-  )
+  return <LoadingUI />
 }

@@ -8,75 +8,75 @@ import {
   MdPeople,
   MdShoppingBag,
   MdSupervisedUserCircle,
-  MdWork,
-} from "react-icons/md";
-import MenuLink from "../menuLink/menulink";
-import Image from "next/image";
-import Link from "next/link";
+  MdWork
+} from 'react-icons/md'
+import MenuLink from '../menuLink/menulink'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Sidebar() {
   const menuItems = [
     {
-      title: "Pages",
+      title: 'Pages',
       list: [
         {
-          title: "Dashboard",
-          path: "/dashboard",
-          icon: <MdDashboard />,
+          title: 'Dashboard',
+          path: '/dashboard',
+          icon: <MdDashboard />
         },
         {
-          title: "Users",
-          path: "/dashboard/users",
-          icon: <MdSupervisedUserCircle />,
+          title: 'Users',
+          path: '/dashboard/users',
+          icon: <MdSupervisedUserCircle />
         },
         {
-          title: "Products",
-          path: "/dashboard/products",
-          icon: <MdShoppingBag />,
+          title: 'Products',
+          path: '/dashboard/products',
+          icon: <MdShoppingBag />
         },
         {
-          title: "Transactions",
-          path: "/dashboard/transactions",
-          icon: <MdAttachMoney />,
-        },
-      ],
+          title: 'Transactions',
+          path: '/dashboard/transactions',
+          icon: <MdAttachMoney />
+        }
+      ]
     },
     {
-      title: "Analytics",
+      title: 'Analytics',
       list: [
         {
-          title: "Revenue",
-          path: "/dashboard/revenue",
-          icon: <MdWork />,
+          title: 'Revenue',
+          path: '/dashboard/revenue',
+          icon: <MdWork />
         },
         {
-          title: "Reports",
-          path: "/dashboard/reports",
-          icon: <MdAnalytics />,
+          title: 'Reports',
+          path: '/dashboard/reports',
+          icon: <MdAnalytics />
         },
         {
-          title: "Teams",
-          path: "/dashboard/teams",
-          icon: <MdPeople />,
-        },
-      ],
+          title: 'Teams',
+          path: '/dashboard/teams',
+          icon: <MdPeople />
+        }
+      ]
     },
     {
-      title: "User",
+      title: 'User',
       list: [
         {
-          title: "Settings",
-          path: "/dashboard/settings",
-          icon: <MdOutlineSettings />,
+          title: 'Settings',
+          path: '/dashboard/settings',
+          icon: <MdOutlineSettings />
         },
         {
-          title: "Help",
-          path: "/dashboard/help",
-          icon: <MdHelpCenter />,
-        },
-      ],
-    },
-  ];
+          title: 'Help',
+          path: '/dashboard/help',
+          icon: <MdHelpCenter />
+        }
+      ]
+    }
+  ]
 
   return (
     <div className="sticky">
@@ -114,5 +114,5 @@ export default function Sidebar() {
         Logout
       </Link>
     </div>
-  );
+  )
 }

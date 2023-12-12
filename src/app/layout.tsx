@@ -3,17 +3,17 @@ import { Inter } from 'next/font/google'
 import { ToastContainer } from 'react-toastify'
 
 import './ui/globals.css'
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Dashboard Intratec',
-  description: 'Intratec Tecnologia',
+  description: 'Intratec Tecnologia'
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {

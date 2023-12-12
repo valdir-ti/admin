@@ -1,8 +1,8 @@
-import Pagination from "@/app/ui/dashboard/pagination/pagination";
-import Search from "@/app/ui/dashboard/search/search";
-import Link from "next/link";
-import UsersTableBody from "@/app/ui/dashboard/usersTableBody/usersTableBody";
-import { getUsers } from "@/app/services/api-users";
+import Pagination from '@/app/ui/dashboard/pagination/pagination'
+import Search from '@/app/ui/dashboard/search/search'
+import Link from 'next/link'
+import UsersTableBody from '@/app/ui/dashboard/usersTableBody/usersTableBody'
+import { getUsers } from '@/app/services/api-users'
 
 export default async function Home() {
   const data = await getUsers()
@@ -32,5 +32,5 @@ export default async function Home() {
       </table>
       <Pagination disabled={true} />
     </div>
-  );
+  )
 }

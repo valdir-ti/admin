@@ -1,63 +1,70 @@
 'use client'
 
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts'
+import {
+  Legend,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+  ResponsiveContainer
+} from 'recharts'
 
 export default function Chart() {
-
   const data = [
     {
-      name: "Sun",
+      name: 'Sun',
       visit: 4000,
-      click: 2400,
+      click: 2400
     },
     {
-      name: "Mon",
+      name: 'Mon',
       visit: 3000,
-      click: 1398,
+      click: 1398
     },
     {
-      name: "Tue",
+      name: 'Tue',
       visit: 2000,
-      click: 3800,
+      click: 3800
     },
     {
-      name: "Wed",
+      name: 'Wed',
       visit: 2780,
-      click: 3908,
+      click: 3908
     },
     {
-      name: "Thu",
+      name: 'Thu',
       visit: 1890,
-      click: 4800,
+      click: 4800
     },
     {
-      name: "Fri",
+      name: 'Fri',
       visit: 2390,
-      click: 3800,
+      click: 3800
     },
     {
-      name: "Sat",
+      name: 'Sat',
       visit: 3490,
-      click: 4300,
-    },
-  ];
+      click: 4300
+    }
+  ]
 
   return (
     <div className="flex flex-1 flex-col p-4 bg-[--bgSoft] hover:bg-[--bgHover] rounded-md mt-4 h-[400px]">
       <h2 className="text-lg text-[--textSoft] mb-4">Weekly Recap</h2>
-      <ResponsiveContainer height='90%' width='100%'>
-          <LineChart
-            data={data}
-            margin={{
-              top: 10,
-              right: 35,
-              left: 20,
-              bottom: 10
-            }}
-          >
+      <ResponsiveContainer height="90%" width="100%">
+        <LineChart
+          data={data}
+          margin={{
+            top: 10,
+            right: 35,
+            left: 20,
+            bottom: 10
+          }}
+        >
           <XAxis dataKey="name" />
           <YAxis />
-          <Tooltip contentStyle={{background: '#151c2c', border: '0'}}/>
+          <Tooltip contentStyle={{ background: '#151c2c', border: '0' }} />
           <Legend />
           <Line
             type="monotone"

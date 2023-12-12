@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 export default function Transactions() {
   return (
@@ -16,14 +16,14 @@ export default function Transactions() {
         <tbody>
           <tr className="hover:bg-[--bgHover] cursor-pointer">
             <td className="flex items-center p-2 pl-1">
-                <Image
-                  alt="John Doe" 
-                  src='/noavatar.png' 
-                  width={28} 
-                  height={28}
-                  className="rounded-full"
-                  />
-                <h4 className="ml-2">John Doe</h4>
+              <Image
+                alt="John Doe"
+                src="/noavatar.png"
+                width={28}
+                height={28}
+                className="rounded-full"
+              />
+              <h4 className="ml-2">John Doe</h4>
             </td>
             <td>
               <span className="bg-yellow-500 rounded-sm p-1">Pending</span>
@@ -33,14 +33,14 @@ export default function Transactions() {
           </tr>
           <tr className="hover:bg-[--bgHover] cursor-pointer">
             <td className="flex items-center p-2 pl-1">
-                <Image
-                  alt="John Doe" 
-                  src='/noavatar.png' 
-                  width={28} 
-                  height={28}
-                  className="rounded-full"
-                  />
-                <h4 className="ml-2">John Doe</h4>
+              <Image
+                alt="John Doe"
+                src="/noavatar.png"
+                width={28}
+                height={28}
+                className="rounded-full"
+              />
+              <h4 className="ml-2">John Doe</h4>
             </td>
             <td>
               <span className="bg-slate-600 rounded-sm p-1">Done</span>
@@ -50,31 +50,31 @@ export default function Transactions() {
           </tr>
           <tr className="hover:bg-[--bgHover] cursor-pointer">
             <td className="flex items-center p-2 pl-1">
-                <Image
-                  alt="John Doe" 
-                  src='/noavatar.png' 
-                  width={28} 
-                  height={28}
-                  className="rounded-full"
-                  />
-                <h4 className="ml-2">John Doe</h4>
+              <Image
+                alt="John Doe"
+                src="/noavatar.png"
+                width={28}
+                height={28}
+                className="rounded-full"
+              />
+              <h4 className="ml-2">John Doe</h4>
             </td>
             <td>
-              <span className="bg-red-500 rounded-sm p-1">Cancelled</span>              
+              <span className="bg-red-500 rounded-sm p-1">Cancelled</span>
             </td>
             <td>14.02.2023</td>
             <td>R$3.200</td>
           </tr>
           <tr className="hover:bg-[--bgHover] cursor-pointer">
             <td className="flex items-center p-2 pl-1">
-                <Image
-                  alt="John Doe" 
-                  src='/noavatar.png' 
-                  width={28} 
-                  height={28}
-                  className="rounded-full"
-                  />
-                <h4 className="ml-2">John Doe</h4>
+              <Image
+                alt="John Doe"
+                src="/noavatar.png"
+                width={28}
+                height={28}
+                className="rounded-full"
+              />
+              <h4 className="ml-2">John Doe</h4>
             </td>
             <td>
               <span className="bg-yellow-500 rounded-sm p-1">Pending</span>
@@ -84,14 +84,14 @@ export default function Transactions() {
           </tr>
           <tr className="hover:bg-[--bgHover] cursor-pointer">
             <td className="flex items-center p-2 pl-1">
-                <Image
-                  alt="John Doe" 
-                  src='/noavatar.png' 
-                  width={28} 
-                  height={28}
-                  className="rounded-full"
-                  />
-                <h4 className="ml-2">John Doe</h4>
+              <Image
+                alt="John Doe"
+                src="/noavatar.png"
+                width={28}
+                height={28}
+                className="rounded-full"
+              />
+              <h4 className="ml-2">John Doe</h4>
             </td>
             <td>
               <span className="bg-slate-600 rounded-sm p-1">Done</span>

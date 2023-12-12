@@ -1,22 +1,21 @@
 'use client'
 
-import { Fragment } from "react";
-import { format, parseISO } from "date-fns";
-import { toast } from "react-toastify"
+import { Fragment } from 'react'
+import { format, parseISO } from 'date-fns'
+import { toast } from 'react-toastify'
 
-import Link from "next/link";
+import Link from 'next/link'
 
-import ZoomImage from "../zoomImage/zoomImage";
-import { Product } from "@/app/types";
-import { deleteProductServerAction } from "@/app/actions/products/delete-product-action";
-import DeleteButton from "../delete-button/delete-button";
+import ZoomImage from '../zoomImage/zoomImage'
+import { Product } from '@/app/types'
+import { deleteProductServerAction } from '@/app/actions/products/delete-product-action'
+import DeleteButton from '../delete-button/delete-button'
 
 type ProductsTableProps = {
-  data: Array<Product>;
-};
+  data: Array<Product>
+}
 
 export default function ProductsTableBody({ data }: ProductsTableProps) {
-
   const deleteProductClientAction = async (formData: FormData) => {
     const result = await deleteProductServerAction(formData)
     if (result?.error) {
@@ -26,14 +25,13 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
     }
   }
 
-
   return (
     <tbody>
       {data.map((product) => {
-        const parsedDate = parseISO(product.createdAt);
-        const formattedDate = format(parsedDate, "dd.MM.yyyy");
+        const parsedDate = parseISO(product.createdAt)
+        const formattedDate = format(parsedDate, 'dd.MM.yyyy')
 
-        const productImage = product.image || "/noproduct.jpg";
+        const productImage = product.image || '/noproduct.jpg'
 
         return (
           <Fragment key={product._id}>
@@ -55,13 +53,16 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
                       View
                     </button>
                   </Link>
-                  <DeleteButton action={deleteProductClientAction} id={product._id} />
+                  <DeleteButton
+                    action={deleteProductClientAction}
+                    id={product._id}
+                  />
                 </div>
               </td>
             </tr>
           </Fragment>
-        );
+        )
       })}
     </tbody>
-  );
+  )
 }
