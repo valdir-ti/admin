@@ -1,14 +1,29 @@
+'use client'
+
 import { User } from "@/app/types";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
+import { deleteUserAction } from "./user-delete-action";
+import { toast } from "react-toastify"
+import DeleteButton from "../delete-button/delete-button";
 
 type UsersTableProps = {
   data: Array<User>;
 };
 
 export default function UsersTableBody({ data }: UsersTableProps) {
+
+  const deleteUserClientAction = async (formData: FormData) => {
+    const result = await deleteUserAction(formData)
+    if (result?.error) {
+      toast.error(result?.error)
+    } else {
+      toast.success('User deleted')
+    }
+  }
+
   return (
     <tbody>
       {data?.map((user) => {
@@ -43,11 +58,7 @@ export default function UsersTableBody({ data }: UsersTableProps) {
                       View
                     </button>
                   </Link>
-                  <Link href="/">
-                    <button className="p-1 text-[--text] border-0 cursor-pointer bg-red-600 rounded-md min-w-[80px]">
-                      Delete
-                    </button>
-                  </Link>
+                  <DeleteButton action={deleteUserClientAction} id={user._id} />
                 </div>
               </td>
             </tr>
