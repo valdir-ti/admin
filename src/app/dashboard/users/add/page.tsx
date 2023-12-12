@@ -1,16 +1,18 @@
 'use client'
 
-import { addUser } from "../../../actions/users/add-user-action"
+import { redirect } from "next/navigation"
+import { addUserServerAction } from "../../../actions/users/add-user-action"
 import { toast } from "react-toastify"
 
 export default function Home() {
 
     const addUserClientAction = async (formData: FormData) => {
-        const result = await addUser(formData)
+        const result = await addUserServerAction(formData)
         if (result?.error) {
             toast.error(result?.error)
         } else {
             toast.success('User added')
+            redirect('/dashboard/users')
         }
     }
 

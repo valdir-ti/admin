@@ -5,7 +5,7 @@ import { getErrorMessage } from "@/app/utils/getErrorMessage"
 import { revalidatePath } from "next/cache"
 
 
-export const deleteProductAction = async (formData: FormData) => {
+export const deleteProductServerAction = async (formData: FormData) => {
     const id = formData.get("id")
     try {
         await deleteProduct(id as string)

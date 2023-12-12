@@ -8,7 +8,7 @@ import Link from "next/link";
 
 import ZoomImage from "../zoomImage/zoomImage";
 import { Product } from "@/app/types";
-import { deleteProductAction } from "@/app/actions/products/delete-product-action";
+import { deleteProductServerAction } from "@/app/actions/products/delete-product-action";
 import DeleteButton from "../delete-button/delete-button";
 import { redirect } from 'next/navigation'
 
@@ -19,7 +19,7 @@ type ProductsTableProps = {
 export default function ProductsTableBody({ data }: ProductsTableProps) {
 
   const deleteProductClientAction = async (formData: FormData) => {
-    const result = await deleteProductAction(formData)
+    const result = await deleteProductServerAction(formData)
     if (result?.error) {
       toast.error(result?.error)
     } else {

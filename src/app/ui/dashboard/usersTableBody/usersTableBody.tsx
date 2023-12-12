@@ -9,7 +9,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 
 import { User } from "@/app/types";
-import { deleteUserAction } from "../../../actions/users/delete-user-action";
+import { deleteUserServerAction } from "../../../actions/users/delete-user-action";
 import DeleteButton from "../delete-button/delete-button";
 
 type UsersTableProps = {
@@ -19,7 +19,7 @@ type UsersTableProps = {
 export default function UsersTableBody({ data }: UsersTableProps) {
 
   const deleteUserClientAction = async (formData: FormData) => {
-    const result = await deleteUserAction(formData)
+    const result = await deleteUserServerAction(formData)
     if (result?.error) {
       toast.error(result?.error)
     } else {
