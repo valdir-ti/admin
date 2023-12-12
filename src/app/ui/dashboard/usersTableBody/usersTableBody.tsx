@@ -6,7 +6,6 @@ import { format, parseISO } from "date-fns";
 
 import Link from "next/link";
 import Image from "next/image";
-import { redirect } from "next/navigation";
 
 import { User } from "@/app/types";
 import { deleteUserServerAction } from "../../../actions/users/delete-user-action";
@@ -24,7 +23,6 @@ export default function UsersTableBody({ data }: UsersTableProps) {
       toast.error(result?.error)
     } else {
       toast.success('User deleted')
-      redirect('/dashboard/users')
     }
   }
 
