@@ -1,12 +1,14 @@
 'use client'
 
-import { User } from "@/app/types";
+import { Fragment } from "react";
+import { toast } from "react-toastify"
 import { format, parseISO } from "date-fns";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
-import { deleteUserAction } from "./user-delete-action";
-import { toast } from "react-toastify"
+
+import { User } from "@/app/types";
+import { deleteUserAction } from "../../../actions/users/user-delete-action";
 import DeleteButton from "../delete-button/delete-button";
 
 type UsersTableProps = {

@@ -1,6 +1,6 @@
 'use client'
 
-import { addUser } from "./add-user-action"
+import { addUser } from "../../../actions/users/add-user-action"
 import { toast } from "react-toastify"
 
 export default function Home() {

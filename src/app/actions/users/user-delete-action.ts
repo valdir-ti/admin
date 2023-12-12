@@ -1,7 +1,7 @@
 'use server'
 
-import { getErrorMessage } from "@/app/dashboard/users/add/add-user-action"
 import { deleteUser } from "@/app/services/api-users"
+import { getErrorMessage } from "@/app/utils/getErrorMessage"
 import { revalidatePath } from "next/cache"
 import { redirect } from 'next/navigation'
 
