@@ -1,12 +1,12 @@
-import { getProduct } from '@/app/services/api-products'
 import Image from 'next/image'
+import { getProductServerAction } from '@/app/actions/products/get-product-action'
 
 export default async function EditProduct({
   params: { id }
 }: {
   params: { id: string }
 }) {
-  const product = await getProduct(id)
+  const product = await getProductServerAction(id)
   const { title, description, price, stock, image, size, category } = product
   const productImage = image || '/noproduct.jpg'
 
