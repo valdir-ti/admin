@@ -1,4 +1,4 @@
-import { getUser } from '@/app/services/api-users'
+import { getUserServerAction } from '@/app/actions/users/get-user-action'
 import Image from 'next/image'
 
 export default async function EditUser({
@@ -6,7 +6,7 @@ export default async function EditUser({
 }: {
   params: { id: string }
 }) {
-  const user = await getUser(id)
+  const user = await getUserServerAction(id)
   const { name, email, password, phone, address, image, isActive, isAdmin } =
     user
   const userImage = image || '/noavatar.png'
