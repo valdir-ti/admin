@@ -2,10 +2,10 @@ import Link from 'next/link'
 import Search from '@/app/ui/dashboard/search/search'
 import Pagination from '@/app/ui/dashboard/pagination/pagination'
 import ProductsTableBody from '@/app/ui/dashboard/productsTableBody/productsTableBody'
-import { getProducts } from '@/app/services/api-products'
+import { getProductsServerAction } from '@/app/actions/products/get-products-action'
 
 export default async function Home() {
-  const data = await getProducts()
+  const data = await getProductsServerAction()
 
   return (
     <div className="mt-4 bg-[--bgSoft] p-4 rounded-md">
