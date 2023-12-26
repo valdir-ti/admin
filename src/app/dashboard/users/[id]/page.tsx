@@ -19,6 +19,8 @@ export default function EditUser({
     const result = await updateUserServerAction(formData)
     if (result?.error) {
       toast.error(result?.error)
+    } else {
+      toast.success('Usuário atualizado com sucesso!')
     }
   }
 
