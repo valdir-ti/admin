@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { User } from '../types'
 
 const api = axios.create({
   baseURL:
@@ -24,5 +25,10 @@ export async function createUser(user: unknown) {
 
 export async function deleteUser(id: string) {
   const data = await api.delete(`/users/${id}`)
+  return data
+}
+
+export async function updateUser(id: string, user: User) {
+  const data = await api.patch(`/users/${id}`, user)
   return data
 }

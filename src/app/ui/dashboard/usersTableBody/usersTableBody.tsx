@@ -28,7 +28,7 @@ export default function UsersTableBody({ data }: UsersTableProps) {
   return (
     <tbody>
       {data?.map((user) => {
-        const parsedDate = parseISO(user.createdAt)
+        const parsedDate = parseISO(user.createdAt!)
         const formattedDate = format(parsedDate, 'dd.MM.yyyy')
 
         const userImage = user.image || '/noavatar.png'
@@ -40,7 +40,7 @@ export default function UsersTableBody({ data }: UsersTableProps) {
                 <div className="flex items-center gap-2 mb-2">
                   <Image
                     src={userImage}
-                    alt={user.name}
+                    alt={user.name || 'User name'}
                     width={36}
                     height={36}
                     className="rounded-full object-cover"
@@ -59,7 +59,10 @@ export default function UsersTableBody({ data }: UsersTableProps) {
                       View
                     </button>
                   </Link>
-                  <DeleteButton action={deleteUserClientAction} id={user._id} />
+                  <DeleteButton
+                    action={deleteUserClientAction}
+                    id={user._id!}
+                  />
                 </div>
               </td>
             </tr>

@@ -1,14 +1,56 @@
-import { getUserServerAction } from '@/app/actions/users/get-user-action'
-import Image from 'next/image'
+'use client'
 
-export default async function EditUser({
+import { getUserServerAction } from '@/app/actions/users/get-user-action'
+import { updateUserServerAction } from '@/app/actions/users/update-user-action'
+import { User } from '@/app/types'
+import { convertStringToBoolean } from '@/app/utils/convertStringToBoolean'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+
+export default function EditUser({
   params: { id }
 }: {
   params: { id: string }
 }) {
-  const user = await getUserServerAction(id)
-  const { name, email, password, phone, address, image, isActive, isAdmin } =
-    user
+  const [user, setUser] = useState<User | null>(null)
+
+  const updateUserClientAction = async (formData: FormData) => {
+    const result = await updateUserServerAction(formData)
+    if (result?.error) {
+      toast.error(result?.error)
+    }
+  }
+
+  const handleFieldChange =
+    (fieldName: string) =>
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    ) => {
+      setUser((prevUser) => ({
+        ...prevUser,
+        [fieldName]:
+          e.target.type === 'checkbox'
+            ? convertStringToBoolean(e.target.value)
+            : e.target.value
+      }))
+    }
+
+  useEffect(() => {
+    try {
+      const fetchData = async () => {
+        const user = await getUserServerAction(id)
+        setUser(user)
+      }
+      fetchData()
+    } catch (error) {
+      console.log('error on get user: ', id)
+    }
+  }, [id])
+
+  const { name, email, phone, address, image, isActive, isAdmin } = user || {}
   const userImage = image || '/noavatar.png'
 
   return (
@@ -16,7 +58,7 @@ export default async function EditUser({
       <div className="w-2/6 p-12 bg-[--bgSoft] rounded-md mt-6 h-max">
         <div className="w-[100%] h-[300px] font-bold flex items-center justify-center flex-col">
           <Image
-            alt={name}
+            alt={name || 'User image'}
             src={userImage}
             width="0"
             height="0"
@@ -27,16 +69,19 @@ export default async function EditUser({
         </div>
       </div>
       <div className="w-4/6 p-12 bg-[--bgSoft] rounded-md mt-6">
-        <form className="flex flex-col">
-          <label htmlFor="username" className="text-xs">
-            Username
+        <form className="flex flex-col" action={updateUserClientAction}>
+          <input type="hidden" name="id" value={id} />
+          <label htmlFor="name" className="text-xs">
+            Name
           </label>
           <input
             type="text"
-            name="username"
-            id="username"
+            name="name"
+            id="name"
             placeholder={name}
-            value={name}
+            value={name || ''}
+            onChange={handleFieldChange('name')}
+            autoComplete="off"
             className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2"
           />
 
@@ -47,19 +92,8 @@ export default async function EditUser({
             type="email"
             id="email"
             name="email"
-            placeholder={email}
-            value={email}
-            className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2"
-          />
-
-          <label htmlFor="password" className="text-xs">
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={password}
+            disabled
+            placeholder={email || ''}
             className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2"
           />
 
@@ -71,7 +105,9 @@ export default async function EditUser({
             name="phone"
             id="phone"
             placeholder={phone}
-            value={phone}
+            autoComplete="off"
+            value={phone || ''}
+            onChange={handleFieldChange('phone')}
             className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2"
           />
 
@@ -82,6 +118,7 @@ export default async function EditUser({
             name="address"
             id="address"
             defaultValue={address}
+            onChange={handleFieldChange('address')}
             cols={30}
             rows={2}
             className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2"
@@ -93,13 +130,11 @@ export default async function EditUser({
             name="isAdmin"
             id="isAdmin"
             className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2"
+            value={String(isAdmin)}
+            onChange={handleFieldChange('isAdmin')}
           >
-            <option value="true" selected={isAdmin}>
-              Yes
-            </option>
-            <option value="false" selected={!isAdmin}>
-              No
-            </option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </select>
 
           <label htmlFor="isActive" className="text-xs">
@@ -109,17 +144,15 @@ export default async function EditUser({
             name="isActive"
             id="isActive"
             className="p-2 border-[2px] border-gray-500 rounded-md bg-[--bg] text-[--text] mb-2"
+            value={String(isActive)}
+            onChange={handleFieldChange('isActive')}
           >
-            <option value="true" selected={isActive}>
-              Yes
-            </option>
-            <option value="false" selected={!isActive}>
-              No
-            </option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </select>
 
           <button className="w-full p-2 bg-teal-600 text-[--text] mt-4 rounded-md border-0">
-            Submit
+            Update
           </button>
         </form>
       </div>
