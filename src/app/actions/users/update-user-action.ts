@@ -4,31 +4,15 @@ import { revalidatePath } from 'next/cache'
 
 import { updateUser } from '@/app/services/api-users'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
-import { redirect } from 'next/navigation'
-import { getStringFormDataValue } from '@/app/utils/getStringFormDataValue'
 
-export const updateUserServerAction = async (formData: FormData) => {
-  const isAdminField = formData.get('isAdmin')
-  const isActiveField = formData.get('isActive')
+import { User } from '@/app/types'
 
-  const id: string | undefined = getStringFormDataValue(formData, 'id')
-  const name: string | undefined = getStringFormDataValue(formData, 'name')
-  const password: string | undefined = getStringFormDataValue(
-    formData,
-    'password'
-  )
-  const phone: string | undefined = getStringFormDataValue(formData, 'phone')
-  const isAdmin: boolean = isAdminField === 'true'
-  const isActive: boolean = isActiveField === 'true'
-  const address: string | undefined = getStringFormDataValue(
-    formData,
-    'address'
-  )
+export const updateUserServerAction = async (formData: User) => {
+  const { _id: id, address, name, phone, isActive, isAdmin } = formData
 
   try {
     await updateUser(String(id), {
       name,
-      password,
       phone,
       isAdmin,
       isActive,
@@ -40,5 +24,4 @@ export const updateUserServerAction = async (formData: FormData) => {
     }
   }
   revalidatePath('/dashboard/users')
-  redirect('/dashboard/users')
 }
