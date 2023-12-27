@@ -187,7 +187,10 @@ export default function Form({ user }: FormProps) {
             className="w-full p-2 bg-teal-600 text-[--text] mt-4 rounded-md border-0 disabled:bg-teal-800"
             disabled={isLoading}
           >
-            {isLoading ? 'Executando...' : 'Update'}
+            <div className="w-full flex items-center justify-center">
+              {isLoading && <span className="loading mr-2"></span>}
+              {isLoading ? 'Executando...' : 'Update'}
+            </div>
           </button>
         </form>
       </div>

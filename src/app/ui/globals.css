@@ -26,3 +26,18 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+.loading {
+    width: 16px;
+    height: 16px;
+    border: 2px solid salmon;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: loading .7s linear infinite;
+}
+
+@keyframes loading {
+    to {
+        transform: rotate(360deg);
+    }
+}
