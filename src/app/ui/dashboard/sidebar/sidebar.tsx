@@ -3,6 +3,7 @@ import {
   MdAttachMoney,
   MdDashboard,
   MdHelpCenter,
+  MdListAlt,
   MdLogout,
   MdOutlineSettings,
   MdPeople,
@@ -68,6 +69,11 @@ export default function Sidebar() {
           title: 'Settings',
           path: '/dashboard/settings',
           icon: <MdOutlineSettings />
+        },
+        {
+          title: 'Todos',
+          path: '/dashboard/todos',
+          icon: <MdListAlt />
         },
         {
           title: 'Help',
