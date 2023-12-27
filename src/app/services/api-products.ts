@@ -1,11 +1,4 @@
-import axios from 'axios'
-
-const api = axios.create({
-  baseURL:
-    process.env.NEXT_PUBLIC_ENVIRONMENT === 'development'
-      ? process.env.NEXT_PUBLIC_API_URL
-      : process.env.NEXT_PUBLIC_API_PROD
-})
+import { api } from './api'
 
 export async function getProduct(id: string) {
   const { data } = await api.get(`/products/${id}`)
