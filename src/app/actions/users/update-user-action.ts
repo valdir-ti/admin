@@ -5,19 +5,7 @@ import { revalidatePath } from 'next/cache'
 import { updateUser } from '@/app/services/api-users'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
 import { redirect } from 'next/navigation'
-
-const getStringFormDataValue = (
-  formData: FormData,
-  field: string
-): string | undefined => {
-  const value = formData.get(field)
-
-  if (typeof value === 'string' || value instanceof Blob) {
-    return value as string
-  }
-
-  return undefined
-}
+import { getStringFormDataValue } from '@/app/utils/getStringFormDataValue'
 
 export const updateUserServerAction = async (formData: FormData) => {
   const isAdminField = formData.get('isAdmin')
