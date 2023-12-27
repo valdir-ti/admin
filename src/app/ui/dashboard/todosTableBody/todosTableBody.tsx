@@ -4,11 +4,11 @@ import { Fragment } from 'react'
 import { toast } from 'react-toastify'
 import { format, parseISO } from 'date-fns'
 
-import Link from 'next/link'
-
 import { Todo } from '@/app/types'
+import UpdateButton from '../update-button/update-button'
 import DeleteButton from '../delete-button/delete-button'
 import { deleteTodoServerAction } from '@/app/actions/todos/delete-todo-action'
+import { updateTodoServerAction } from '@/app/actions/todos/update-todo-action'
 
 type TodosTableProps = {
   data: Array<Todo>
@@ -21,6 +21,15 @@ export default function TodosTableBody({ data }: TodosTableProps) {
       toast.error(result?.error)
     } else {
       toast.success('Todo deleted')
+    }
+  }
+
+  const updateTodoClientAction = async (formData: FormData) => {
+    const result = await updateTodoServerAction(formData)
+    if (result?.error) {
+      toast.error(result?.error)
+    } else {
+      toast.success('Todo updated')
     }
   }
 
@@ -38,11 +47,11 @@ export default function TodosTableBody({ data }: TodosTableProps) {
               <td>{formattedDate}</td>
               <td>
                 <div className="gap-2 flex">
-                  <Link href={`/dashboard/todos/${todo._id}`}>
-                    <button className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md min-w-[80px]">
-                      View
-                    </button>
-                  </Link>
+                  <UpdateButton
+                    action={updateTodoClientAction}
+                    id={todo._id!}
+                    disabled={!!todo.done}
+                  />
                   <DeleteButton
                     action={deleteTodoClientAction}
                     id={todo._id!}
