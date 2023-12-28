@@ -189,7 +189,7 @@ export default function Form({ user }: FormProps) {
           >
             <div className="w-full flex items-center justify-center">
               {isLoading && <span className="loading mr-2"></span>}
-              {isLoading ? 'Executando...' : 'Update'}
+              {isLoading ? 'Updating...' : 'Update'}
             </div>
           </button>
         </form>
