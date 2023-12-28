@@ -3,18 +3,37 @@
 import { toast } from 'react-toastify'
 
 import { addTodoServerAction } from '@/app/actions/todos/add-todo-action'
+import { useRouter } from 'next/navigation'
+import { FormEvent, useState } from 'react'
 
 export default function Page() {
-  const addUserTodoAction = async (formData: FormData) => {
-    const result = await addTodoServerAction(formData)
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    setIsLoading(true)
+    const formData = new FormData(e.currentTarget)
+
+    const formDataObject: Record<string, string> = {}
+    formData.forEach((value, key) => {
+      formDataObject[key] = value.toString()
+    })
+
+    const result = await addTodoServerAction(formDataObject)
     if (result?.error) {
       toast.error(result?.error)
+    } else {
+      toast.success('Todo adicionado com sucesso!')
+      router.push('/dashboard/todos')
     }
+    setIsLoading(false)
   }
 
   return (
     <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
-      <form action={addUserTodoAction} className="flex flex-col">
+      <form onSubmit={handleSubmit} className="flex flex-col">
         <div className="flex justify-between">
           <div className="flex flex-col w-full">
             <label htmlFor="description">Description</label>
@@ -29,7 +48,10 @@ export default function Page() {
           </div>
         </div>
         <button className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer">
-          Submit
+          <div className="w-full flex items-center justify-center">
+            {isLoading && <span className="loading mr-2"></span>}
+            {isLoading ? 'Submiting...' : 'Submit'}
+          </div>
         </button>
       </form>
     </div>
