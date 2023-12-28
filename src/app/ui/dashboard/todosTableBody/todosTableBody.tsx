@@ -55,6 +55,7 @@ export default function TodosTableBody({ data }: TodosTableProps) {
                   <DeleteButton
                     action={deleteTodoClientAction}
                     id={todo._id!}
+                    disabled={!!todo.done}
                   />
                 </div>
               </td>
