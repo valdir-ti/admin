@@ -1,8 +1,9 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
+
 import { deleteUser } from '@/app/services/api-users'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
-import { revalidatePath } from 'next/cache'
 
 export const deleteUserServerAction = async (formData: FormData) => {
   const id = formData.get('id')

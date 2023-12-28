@@ -26,7 +26,6 @@ export default function TodosTableBody({ data }: TodosTableProps) {
       toast.error(result?.error)
     } else {
       toast.success('Todo deleted')
-      router.refresh()
     }
   }
 

@@ -3,6 +3,7 @@ type DeleteButtonProps = {
   action: (formData: FormData) => Promise<void>
   disabled?: boolean
 }
+
 export default function DeleteButton({
   action,
   id,
