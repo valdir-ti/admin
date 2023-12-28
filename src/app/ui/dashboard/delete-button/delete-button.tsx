@@ -13,7 +13,7 @@ export default function DeleteButton({
     <form action={action}>
       <input type="hidden" name="id" value={id} />
       <button
-        className="p-1 text-[--text] border-0 cursor-pointer bg-red-600 rounded-md min-w-[80px] disabled:bg-red-900 disabled:cursor-default"
+        className="p-1 text-[--text] border-0 cursor-pointer bg-red-600 rounded-md min-w-[100px] disabled:bg-red-900 disabled:cursor-default"
         disabled={disabled}
       >
         Delete

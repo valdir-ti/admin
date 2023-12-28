@@ -1,15 +1,14 @@
 'use client'
 
 import { Fragment } from 'react'
-import Link from 'next/link'
 import { toast } from 'react-toastify'
 import { format, parseISO } from 'date-fns'
 
 import { Product } from '@/app/types'
-import { deleteProductServerAction } from '@/app/actions/products/delete-product-action'
-
 import ZoomImage from '@/app/ui/dashboard/zoomImage/zoomImage'
+import ViewButton from '@/app/ui/dashboard/view-button/view-button'
 import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
+import { deleteProductServerAction } from '@/app/actions/products/delete-product-action'
 
 type ProductsTableProps = {
   data: Array<Product>
@@ -48,11 +47,7 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
               <td>{product.stock}</td>
               <td>
                 <div className="gap-2 flex">
-                  <Link href={`/dashboard/products/${product._id}`}>
-                    <button className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md min-w-[80px]">
-                      View
-                    </button>
-                  </Link>
+                  <ViewButton id={product._id!} path="products" />
                   <DeleteButton
                     action={deleteProductClientAction}
                     id={product._id}

@@ -4,10 +4,10 @@ import { Fragment } from 'react'
 import { toast } from 'react-toastify'
 import { format, parseISO } from 'date-fns'
 
-import Link from 'next/link'
 import Image from 'next/image'
 
 import { User } from '@/app/types'
+import ViewButton from '@/app/ui/dashboard/view-button/view-button'
 import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
 import { deleteUserServerAction } from '@/app/actions/users/delete-user-action'
 
@@ -54,11 +54,7 @@ export default function UsersTableBody({ data }: UsersTableProps) {
               <td>{user.isActive ? 'Active' : 'Not Active'}</td>
               <td>
                 <div className="gap-2 flex">
-                  <Link href={`/dashboard/users/${user._id}`}>
-                    <button className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md min-w-[80px]">
-                      View
-                    </button>
-                  </Link>
+                  <ViewButton id={user._id!} path="users" />
                   <DeleteButton
                     action={deleteUserClientAction}
                     id={user._id!}
