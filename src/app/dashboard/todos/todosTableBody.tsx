@@ -1,14 +1,12 @@
 'use client'
 
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { format, parseISO } from 'date-fns'
 
 import { Todo } from '@/app/types'
-
 import UpdateButton from '@/app/ui/dashboard/update-button/update-button'
 import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
-
 import { deleteTodoServerAction } from '@/app/actions/todos/delete-todo-action'
 import { updateTodoServerAction } from '@/app/actions/todos/update-todo-action'
 
@@ -17,6 +15,8 @@ type TodosTableProps = {
 }
 
 export default function TodosTableBody({ data }: TodosTableProps) {
+  const [todos, setTodos] = useState<Todo[]>()
+
   const deleteTodoClientAction = async (formData: FormData) => {
     const result = await deleteTodoServerAction(formData)
     if (result?.error) {
@@ -35,9 +35,13 @@ export default function TodosTableBody({ data }: TodosTableProps) {
     }
   }
 
+  useEffect(() => {
+    setTodos(data)
+  }, [data])
+
   return (
     <tbody>
-      {data?.map((todo) => {
+      {todos?.map((todo) => {
         const parsedDate = parseISO(todo.createdAt!)
         const formattedDate = format(parsedDate, 'dd.MM.yyyy')
 
