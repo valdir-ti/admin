@@ -1,5 +1,6 @@
 'use server'
 
+import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 
 import { updateUser } from '@/app/services/api-users'
@@ -24,4 +25,5 @@ export const updateUserServerAction = async (formData: User) => {
     }
   }
   revalidatePath('/dashboard/users')
+  redirect('/dashboard/users')
 }

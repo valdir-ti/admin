@@ -1,8 +1,9 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
+
 import { getTodos } from '@/app/services/api-todos'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
-import { revalidatePath } from 'next/cache'
 
 export const getTodosServerAction = async () => {
   try {

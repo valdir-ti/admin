@@ -1,11 +1,9 @@
 'use client'
 
 import { FormEvent, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-
-import { toast } from 'react-toastify'
 
 import { convertStringToBoolean } from '@/app/utils/convertStringToBoolean'
 import { updateUserServerAction } from '@/app/actions/users/update-user-action'
@@ -19,8 +17,6 @@ type FormProps = {
 export default function Form({ user }: FormProps) {
   const [data, setData] = useState<User | null>(user)
   const [isLoading, setIsLoading] = useState(false)
-
-  const router = useRouter()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -38,7 +34,6 @@ export default function Form({ user }: FormProps) {
       toast.error(result?.error)
     } else {
       toast.success('Usuário atualizado com sucesso!')
-      router.push('/dashboard/users')
     }
     setIsLoading(false)
   }
