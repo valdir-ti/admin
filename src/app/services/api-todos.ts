@@ -14,3 +14,8 @@ export async function updateTodo(id: string) {
   const data = await api.patch(`/todos/${id}`)
   return data
 }
+
+export async function createTodo(todo: unknown) {
+  const data = await api.post('/todos', todo)
+  return data
+}
