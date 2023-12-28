@@ -1,7 +1,5 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
-
 import { updateTodo } from '@/app/services/api-todos'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
 
@@ -14,5 +12,4 @@ export const updateTodoServerAction = async (formData: FormData) => {
       error: getErrorMessage(error)
     }
   }
-  revalidatePath('/dashboard/todos')
 }
