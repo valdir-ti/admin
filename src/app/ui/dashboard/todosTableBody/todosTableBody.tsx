@@ -9,18 +9,22 @@ import UpdateButton from '../update-button/update-button'
 import DeleteButton from '../delete-button/delete-button'
 import { deleteTodoServerAction } from '@/app/actions/todos/delete-todo-action'
 import { updateTodoServerAction } from '@/app/actions/todos/update-todo-action'
+import { useRouter } from 'next/navigation'
 
 type TodosTableProps = {
   data: Array<Todo>
 }
 
 export default function TodosTableBody({ data }: TodosTableProps) {
+  const router = useRouter()
+
   const deleteTodoClientAction = async (formData: FormData) => {
     const result = await deleteTodoServerAction(formData)
     if (result?.error) {
       toast.error(result?.error)
     } else {
       toast.success('Todo deleted')
+      router.push('/dashboard/todos')
     }
   }
 
@@ -30,6 +34,7 @@ export default function TodosTableBody({ data }: TodosTableProps) {
       toast.error(result?.error)
     } else {
       toast.success('Todo updated')
+      router.push('/dashboard/todos')
     }
   }
 
