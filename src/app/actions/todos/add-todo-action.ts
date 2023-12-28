@@ -11,10 +11,10 @@ export const addTodoServerAction = async (formData: Todo) => {
   const { description } = formData
   try {
     await createTodo({ description })
+    revalidatePath('/dashboard/todos')
   } catch (error) {
     return {
       error: getErrorMessage(error)
     }
   }
-  revalidatePath('/dashboard/todos')
 }
