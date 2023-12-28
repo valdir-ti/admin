@@ -24,6 +24,7 @@ export default function Home() {
               required
               autoComplete="off"
               className="w-full p-4 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
+              autoFocus
             />
           </div>
           <div className="flex flex-col w-[49%]">

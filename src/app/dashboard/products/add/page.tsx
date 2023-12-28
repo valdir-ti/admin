@@ -24,7 +24,13 @@ export default function AddProduct() {
     <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
       <form className="flex flex-col">
         <div className="flex justify-between">
-          <Input placeholder="title" name="title" required label="Title" />
+          <Input
+            placeholder="title"
+            name="title"
+            required
+            label="Title"
+            autoFocus
+          />
           <SelectBox
             options={options}
             onChange={onChange}
