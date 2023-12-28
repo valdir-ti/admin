@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { format, parseISO } from 'date-fns'
 
@@ -16,6 +16,8 @@ type UsersTableProps = {
 }
 
 export default function UsersTableBody({ data }: UsersTableProps) {
+  const [users, setUsers] = useState<User[]>()
+
   const deleteUserClientAction = async (formData: FormData) => {
     const result = await deleteUserServerAction(formData)
     if (result?.error) {
@@ -25,9 +27,13 @@ export default function UsersTableBody({ data }: UsersTableProps) {
     }
   }
 
+  useEffect(() => {
+    setUsers(data)
+  }, [data])
+
   return (
     <tbody>
-      {data?.map((user) => {
+      {users?.map((user) => {
         const parsedDate = parseISO(user.createdAt!)
         const formattedDate = format(parsedDate, 'dd.MM.yyyy')
 

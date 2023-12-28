@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { format, parseISO } from 'date-fns'
 
@@ -15,6 +15,8 @@ type ProductsTableProps = {
 }
 
 export default function ProductsTableBody({ data }: ProductsTableProps) {
+  const [products, setProducts] = useState<Product[]>()
+
   const deleteProductClientAction = async (formData: FormData) => {
     const result = await deleteProductServerAction(formData)
     if (result?.error) {
@@ -24,9 +26,13 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
     }
   }
 
+  useEffect(() => {
+    setProducts(data)
+  }, [data])
+
   return (
     <tbody>
-      {data.map((product) => {
+      {products?.map((product) => {
         const parsedDate = parseISO(product.createdAt)
         const formattedDate = format(parsedDate, 'dd.MM.yyyy')
 
