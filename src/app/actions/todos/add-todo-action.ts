@@ -1,6 +1,5 @@
 'use server'
 
-import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 
 import { createTodo } from '@/app/services/api-todos'
@@ -18,5 +17,4 @@ export const addTodoServerAction = async (formData: Todo) => {
     }
   }
   revalidatePath('/dashboard/todos')
-  redirect('/dashboard/todos')
 }
