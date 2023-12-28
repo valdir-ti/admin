@@ -3,12 +3,10 @@
 import { toast } from 'react-toastify'
 import { FormEvent, useState } from 'react'
 
-import { useRouter } from 'next/navigation'
 import { addTodoServerAction } from '@/app/actions/todos/add-todo-action'
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -28,7 +26,6 @@ export default function Page() {
       toast.error(result?.error)
     } else {
       toast.success('Todo adicionado com sucesso!')
-      router.push('/dashboard/todos')
     }
   }
 
