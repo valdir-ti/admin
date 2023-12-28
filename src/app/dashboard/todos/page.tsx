@@ -21,9 +21,10 @@ export default async function Page() {
       <table className="w-full">
         <thead>
           <tr>
-            <td>Description</td>
-            <td>Status</td>
-            <td>Created At</td>
+            <td className="w-[50%] text-lg text-slate-400">Description</td>
+            <td className="w-[15%] text-lg text-slate-400">Status</td>
+            <td className="w-[15%] text-lg text-slate-400">Created At</td>
+            <td className="w-[20%] text-lg text-slate-400"></td>
           </tr>
         </thead>
         <TodosTableBody data={data} />
