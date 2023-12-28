@@ -19,13 +19,13 @@ export default async function Home() {
       </div>
       <table className="w-full">
         <thead>
-          <tr>
-            <td>Title</td>
-            <td>Description</td>
-            <td>Price</td>
-            <td>Created At</td>
-            <td>Stock</td>
-            <td>Action</td>
+          <tr className="text-lg text-slate-400">
+            <td className="w-[30%]">Title</td>
+            <td className="w-[30%]">Description</td>
+            <td className="w-[10%]">Price</td>
+            <td className="w-[10%]">Created At</td>
+            <td className="w-[8%]">Stock</td>
+            <td className="w-[12%]">Actions</td>
           </tr>
         </thead>
         <ProductsTableBody data={data} />

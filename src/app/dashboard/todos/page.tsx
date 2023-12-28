@@ -4,6 +4,7 @@ import Search from '@/app/ui/dashboard/search/search'
 import Pagination from '@/app/ui/dashboard/pagination/pagination'
 import { getTodosServerAction } from '@/app/actions/todos/get-todos-action'
 import TodosTableBody from '@/app/dashboard/todos/todosTableBody'
+
 export default async function Page() {
   const data = await getTodosServerAction()
 
@@ -19,11 +20,11 @@ export default async function Page() {
       </div>
       <table className="w-full">
         <thead>
-          <tr>
-            <td className="w-[50%] text-lg text-slate-400">Description</td>
-            <td className="w-[15%] text-lg text-slate-400">Status</td>
-            <td className="w-[15%] text-lg text-slate-400">Created At</td>
-            <td className="w-[20%] text-lg text-slate-400"></td>
+          <tr className="text-lg text-slate-400">
+            <td className="w-[50%]">Description</td>
+            <td className="w-[15%]">Status</td>
+            <td className="w-[15%]">Created At</td>
+            <td className="w-[20%]">Actions</td>
           </tr>
         </thead>
         <TodosTableBody data={data} />
