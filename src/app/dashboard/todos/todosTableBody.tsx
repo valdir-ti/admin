@@ -2,7 +2,6 @@
 
 import { Fragment } from 'react'
 import { toast } from 'react-toastify'
-import { useRouter } from 'next/navigation'
 import { format, parseISO } from 'date-fns'
 
 import { Todo } from '@/app/types'
@@ -18,8 +17,6 @@ type TodosTableProps = {
 }
 
 export default function TodosTableBody({ data }: TodosTableProps) {
-  const router = useRouter()
-
   const deleteTodoClientAction = async (formData: FormData) => {
     const result = await deleteTodoServerAction(formData)
     if (result?.error) {
@@ -35,7 +32,6 @@ export default function TodosTableBody({ data }: TodosTableProps) {
       toast.error(result?.error)
     } else {
       toast.success('Todo updated')
-      router.refresh()
     }
   }
 

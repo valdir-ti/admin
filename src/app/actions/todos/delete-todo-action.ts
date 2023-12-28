@@ -14,5 +14,5 @@ export const deleteTodoServerAction = async (formData: FormData) => {
       error: getErrorMessage(error)
     }
   }
-  revalidatePath('/dashboard/users')
+  revalidatePath('/dashboard/todos')
 }
