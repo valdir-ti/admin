@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation'
 
 import { toast } from 'react-toastify'
 
-import { updateUserServerAction } from '@/app/actions/users/update-user-action'
 import { convertStringToBoolean } from '@/app/utils/convertStringToBoolean'
+import { updateUserServerAction } from '@/app/actions/users/update-user-action'
 
 import { User } from '@/app/types'
 

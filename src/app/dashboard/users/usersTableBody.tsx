@@ -8,8 +8,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { User } from '@/app/types'
-import { deleteUserServerAction } from '../../../actions/users/delete-user-action'
-import DeleteButton from '../delete-button/delete-button'
+import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
+import { deleteUserServerAction } from '@/app/actions/users/delete-user-action'
 
 type UsersTableProps = {
   data: Array<User>

@@ -1,10 +1,10 @@
 'use client'
 
 import { toast } from 'react-toastify'
-
-import { addTodoServerAction } from '@/app/actions/todos/add-todo-action'
-import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
+
+import { useRouter } from 'next/navigation'
+import { addTodoServerAction } from '@/app/actions/todos/add-todo-action'
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false)
@@ -13,7 +13,6 @@ export default function Page() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    setIsLoading(true)
     const formData = new FormData(e.currentTarget)
 
     const formDataObject: Record<string, string> = {}
@@ -21,14 +20,16 @@ export default function Page() {
       formDataObject[key] = value.toString()
     })
 
+    setIsLoading(true)
     const result = await addTodoServerAction(formDataObject)
+    setIsLoading(false)
+
     if (result?.error) {
       toast.error(result?.error)
     } else {
       toast.success('Todo adicionado com sucesso!')
       router.push('/dashboard/todos')
     }
-    setIsLoading(false)
   }
 
   return (

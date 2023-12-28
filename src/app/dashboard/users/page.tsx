@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import Search from '@/app/ui/dashboard/search/search'
 import Pagination from '@/app/ui/dashboard/pagination/pagination'
-import UsersTableBody from '@/app/ui/dashboard/usersTableBody/usersTableBody'
+import UsersTableBody from '@/app/dashboard/users/usersTableBody'
 import { getUsersServerAction } from '@/app/actions/users/get-users-action'
 
 export default async function Home() {

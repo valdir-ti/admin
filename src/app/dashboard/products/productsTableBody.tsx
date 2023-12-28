@@ -1,15 +1,15 @@
 'use client'
 
 import { Fragment } from 'react'
-import { format, parseISO } from 'date-fns'
-import { toast } from 'react-toastify'
-
 import Link from 'next/link'
+import { toast } from 'react-toastify'
+import { format, parseISO } from 'date-fns'
 
-import ZoomImage from '../zoomImage/zoomImage'
 import { Product } from '@/app/types'
 import { deleteProductServerAction } from '@/app/actions/products/delete-product-action'
-import DeleteButton from '../delete-button/delete-button'
+
+import ZoomImage from '@/app/ui/dashboard/zoomImage/zoomImage'
+import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
 
 type ProductsTableProps = {
   data: Array<Product>

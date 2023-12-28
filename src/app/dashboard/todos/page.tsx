@@ -3,8 +3,7 @@ import Link from 'next/link'
 import Search from '@/app/ui/dashboard/search/search'
 import Pagination from '@/app/ui/dashboard/pagination/pagination'
 import { getTodosServerAction } from '@/app/actions/todos/get-todos-action'
-import TodosTableBody from '@/app/ui/dashboard/todosTableBody/todosTableBody'
-
+import TodosTableBody from '@/app/dashboard/todos/todosTableBody'
 export default async function Page() {
   const data = await getTodosServerAction()
 

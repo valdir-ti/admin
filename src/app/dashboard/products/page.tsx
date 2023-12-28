@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Search from '@/app/ui/dashboard/search/search'
 import Pagination from '@/app/ui/dashboard/pagination/pagination'
-import ProductsTableBody from '@/app/ui/dashboard/productsTableBody/productsTableBody'
+import ProductsTableBody from '@/app/dashboard/products/productsTableBody'
 import { getProductsServerAction } from '@/app/actions/products/get-products-action'
 
 export default async function Home() {

@@ -1,10 +1,10 @@
 'use server'
 
+import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 
 import { createUser } from '@/app/services/api-users'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
-import { redirect } from 'next/navigation'
 
 export const addUserServerAction = async (formData: FormData) => {
   const { name, email, password, phone, isAdmin, isActive, address } =

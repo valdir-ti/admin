@@ -1,7 +1,7 @@
 'use client'
 
-import { addUserServerAction } from '../../../actions/users/add-user-action'
 import { toast } from 'react-toastify'
+import { addUserServerAction } from '../../../actions/users/add-user-action'
 
 export default function Home() {
   const addUserClientAction = async (formData: FormData) => {

@@ -2,14 +2,16 @@
 
 import { Fragment } from 'react'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 import { format, parseISO } from 'date-fns'
 
 import { Todo } from '@/app/types'
-import UpdateButton from '../update-button/update-button'
-import DeleteButton from '../delete-button/delete-button'
+
+import UpdateButton from '@/app/ui/dashboard/update-button/update-button'
+import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
+
 import { deleteTodoServerAction } from '@/app/actions/todos/delete-todo-action'
 import { updateTodoServerAction } from '@/app/actions/todos/update-todo-action'
-import { useRouter } from 'next/navigation'
 
 type TodosTableProps = {
   data: Array<Todo>
