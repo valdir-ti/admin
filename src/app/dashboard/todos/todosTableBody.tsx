@@ -48,7 +48,9 @@ export default function TodosTableBody({ data }: TodosTableProps) {
         return (
           <Fragment key={todo._id}>
             <tr className="h-[45px]">
-              <td>{todo.description}</td>
+              <td className={`${todo.done ? 'line-through' : ''}`}>
+                {todo.description}
+              </td>
               <td>{todo.done ? 'Done' : 'Open'}</td>
               <td>{formattedDate}</td>
               <td>
