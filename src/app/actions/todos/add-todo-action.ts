@@ -6,7 +6,6 @@ import { createTodo } from '@/app/services/api-todos'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
 
 import { Todo } from '@/app/types'
-import { redirect } from 'next/navigation'
 
 export const addTodoServerAction = async (formData: Todo) => {
   const { description } = formData
@@ -18,5 +17,4 @@ export const addTodoServerAction = async (formData: Todo) => {
     }
   }
   revalidatePath('/dashboard/todos')
-  redirect('/dashboard/todos')
 }
