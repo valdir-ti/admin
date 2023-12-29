@@ -1,14 +1,10 @@
-'use client'
-
-import { toast } from 'react-toastify'
+import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
 import { addUserServerAction } from '../../../actions/users/add-user-action'
 
 export default function Home() {
   const addUserClientAction = async (formData: FormData) => {
-    const result = await addUserServerAction(formData)
-    if (result?.error) {
-      toast.error(result?.error)
-    }
+    'use server'
+    await addUserServerAction(formData)
   }
 
   return (
@@ -95,9 +91,7 @@ export default function Home() {
             className="w-full p-4 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
           />
         </div>
-        <button className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer">
-          Submit
-        </button>
+        <SubmitButton />
       </form>
     </div>
   )

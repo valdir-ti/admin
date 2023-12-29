@@ -8,8 +8,6 @@ import TodosTableBody from '@/app/dashboard/todos/todosTableBody'
 export default async function Page() {
   const data = await getTodosServerAction()
 
-  console.log('todo data => ', { data, date: new Date(), length: data?.length })
-
   return (
     <div className="mt-4 bg-[--bgSoft] p-4 rounded-md">
       <div className="flex items-center justify-between mb-4">

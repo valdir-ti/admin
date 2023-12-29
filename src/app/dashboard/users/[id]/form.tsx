@@ -177,7 +177,6 @@ export default function Form({ user }: FormProps) {
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
-
           <button
             className="w-full p-2 bg-teal-600 text-[--text] mt-4 rounded-md border-0 disabled:bg-teal-800"
             disabled={isLoading}
