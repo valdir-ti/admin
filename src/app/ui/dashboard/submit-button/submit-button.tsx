@@ -9,7 +9,7 @@ export default function SubmitButton() {
     <button
       disabled={pending}
       type="submit"
-      className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer disabled:bg-teal-800"
+      className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer disabled:bg-teal-800 disabled:cursor-auto"
     >
       <div className="w-full flex items-center justify-center">
         <div className="w-full flex items-center justify-center">
