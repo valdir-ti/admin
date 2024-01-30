@@ -2,12 +2,12 @@
 
 import { Fragment, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import { format, parseISO } from 'date-fns'
 
 import Image from 'next/image'
 
 import { User } from '@/app/types'
 import ViewButton from '@/app/ui/dashboard/view-button/view-button'
+import { convertParseISODate } from '@/app/utils/convertParseISODate'
 import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
 import { deleteUserServerAction } from '@/app/actions/users/delete-user-action'
 
@@ -34,8 +34,7 @@ export default function UsersTableBody({ data }: UsersTableProps) {
   return (
     <tbody>
       {users?.map((user) => {
-        const parsedDate = parseISO(user.createdAt!)
-        const formattedDate = format(parsedDate, 'dd.MM.yyyy')
+        const formattedDate = convertParseISODate(user.createdAt!)
 
         const userImage = user.image || '/noavatar.png'
 

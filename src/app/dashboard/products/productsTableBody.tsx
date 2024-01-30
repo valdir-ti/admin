@@ -2,11 +2,11 @@
 
 import { Fragment, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import { format, parseISO } from 'date-fns'
 
 import { Product } from '@/app/types'
 import ZoomImage from '@/app/ui/dashboard/zoomImage/zoomImage'
 import ViewButton from '@/app/ui/dashboard/view-button/view-button'
+import { convertParseISODate } from '@/app/utils/convertParseISODate'
 import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
 import { deleteProductServerAction } from '@/app/actions/products/delete-product-action'
 
@@ -33,8 +33,7 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
   return (
     <tbody>
       {products?.map((product) => {
-        const parsedDate = parseISO(product.createdAt)
-        const formattedDate = format(parsedDate, 'dd.MM.yyyy')
+        const formattedDate = convertParseISODate(product.createdAt!)
 
         const productImage = product.image || '/noproduct.jpg'
 
@@ -43,7 +42,7 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
             <tr>
               <td>
                 <div className="flex items-center gap-2 mb-2 mt-2">
-                  <ZoomImage image={productImage} title={product.title} />
+                  <ZoomImage image={productImage} title={product.title || ''} />
                   {product.title}
                 </div>
               </td>
@@ -56,7 +55,7 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
                   <ViewButton id={product._id!} path="products" />
                   <DeleteButton
                     action={deleteProductClientAction}
-                    id={product._id}
+                    id={product._id!}
                   />
                 </div>
               </td>

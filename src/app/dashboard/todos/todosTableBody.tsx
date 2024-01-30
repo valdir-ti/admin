@@ -2,9 +2,9 @@
 
 import { Fragment, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import { format, parseISO } from 'date-fns'
 
 import { Todo } from '@/app/types'
+import { convertParseISODate } from '@/app/utils/convertParseISODate'
 import UpdateButton from '@/app/ui/dashboard/update-button/update-button'
 import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
 import { deleteTodoServerAction } from '@/app/actions/todos/delete-todo-action'
@@ -42,8 +42,7 @@ export default function TodosTableBody({ data }: TodosTableProps) {
   return (
     <tbody>
       {todos?.map((todo) => {
-        const parsedDate = parseISO(todo.createdAt!)
-        const formattedDate = format(parsedDate, 'dd.MM.yyyy')
+        const formattedDate = convertParseISODate(todo.createdAt!)
 
         return (
           <Fragment key={todo._id}>
