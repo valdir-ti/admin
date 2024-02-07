@@ -10,11 +10,21 @@ export const updateProductServerAction = async (formData: FormData) => {
   const id = getStringFormDataValue(formData, '_id')
   const title = getStringFormDataValue(formData, 'title')
   const description = getStringFormDataValue(formData, 'description')
-  const price = getStringFormDataValue(formData, 'price')
-  const stock = getStringFormDataValue(formData, 'stock')
-  const size = getStringFormDataValue(formData, 'size')
   const category = getStringFormDataValue(formData, 'category')
-  const isActive = getStringFormDataValue(formData, 'isActive')
+
+  const priceValue = formData.get('price')
+  const stockValue = formData.get('stock')
+  const sizeValue = formData.get('size')
+  const isActiveValue = formData.get('isActive')
+
+  const price: number | undefined =
+    priceValue !== null ? parseInt(priceValue as string) : 0
+  const stock: number | undefined =
+    stockValue !== null ? parseInt(stockValue as string) : 0
+  const size: number | undefined =
+    sizeValue !== null ? parseInt(sizeValue as string) : 0
+  const isActive: boolean =
+    isActiveValue !== null ? isActiveValue === 'true' : false
 
   try {
     await updateProduct(String(id), {
@@ -31,6 +41,7 @@ export const updateProductServerAction = async (formData: FormData) => {
       error: getErrorMessage(error)
     }
   }
+
   revalidatePath('/dashboard/products')
   redirect('/dashboard/products')
 }
