@@ -39,8 +39,6 @@ export default function TodosTableBody({ data }: TodosTableProps) {
     setTodos(data)
   }, [data])
 
-  console.log('todos on table body => ', todos)
-
   return (
     <tbody>
       {todos?.map((todo) => {
