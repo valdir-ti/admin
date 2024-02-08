@@ -1,14 +1,12 @@
 'use client'
 
 import { Fragment, useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
 
 import { Product } from '@/app/types'
 import ZoomImage from '@/app/ui/dashboard/zoomImage/zoomImage'
 import ViewButton from '@/app/ui/dashboard/view-button/view-button'
 import { convertParseISODate } from '@/app/utils/convertParseISODate'
-import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
-import { deleteProductServerAction } from '@/app/actions/products/delete-product-action'
+import DeleteForm from '@/app/dashboard/products/delete-form'
 
 type ProductsTableProps = {
   data: Array<Product>
@@ -16,15 +14,6 @@ type ProductsTableProps = {
 
 export default function ProductsTableBody({ data }: ProductsTableProps) {
   const [products, setProducts] = useState<Product[]>()
-
-  const deleteProductClientAction = async (formData: FormData) => {
-    const result = await deleteProductServerAction(formData)
-    if (result?.error) {
-      toast.error(result?.error)
-    } else {
-      toast.success('Product deleted')
-    }
-  }
 
   useEffect(() => {
     setProducts(data)
@@ -53,10 +42,7 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
               <td>
                 <div className="gap-2 flex">
                   <ViewButton id={product._id!} path="products" />
-                  <DeleteButton
-                    action={deleteProductClientAction}
-                    id={product._id!}
-                  />
+                  <DeleteForm id={product._id!} />
                 </div>
               </td>
             </tr>

@@ -1,14 +1,12 @@
 'use client'
 
 import { Fragment, useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
 
-import { Todo } from '@/app/types'
 import { convertParseISODate } from '@/app/utils/convertParseISODate'
 import UpdateButton from '@/app/ui/dashboard/update-button/update-button'
-import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
-import { deleteTodoServerAction } from '@/app/actions/todos/delete-todo-action'
-import { updateTodoServerAction } from '@/app/actions/todos/update-todo-action'
+import DeleteForm from './delete-form'
+
+import { Todo } from '@/app/types'
 
 type TodosTableProps = {
   data: Array<Todo>
@@ -16,24 +14,6 @@ type TodosTableProps = {
 
 export default function TodosTableBody({ data }: TodosTableProps) {
   const [todos, setTodos] = useState<Todo[]>()
-
-  const deleteTodoClientAction = async (formData: FormData) => {
-    const result = await deleteTodoServerAction(formData)
-    if (result?.error) {
-      toast.error(result?.error)
-    } else {
-      toast.success('Todo deleted')
-    }
-  }
-
-  const updateTodoClientAction = async (formData: FormData) => {
-    const result = await updateTodoServerAction(formData)
-    if (result?.error) {
-      toast.error(result?.error)
-    } else {
-      toast.success('Todo updated')
-    }
-  }
 
   useEffect(() => {
     setTodos(data)
@@ -54,16 +34,8 @@ export default function TodosTableBody({ data }: TodosTableProps) {
               <td>{formattedDate}</td>
               <td>
                 <div className="gap-2 flex">
-                  <UpdateButton
-                    action={updateTodoClientAction}
-                    id={todo._id!}
-                    disabled={!!todo.done}
-                  />
-                  <DeleteButton
-                    action={deleteTodoClientAction}
-                    id={todo._id!}
-                    disabled={!!todo.done}
-                  />
+                  <UpdateButton id={todo._id!} disabled={!!todo.done} />
+                  <DeleteForm id={todo._id!} disabled={!!todo.done} />
                 </div>
               </td>
             </tr>

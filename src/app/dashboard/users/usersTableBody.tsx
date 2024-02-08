@@ -1,15 +1,14 @@
 'use client'
 
 import { Fragment, useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
 
 import Image from 'next/image'
 
 import { User } from '@/app/types'
+
+import DeleteForm from '@/app/dashboard/users/delete-form'
 import ViewButton from '@/app/ui/dashboard/view-button/view-button'
 import { convertParseISODate } from '@/app/utils/convertParseISODate'
-import DeleteButton from '@/app/ui/dashboard/delete-button/delete-button'
-import { deleteUserServerAction } from '@/app/actions/users/delete-user-action'
 
 type UsersTableProps = {
   data: Array<User>
@@ -17,15 +16,6 @@ type UsersTableProps = {
 
 export default function UsersTableBody({ data }: UsersTableProps) {
   const [users, setUsers] = useState<User[]>()
-
-  const deleteUserClientAction = async (formData: FormData) => {
-    const result = await deleteUserServerAction(formData)
-    if (result?.error) {
-      toast.error(result?.error)
-    } else {
-      toast.success('User deleted')
-    }
-  }
 
   useEffect(() => {
     setUsers(data)
@@ -60,10 +50,7 @@ export default function UsersTableBody({ data }: UsersTableProps) {
               <td>
                 <div className="gap-2 flex">
                   <ViewButton id={user._id!} path="users" />
-                  <DeleteButton
-                    action={deleteUserClientAction}
-                    id={user._id!}
-                  />
+                  <DeleteForm id={user._id!} />
                 </div>
               </td>
             </tr>
