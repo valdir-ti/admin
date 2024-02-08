@@ -5,7 +5,7 @@ import Pagination from '@/app/ui/dashboard/pagination/pagination'
 import TodosTableBody from '@/app/dashboard/todos/todosTableBody'
 import { getTodosServerAction } from '@/app/actions/todos/get-todos-action'
 
-export const revalidate = 60
+export const revalidate = 30
 
 export default async function Page() {
   const data = await getTodosServerAction()
