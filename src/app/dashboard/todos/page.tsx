@@ -2,8 +2,10 @@ import Link from 'next/link'
 
 import Search from '@/app/ui/dashboard/search/search'
 import Pagination from '@/app/ui/dashboard/pagination/pagination'
-import { getTodosServerAction } from '@/app/actions/todos/get-todos-action'
 import TodosTableBody from '@/app/dashboard/todos/todosTableBody'
+import { getTodosServerAction } from '@/app/actions/todos/get-todos-action'
+
+export const revalidate = 60
 
 export default async function Page() {
   const data = await getTodosServerAction()
