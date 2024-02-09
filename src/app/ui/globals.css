@@ -30,7 +30,7 @@ a {
 .loading {
     width: 16px;
     height: 16px;
-    border: 2px solid salmon;
+    border: 2px solid #FFF;
     border-top-color: transparent;
     border-radius: 50%;
     animation: loading .7s linear infinite;
