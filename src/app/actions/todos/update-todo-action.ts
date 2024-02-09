@@ -5,8 +5,7 @@ import { revalidatePath } from 'next/cache'
 import { updateTodo } from '@/app/services/api-todos'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
 
-export const updateTodoServerAction = async (formData: FormData) => {
-  const id = formData.get('id')
+export const updateTodoServerAction = async (id: string) => {
   try {
     await updateTodo(String(id))
   } catch (error) {

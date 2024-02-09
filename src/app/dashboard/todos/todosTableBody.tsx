@@ -2,11 +2,11 @@
 
 import { Fragment, useEffect, useState } from 'react'
 
-import { convertParseISODate } from '@/app/utils/convertParseISODate'
-import UpdateButton from '@/app/ui/dashboard/update-button/update-button'
-import DeleteForm from './delete-form'
-
 import { Todo } from '@/app/types'
+
+import DeleteForm from '@/app/dashboard/todos/delete-form'
+import UpdateForm from '@/app/dashboard/todos/update-form'
+import { convertParseISODate } from '@/app/utils/convertParseISODate'
 
 type TodosTableProps = {
   data: Array<Todo>
@@ -34,7 +34,7 @@ export default function TodosTableBody({ data }: TodosTableProps) {
               <td>{formattedDate}</td>
               <td>
                 <div className="gap-2 flex">
-                  <UpdateButton id={todo._id!} disabled={!!todo.done} />
+                  <UpdateForm id={todo._id!} disabled={!!todo.done} />
                   <DeleteForm id={todo._id!} disabled={!!todo.done} />
                 </div>
               </td>
