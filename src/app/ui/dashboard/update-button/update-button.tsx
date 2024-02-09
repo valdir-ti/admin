@@ -5,20 +5,20 @@ type UpdateButtonProps = {
 export default function UpdateButton({ disabled, loading }: UpdateButtonProps) {
   return (
     <button
-      className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md min-w-[100px] disabled:bg-teal-900 disabled:cursor-not-allowed"
+      className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md disabled:bg-teal-900 disabled:cursor-not-allowed"
       disabled={disabled}
     >
       <div className="w-full flex items-center justify-center">
-        <div className="flex items-center justify-around min-w-[120px]">
+        <div className="flex items-center justify-around min-w-[130px]">
           {loading ? (
             <>
-              <span className="loading mr-0 ml-1"></span>
-              <span className="min-w-[130px] ml-[-5px]">Completing...</span>
+              <span className="ml-1 loading"></span>
+              <span className="ml-1">Completing...</span>
             </>
           ) : disabled ? (
-            <span className="mr-2 ml-2 min-w-[130px]">Completed</span>
+            <span className="">Completed</span>
           ) : (
-            <span className="mr-2 ml-2 min-w-[130px]">Complete</span>
+            <span className="">Complete</span>
           )}
         </div>
       </div>
