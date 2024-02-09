@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ToastContainer } from 'react-toastify'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import './ui/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
