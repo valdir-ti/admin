@@ -9,10 +9,12 @@ export default function UpdateButton({ disabled, loading }: UpdateButtonProps) {
       disabled={disabled}
     >
       <div className="w-full flex items-center justify-center">
-        <div className="w-full flex items-center justify-center">
-          {loading && <span className="loading mr-0 ml-1"></span>}
+        <div className="flex items-center justify-around min-w-[120px]">
           {loading ? (
-            <span className="min-w-[130px] ml-[-5px]">Completing...</span>
+            <>
+              <span className="loading mr-0 ml-1"></span>
+              <span className="min-w-[130px] ml-[-5px]">Completing...</span>
+            </>
           ) : disabled ? (
             <span className="mr-2 ml-2 min-w-[130px]">Completed</span>
           ) : (

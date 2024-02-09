@@ -10,12 +10,14 @@ export function DeleteButton({ disabled, loading }: DeleteButton) {
       disabled={disabled || loading}
     >
       <div className="w-full flex items-center justify-center">
-        <div className="w-full flex items-center justify-center">
-          {loading && <span className="loading mr-2"></span>}
+        <div className="flex items-center justify-around min-w-[120px]">
           {loading ? (
-            <span className="mr-2 ml-2 min-w-[110px]">Deleting...</span>
+            <>
+              <span className="loading"></span>
+              <span className="">Deleting...</span>
+            </>
           ) : (
-            <span className="mr-2 ml-2 min-w-[110px]">Delete</span>
+            <span className="mr-2 ml-2">Delete</span>
           )}
         </div>
       </div>
