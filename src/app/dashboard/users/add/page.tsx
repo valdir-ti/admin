@@ -2,14 +2,9 @@ import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
 import { addUserServerAction } from '../../../actions/users/add-user-action'
 
 export default function Home() {
-  const addUserClientAction = async (formData: FormData) => {
-    'use server'
-    await addUserServerAction(formData)
-  }
-
   return (
     <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
-      <form action={addUserClientAction} className="flex flex-col">
+      <form action={addUserServerAction} className="flex flex-col">
         <div className="flex justify-between">
           <div className="flex flex-col w-[49%]">
             <label htmlFor="name">Name</label>
