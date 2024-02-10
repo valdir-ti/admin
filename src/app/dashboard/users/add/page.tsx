@@ -1,10 +1,28 @@
+'use client'
+
+import { toast } from 'react-toastify'
+
+import { useRouter } from 'next/navigation'
+
 import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
 import { addUserServerAction } from '../../../actions/users/add-user-action'
 
-export default function Home() {
+export default function Page() {
+  const router = useRouter()
+
+  const addUserClientAction = async (formData: FormData) => {
+    const result = await addUserServerAction(formData)
+    if (result?.error) {
+      toast.error('Something went wrong!')
+    } else {
+      toast.success('User added successfully')
+      router.push('/dashboard/users')
+    }
+  }
+
   return (
     <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
-      <form action={addUserServerAction} className="flex flex-col">
+      <form action={addUserClientAction} className="flex flex-col">
         <div className="flex justify-between">
           <div className="flex flex-col w-[49%]">
             <label htmlFor="name">Name</label>

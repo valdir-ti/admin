@@ -1,12 +1,27 @@
 'use client'
 
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
+
 import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
 import { addProductServerAction } from '@/app/actions/products/add-product-action'
 
-export default function AddProduct() {
+export default function Page() {
+  const router = useRouter()
+
+  const addProductClientAction = async (formData: FormData) => {
+    const result = await addProductServerAction(formData)
+    if (result?.error) {
+      toast.error('Something went wrong!')
+    } else {
+      toast.success('Product added successfully')
+      router.push('/dashboard/products')
+    }
+  }
+
   return (
     <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
-      <form action={addProductServerAction} className="flex flex-col">
+      <form action={addProductClientAction} className="flex flex-col">
         <div className="flex justify-between">
           <div className="flex flex-col w-[49%]">
             <label htmlFor="title">Title</label>

@@ -1,6 +1,5 @@
 'use server'
 
-import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 
 import { createProduct } from '@/app/services/api-products'
@@ -25,5 +24,4 @@ export const addProductServerAction = async (formData: FormData) => {
     }
   }
   revalidatePath('/dashboard/products')
-  redirect('/dashboard/products')
 }

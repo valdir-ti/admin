@@ -1,29 +1,27 @@
 'use server'
 
-import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 
 import { createUser } from '@/app/services/api-users'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
 
 export const addUserServerAction = async (formData: FormData) => {
-  const { name, email, password, phone, isAdmin, isActive, address } =
-    Object.fromEntries(formData)
+  const rawFormData = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    password: formData.get('password'),
+    phone: formData.get('phone'),
+    isAdmin: formData.get('isAdmin'),
+    isActive: formData.get('isActive'),
+    address: formData.get('address')
+  }
+
   try {
-    await createUser({
-      name,
-      email,
-      password,
-      phone,
-      isAdmin,
-      isActive,
-      address
-    })
+    await createUser(rawFormData)
   } catch (error) {
     return {
       error: getErrorMessage(error)
     }
   }
   revalidatePath('/dashboard/users')
-  redirect('/dashboard/users')
 }
