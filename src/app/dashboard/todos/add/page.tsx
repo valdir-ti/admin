@@ -1,14 +1,22 @@
-import { addTodoServerAction } from '@/app/actions/todos/add-todo-action'
+'use client'
+
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
+
 import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
+import { addTodoServerAction } from '@/app/actions/todos/add-todo-action'
 
 export default function Page() {
+  const router = useRouter()
+
   const addTodoClientAction = async (formData: FormData) => {
-    'use server'
-    const formDataObject: Record<string, string> = {}
-    formData.forEach((value, key) => {
-      formDataObject[key] = value.toString()
-    })
-    await addTodoServerAction(formDataObject)
+    const result = await addTodoServerAction(formData)
+    if (result?.error) {
+      toast.error('Something went wrong!')
+    } else {
+      toast.success('Todo added successfully')
+      router.push('/dashboard/todos')
+    }
   }
 
   return (
