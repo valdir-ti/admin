@@ -30,7 +30,15 @@ export default function TodosTableBody({ data }: TodosTableProps) {
               <td className={`${todo.done ? 'line-through' : ''}`}>
                 {todo.description}
               </td>
-              <td>{todo.done ? 'Done' : 'Open'}</td>
+              <td>
+                {todo.done ? (
+                  <span className="bg-green-400 py-1 px-6 rounded-sm">
+                    Done
+                  </span>
+                ) : (
+                  <span className="bg-blue-300 py-1 px-6 rounded-sm">Open</span>
+                )}
+              </td>
               <td>{formattedDate}</td>
               <td>
                 <div className="gap-2 flex">
