@@ -11,9 +11,9 @@ import {
   MdSupervisedUserCircle,
   MdWork
 } from 'react-icons/md'
-import MenuLink from '../menuLink/menulink'
+import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
 import Image from 'next/image'
-import { auth, signOut } from '../../../../../auth'
+import { auth, signOut } from '@/app/auth'
 
 export default async function Sidebar() {
   const session = await auth()

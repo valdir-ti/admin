@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import NextAuth from 'next-auth'
 
-import { authConfig } from './auth.config'
+import { authConfig } from '@/app/auth.config'
 import { apiLogin } from '@/app/services/api-login'
 import Credentials from 'next-auth/providers/credentials'
 
