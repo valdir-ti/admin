@@ -1,79 +1,104 @@
 'use client'
 
-import Input from '@/app/ui/dashboard/input/input'
-import SelectBox, {
-  SelectBoxOptionsProps
-} from '@/app/ui/dashboard/selectbox/selectbox'
-import { ChangeEvent, useState } from 'react'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
-const categories = ['Kitchen', 'Computer', 'Phone']
+import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
+import { addProductServerAction } from '@/app/actions/products/add-product-action'
 
-export default function AddProduct() {
-  const options: SelectBoxOptionsProps[] = [
-    { label: 'Choose a category', value: '' },
-    ...categories.map((category) => ({ label: category, value: category }))
-  ]
+export default function Page() {
+  const router = useRouter()
 
-  const [value, setValue] = useState('')
-
-  const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setValue(event.target.value)
+  const addProductClientAction = async (formData: FormData) => {
+    const result = await addProductServerAction(formData)
+    if (result?.error) {
+      toast.error('Something went wrong!')
+    } else {
+      toast.success('Product added successfully')
+      router.push('/dashboard/products')
+    }
   }
 
   return (
     <div className="bg-[--bgSoft] p-4 rounded-md mt-4">
-      <form className="flex flex-col">
+      <form action={addProductClientAction} className="flex flex-col">
         <div className="flex justify-between">
-          <Input
-            placeholder="title"
-            name="title"
-            required
-            label="Title"
-            autoFocus
-          />
-          <SelectBox
-            options={options}
-            onChange={onChange}
-            value={value}
-            label="Category"
-          />
+          <div className="flex flex-col w-[49%]">
+            <label htmlFor="title">Title</label>
+            <input
+              placeholder="Title"
+              required
+              autoFocus
+              name="title"
+              id="title"
+              autoComplete="off"
+              className="w-full p-4 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
+            />
+          </div>
+          <div className="flex flex-col w-[49%]">
+            <label htmlFor="category">Category</label>
+            <select
+              name="category"
+              id="category"
+              className={`p-4 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600 w-full`}
+            >
+              <option value="">Select an option</option>
+              <option value="Kitchen">Kitchen</option>
+              <option value="Computer">Computer</option>
+              <option value="Phone">Phone</option>
+            </select>
+          </div>
         </div>
         <div className="flex justify-between">
-          <Input
-            placeholder="price"
-            name="price"
-            type="number"
-            min="1"
-            label="Price"
-          />
-          <Input
-            placeholder="stock"
-            name="stock"
-            type="number"
-            min="1"
-            label="Stock"
-          />
+          <div className="flex flex-col w-[49%]">
+            <label htmlFor="price">Price</label>
+            <input
+              placeholder="price"
+              type="number"
+              min="1"
+              name="price"
+              className="w-full p-4 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
+            />
+          </div>
+          <div className="flex flex-col w-[49%]">
+            <label htmlFor="stock">Stock</label>
+            <input
+              placeholder="stock"
+              type="number"
+              min="1"
+              name="stock"
+              className="w-full p-4 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
+            />
+          </div>
         </div>
         <div className="flex justify-between">
-          <Input placeholder="color" name="color" label="Color" />
-          <Input
-            placeholder="size"
-            name="size"
-            type="number"
-            min="1"
-            label="Size"
-          />
+          <div className="flex flex-col w-[49%]">
+            <label htmlFor="color">Color</label>
+            <input
+              placeholder="color"
+              name="color"
+              className="w-full p-4 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
+            />
+          </div>
+          <div className="flex flex-col w-[49%]">
+            <label htmlFor="size">Size</label>
+            <input
+              placeholder="size"
+              type="number"
+              min="1"
+              name="size"
+              className="w-full p-4 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
+            />
+          </div>
         </div>
-        <Input
-          isMultiline
-          name="desc"
-          id="desc"
+        <textarea
+          id="description"
           defaultValue="Description"
-          label="Description"
-        />
-        <button className="w-full p-4 bg-teal-600 rounded-md color-[--text] border-0 cursor-pointer">
-          Submit
-        </button>
+          name="description"
+          rows={5}
+          className="w-full p-4 bg-[--bg] text-[--text] mb-6 rounded-md border-[1px] border-gray-600"
+        ></textarea>
+        <SubmitButton />
       </form>
     </div>
   )

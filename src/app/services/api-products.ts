@@ -20,3 +20,8 @@ export async function updateProduct(id: string, product: Product) {
   const data = await api.patch(`/products/${id}`, product)
   return data
 }
+
+export async function createProduct(product: unknown) {
+  const data = api.post('/products', product)
+  return data
+}

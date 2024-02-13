@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
-import { getTodosCache } from '@/app/utils/getTodosCache'
+import { getTodosCache } from '@/app/utils/getItemsCache'
 
 export const getTodosServerAction = async () => {
   try {

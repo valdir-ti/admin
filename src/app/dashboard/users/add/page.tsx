@@ -1,10 +1,23 @@
+'use client'
+
+import { toast } from 'react-toastify'
+
+import { useRouter } from 'next/navigation'
+
 import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
 import { addUserServerAction } from '../../../actions/users/add-user-action'
 
-export default function Home() {
+export default function Page() {
+  const router = useRouter()
+
   const addUserClientAction = async (formData: FormData) => {
-    'use server'
-    await addUserServerAction(formData)
+    const result = await addUserServerAction(formData)
+    if (result?.error) {
+      toast.error('Something went wrong!')
+    } else {
+      toast.success('User added successfully')
+      router.push('/dashboard/users')
+    }
   }
 
   return (

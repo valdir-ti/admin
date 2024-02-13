@@ -5,18 +5,14 @@ import { revalidatePath } from 'next/cache'
 import { createTodo } from '@/app/services/api-todos'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
 
-import { Todo } from '@/app/types'
-import { redirect } from 'next/navigation'
-
-export const addTodoServerAction = async (formData: Todo) => {
-  const { description } = formData
+export const addTodoServerAction = async (formData: FormData) => {
+  const description = formData.get('description')
   try {
     await createTodo({ description })
+    revalidatePath('/dashboard/todos')
   } catch (error) {
     return {
       error: getErrorMessage(error)
     }
   }
-  revalidatePath('/dashboard/todos')
-  redirect('/dashboard/todos')
 }

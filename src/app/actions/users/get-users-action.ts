@@ -1,12 +1,12 @@
 'use server'
 
-import { getUsers } from '@/app/services/api-users'
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
 import { revalidatePath } from 'next/cache'
+import { getUsersCache } from '@/app/utils/getItemsCache'
+import { getErrorMessage } from '@/app/utils/getErrorMessage'
 
 export const getUsersServerAction = async () => {
   try {
-    const data = await getUsers()
+    const data = await getUsersCache()
     revalidatePath('/dashboard/users')
     return data
   } catch (error) {
