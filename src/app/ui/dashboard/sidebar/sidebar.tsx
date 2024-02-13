@@ -13,9 +13,11 @@ import {
 } from 'react-icons/md'
 import MenuLink from '../menuLink/menulink'
 import Image from 'next/image'
-import Link from 'next/link'
+import { auth, signOut } from '../../../../../auth'
 
-export default function Sidebar() {
+export default async function Sidebar() {
+  const session = await auth()
+
   const menuItems = [
     {
       title: 'Pages',
@@ -88,14 +90,16 @@ export default function Sidebar() {
     <div className="sticky">
       <div className="flex gap-4 mb-4 ml-2 items-center">
         <Image
-          src="/noavatar.png"
+          src={session?.user?.image || '/noavatar.png'}
           alt="avatar"
           width={50}
           height={50}
           className="rounded-full object-cover cursor-pointer"
         />
         <div className="flex flex-col">
-          <span className="font-bold">Valdir Silva</span>
+          <span className="font-bold">
+            {session?.user?.name || 'User name'}
+          </span>
           <span className="text-sm text-[--textSoft]">Administrator</span>
         </div>
       </div>
@@ -112,13 +116,18 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
-      <Link
-        href="/"
-        className="flex items-center p-3 m-2 gap-2 cursor-pointer rounded-md text-[--textSoft] font-bold text-sm hover:bg-[--bgHover] bg-transparent border-0 w-[88%] ml-4"
+
+      <form
+        action={async () => {
+          'use server'
+          await signOut()
+        }}
       >
-        <MdLogout />
-        Logout
-      </Link>
+        <button className="flex items-center p-3 m-2 gap-2 cursor-pointer rounded-md text-[--textSoft] font-bold text-sm hover:bg-[--bgHover] bg-transparent border-0 w-[88%] ml-4">
+          <MdLogout />
+          <div className="hidden md:block">Log Out</div>
+        </button>
+      </form>
     </div>
   )
 }

@@ -18,11 +18,26 @@ export const { auth, signIn, signOut } = NextAuth({
           const { email, password } = parsedCredentials.data
           const user = await apiLogin({ email, password })
           if (!user) return null
-          return user?.data
+          return user?.data?.user
         }
 
         return null
       }
     })
-  ]
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.name = user?.name
+        token.image = user?.image
+      }
+      return token
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.image = token?.image as string
+      }
+      return session
+    }
+  }
 })
