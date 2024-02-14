@@ -5,7 +5,7 @@ import { MdLogout } from 'react-icons/md'
 import { confirmAlert } from 'react-confirm-alert'
 
 import { Types } from '@/app/enum/types'
-import DialogDeleteItem from '../dialog-confirm/dialog-confirm'
+import DialogConfirm from '../dialog-confirm/dialog-confirm'
 import { logoutUserServerAction } from '@/app/actions/users/logout-user-action'
 
 export default function LogoutButton() {
@@ -15,7 +15,7 @@ export default function LogoutButton() {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
-          <DialogDeleteItem
+          <DialogConfirm
             onClose={onClose}
             onConfirm={() => logoutUserServerAction()}
             message="Deseja realmente sair?"

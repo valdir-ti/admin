@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Types } from '@/app/enum/types'
 
 type DialogConfirmProps = {
@@ -15,6 +17,8 @@ export default function DialogConfirm({
   type,
   callOnClose = true
 }: DialogConfirmProps) {
+  const [loading, setLoading] = useState(false)
+
   const typesColorVariantsCircleBackground = {
     green: 'bg-green-100',
     red: 'bg-red-100'
@@ -64,21 +68,26 @@ export default function DialogConfirm({
           </div>
           <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
             <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-              <button
-                type="button"
-                className={`${typesColorVariantsConfirmButton[type]} inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white shadow-sm focus:outline-none focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5`}
-                onClick={() => {
-                  onConfirm()
-                  callOnClose && onClose()
-                }}
-              >
-                Sim
-              </button>
+              <div className="w-full flex items-center justify-center">
+                <button
+                  type="button"
+                  className={`${typesColorVariantsConfirmButton[type]} flex items-center justify-center w-full rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white shadow-sm focus:outline-none focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 min-w-[84px]`}
+                  onClick={() => {
+                    setLoading(true)
+                    onConfirm()
+                    callOnClose && onClose()
+                    setLoading(false)
+                  }}
+                >
+                  {loading && <span className="loading mr-2"></span>}
+                  Sim
+                </button>
+              </div>
             </span>
             <span className="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
               <button
                 type="button"
-                className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5 min-w-[84px]"
                 onClick={onClose}
               >
                 Não
