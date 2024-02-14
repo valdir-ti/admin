@@ -32,11 +32,13 @@ export default function TodosTableBody({ data }: TodosTableProps) {
               </td>
               <td>
                 {todo.done ? (
-                  <span className="bg-green-400 py-1 px-6 rounded-sm">
+                  <span className="bg-slate-600 py-1 px-6 rounded-sm cursor-auto">
                     Done
                   </span>
                 ) : (
-                  <span className="bg-blue-300 py-1 px-6 rounded-sm">Open</span>
+                  <span className="bg-yellow-600 py-1 px-6 rounded-sm cursor-auto">
+                    Open
+                  </span>
                 )}
               </td>
               <td>{formattedDate}</td>
