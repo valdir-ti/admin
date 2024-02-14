@@ -20,6 +20,7 @@ export default function LogoutButton() {
             onConfirm={() => logoutUserServerAction()}
             message="Deseja realmente sair?"
             type={Types.red}
+            callOnClose={false}
           />
         )
       }

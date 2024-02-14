@@ -10,10 +10,11 @@ import {
   MdSupervisedUserCircle,
   MdWork
 } from 'react-icons/md'
-import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
 import Image from 'next/image'
+
 import { auth } from '@/app/auth'
-import LogoutButton from './logout-button'
+import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
+import LogoutButton from '@/app/ui/dashboard/logout-button/logout-button'
 
 export default async function Sidebar() {
   const session = await auth()

@@ -5,13 +5,15 @@ type DialogConfirmProps = {
   onClose: () => void
   message: string
   type: Types
+  callOnClose?: boolean
 }
 
 export default function DialogConfirm({
   onClose,
   onConfirm,
   message,
-  type
+  type,
+  callOnClose = true
 }: DialogConfirmProps) {
   const typesColorVariantsCircleBackground = {
     green: 'bg-green-100',
@@ -66,8 +68,8 @@ export default function DialogConfirm({
                 type="button"
                 className={`${typesColorVariantsConfirmButton[type]} inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white shadow-sm focus:outline-none focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5`}
                 onClick={() => {
-                  onClose()
                   onConfirm()
+                  callOnClose && onClose()
                 }}
               >
                 Sim
