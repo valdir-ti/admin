@@ -47,10 +47,14 @@ function LoginButton() {
 
   return (
     <button
-      className="w-[80%] h-12 rounded-sm bg-teal-600 pl-2 border-0 mt-2"
+      className="w-[80%] h-12 rounded-sm bg-teal-600 cursor-pointer pl-2 border-0 mt-2 disabled:bg-teal-800 disabled:cursor-not-allowed"
       aria-disabled={pending}
+      disabled={pending}
     >
-      Log in
+      <div className="w-full flex items-center justify-center">
+        {pending && <span className="loading mr-2"></span>}
+        Log in
+      </div>
     </button>
   )
 }
