@@ -76,7 +76,6 @@ export default function DialogConfirm({
                     setLoading(true)
                     onConfirm()
                     callOnClose && onClose()
-                    setLoading(false)
                   }}
                 >
                   {loading && <span className="loading mr-2"></span>}
