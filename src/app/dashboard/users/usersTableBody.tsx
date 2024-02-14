@@ -38,7 +38,7 @@ export default function UsersTableBody({ data }: UsersTableProps) {
                     alt={user.name || 'User name'}
                     width={36}
                     height={36}
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover max-h-[36px]"
                   />
                   {user.name}
                 </div>

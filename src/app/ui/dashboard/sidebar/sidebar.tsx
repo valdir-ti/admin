@@ -4,16 +4,17 @@ import {
   MdDashboard,
   MdHelpCenter,
   MdListAlt,
-  MdLogout,
   MdOutlineSettings,
   MdPeople,
   MdShoppingBag,
   MdSupervisedUserCircle,
   MdWork
 } from 'react-icons/md'
-import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
 import Image from 'next/image'
-import { auth, signOut } from '@/app/auth'
+
+import { auth } from '@/app/auth'
+import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
+import LogoutButton from '@/app/ui/dashboard/logout-button/logout-button'
 
 export default async function Sidebar() {
   const session = await auth()
@@ -117,17 +118,7 @@ export default async function Sidebar() {
         ))}
       </ul>
 
-      <form
-        action={async () => {
-          'use server'
-          await signOut()
-        }}
-      >
-        <button className="flex items-center p-3 m-2 gap-2 cursor-pointer rounded-md text-[--textSoft] font-bold text-sm hover:bg-[--bgHover] bg-transparent border-0 w-[88%] ml-4">
-          <MdLogout />
-          <div className="hidden md:block">Log Out</div>
-        </button>
-      </form>
+      <LogoutButton />
     </div>
   )
 }

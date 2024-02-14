@@ -2,9 +2,10 @@ import { FormEvent, useState } from 'react'
 import { toast } from 'react-toastify'
 import { confirmAlert } from 'react-confirm-alert'
 
+import { Types } from '@/app/enum/types'
+import DialogConfirm from '@/app/ui/dashboard/dialog-confirm/dialog-confirm'
 import { DeleteButton } from '../../ui/dashboard/delete-button/delete-button'
 import { deleteUserServerAction } from '@/app/actions/users/delete-user-action'
-import DialogDeleteItem from '@/app/ui/dashboard/dialog-delete-item/dialog-delete-item'
 
 type DeleteButtonProps = {
   id: string
@@ -29,7 +30,14 @@ export default function DeleteForm({ id, disabled }: DeleteButtonProps) {
 
     confirmAlert({
       customUI: ({ onClose }) => {
-        return <DialogDeleteItem onClose={onClose} onConfirm={deleteUser} />
+        return (
+          <DialogConfirm
+            onClose={onClose}
+            onConfirm={deleteUser}
+            message="Deseja realmente excluir esse item?"
+            type={Types.green}
+          />
+        )
       }
     })
   }
