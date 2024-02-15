@@ -60,14 +60,14 @@ export default function Form({ product }: FormProps) {
     _id,
     isActive
   } = data || {}
-  const productImage = image || '/noproduct.jpg'
+  const productImage = image || '/noproduct.png'
 
   return (
     <>
       <div className="w-2/6 p-12 bg-[--bgSoft] rounded-md mt-6 h-max">
         <div className="w-[100%] h-[300px] font-bold flex items-center justify-center flex-col">
           <Image
-            alt={title!}
+            alt={title || 'Product title'}
             src={productImage}
             width="0"
             height="0"

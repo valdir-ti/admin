@@ -23,8 +23,7 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
     <tbody>
       {products?.map((product) => {
         const formattedDate = convertParseISODate(product.createdAt!)
-
-        const productImage = product.image || '/noproduct.jpg'
+        const productImage = product.image || '/noproduct.png'
 
         return (
           <Fragment key={product._id}>
