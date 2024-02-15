@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 import { Product } from '@/app/types'
 import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
@@ -16,11 +17,15 @@ type FormProps = {
 
 export default function Form({ product }: FormProps) {
   const [data, setData] = useState<Product | null>(product)
+  const router = useRouter()
 
   const updateProductClientAction = async (formData: FormData) => {
     const result = await updateProductServerAction(formData)
     if (result?.error) {
       toast.error(result?.error)
+    } else {
+      toast.success('Product edited successfully')
+      router.push('/dashboard/products')
     }
   }
 

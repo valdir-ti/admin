@@ -1,10 +1,9 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { updateProduct } from '@/app/services/api-products'
 import { getErrorMessage } from '@/app/utils/getErrorMessage'
 import { getStringFormDataValue } from '@/app/utils/getStringFormDataValue'
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
 
 export const updateProductServerAction = async (formData: FormData) => {
   const id = getStringFormDataValue(formData, '_id')
@@ -43,5 +42,4 @@ export const updateProductServerAction = async (formData: FormData) => {
   }
 
   revalidatePath('/dashboard/products')
-  redirect('/dashboard/products')
 }
