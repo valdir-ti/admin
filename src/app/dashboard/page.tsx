@@ -16,9 +16,9 @@ export default async function Home() {
     <div className="flex justify-between gap-4 mt-4">
       <div className="w-9/12 gap-2">
         <div className="flex justify-between">
-          <Card item="Users" total={users.length} />
-          <Card item="Products" total={products.length} />
-          <Card item="Todos" total={todos.length} />
+          <Card itemName="Users" items={users} />
+          <Card itemName="Products" items={products} />
+          <Card itemName="Todos" items={todos} />
         </div>
         <div>
           <Transactions />
