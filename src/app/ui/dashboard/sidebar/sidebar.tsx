@@ -13,6 +13,7 @@ import {
 import Image from 'next/image'
 
 import { auth } from '@/app/auth'
+import { TypesColors } from '@/app/enum/typeColors'
 import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
 import LogoutButton from '@/app/ui/dashboard/logout-button/logout-button'
 
@@ -118,7 +119,7 @@ export default async function Sidebar() {
         ))}
       </ul>
 
-      <LogoutButton />
+      <LogoutButton color={TypesColors.primary} />
     </div>
   )
 }

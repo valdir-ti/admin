@@ -5,10 +5,21 @@ import { MdLogout } from 'react-icons/md'
 import { confirmAlert } from 'react-confirm-alert'
 
 import { Types } from '@/app/enum/types'
+import { TypesColors } from '@/app/enum/typeColors'
 import DialogConfirm from '../dialog-confirm/dialog-confirm'
 import { logoutUserServerAction } from '@/app/actions/users/logout-user-action'
 
-export default function LogoutButton() {
+type LogoutButtonProps = {
+  color: TypesColors
+}
+
+export default function LogoutButton({ color }: LogoutButtonProps) {
+  const colorsVariants = {
+    primary:
+      'text-[--textSoft] hover:bg-[--bgHover] ml-[18px] w-[88%] p-2 m-2 rounded-md',
+    secondary: 'text-gray-800 hover:bg-gray-500 w-full p-2'
+  }
+
   const handleLogout = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
@@ -30,7 +41,7 @@ export default function LogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className="flex items-center p-3 m-2 gap-2 cursor-pointer rounded-md text-[--textSoft] font-bold text-sm hover:bg-[--bgHover] bg-transparent border-0 w-[88%] ml-4"
+      className={`flex items-center gap-2 cursor-pointer font-bold text-sm bg-transparent border-0 ${colorsVariants[color]}`}
     >
       <MdLogout />
       <div className="hidden md:block">Log Out</div>
