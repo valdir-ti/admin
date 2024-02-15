@@ -9,13 +9,13 @@ import Transactions from '@/app/ui/dashboard/transactions/transactions'
 
 export default async function Home() {
   const users = await getUsersServerAction()
-  const products = await getProductsServerAction()
   const todos = await getTodosServerAction()
+  const products = await getProductsServerAction()
 
   return (
-    <div className="flex justify-between gap-4 mt-4">
-      <div className="w-9/12 gap-2">
-        <div className="flex justify-between">
+    <div className="flex justify-between gap-4 mt-2 sm:mt-4 flex-col lg:flex-row">
+      <div className="w-full lg:w-9/12 sm:gap-2">
+        <div className="flex justify-between gap-1">
           <Card itemName="Users" items={users} />
           <Card itemName="Products" items={products} />
           <Card itemName="Todos" items={todos} />
@@ -23,11 +23,11 @@ export default async function Home() {
         <div>
           <Transactions />
         </div>
-        <div>
+        <div className="sm:hidden flex">
           <Chart />
         </div>
       </div>
-      <div className="w-3/12 pr-1">
+      <div className="lg:w-3/12 w-full pr-1">
         <RightBar />
       </div>
     </div>
