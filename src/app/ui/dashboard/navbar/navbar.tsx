@@ -1,15 +1,47 @@
 'use client'
 
+import { useState, useRef, useEffect, MouseEvent } from 'react'
 import {
   MdNotifications,
   MdOutlineChat,
+  MdOutlineManageAccounts,
   MdPublic,
   MdSearch
 } from 'react-icons/md'
 import { usePathname } from 'next/navigation'
+import DropDownMenu from '@/app/ui/dashboard/dropdown-menu/dropdown-menu'
 
 export default function Navbar() {
   const pathName = usePathname()
+  const [isHidden, setIsHidden] = useState(true)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  function handleDropdownMenu() {
+    setIsHidden(!isHidden)
+  }
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsHidden(true)
+      }
+    }
+
+    document.addEventListener(
+      'mousedown',
+      handleClickOutside as unknown as EventListener
+    )
+
+    return () => {
+      document.removeEventListener(
+        'mousedown',
+        handleClickOutside as unknown as EventListener
+      )
+    }
+  }, [])
 
   return (
     <div className="flex justify-between p-2 items-center bg-[--bgSoft] rounded-md min-w-full">
@@ -25,10 +57,16 @@ export default function Navbar() {
             className="bg-transparent border-0 text-[--bgHover] outline-none"
           />
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 relative" ref={dropdownRef}>
           <MdOutlineChat size={20} className="cursor-pointer" />
           <MdNotifications size={20} className="cursor-pointer" />
           <MdPublic size={20} className="cursor-pointer" />
+          <MdOutlineManageAccounts
+            size={20}
+            className="cursor-pointer mr-2"
+            onClick={handleDropdownMenu}
+          />
+          <DropDownMenu isHidden={isHidden} />
         </div>
       </div>
     </div>
