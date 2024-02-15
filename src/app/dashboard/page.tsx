@@ -23,7 +23,7 @@ export default async function Home() {
         <div>
           <Transactions />
         </div>
-        <div className="sm:hidden flex">
+        <div className="flex">
           <Chart />
         </div>
       </div>
