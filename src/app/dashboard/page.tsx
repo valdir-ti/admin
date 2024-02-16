@@ -14,20 +14,20 @@ export default async function Home() {
 
   return (
     <div className="flex justify-between gap-4 mt-2 sm:mt-4 flex-col lg:flex-row">
-      <div className="w-full lg:w-9/12 sm:gap-2">
-        <div className="flex justify-between gap-1">
+      <div className="w-full lg:9/12 gap-2">
+        <div className="flex justify-between gap-2">
           <Card itemName="Users" items={users} />
           <Card itemName="Products" items={products} />
           <Card itemName="Todos" items={todos} />
         </div>
-        <div>
+        <div className="flex gap-2">
           <Transactions />
         </div>
-        <div className="flex">
+        <div className="flex gap-2">
           <Chart />
         </div>
       </div>
-      <div className="lg:w-3/12 w-full pr-1">
+      <div className="w-full lg:w-3/12 pr-1">
         <RightBar />
       </div>
     </div>

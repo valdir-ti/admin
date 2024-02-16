@@ -21,13 +21,13 @@ export default function Card({ itemName, items }: CardProps) {
           Total {itemName}
         </h4>
       </div>
-      <div className="mt-2 sm:mt-4 ml-0 sm:ml-6 flex items-center sm:items-start justify-center sm:justify-start">
+      <div className="mt-2 sm:mt-4 ml-0 flex items-center sm:items-start justify-center sm:justify-start">
         <h3 className="text-2xl font-bold">{total}</h3>
       </div>
       {itemName.toLowerCase() === 'todos' ? (
         <TodoPercent todos={items!} />
       ) : (
-        <div className="ml-0 sm:ml-6 mt-2 sm:mt-4 flex items-center text-sm justify-center sm:justify-start w-full">
+        <div className="ml-0 mt-2 sm:mt-4 flex items-center text-sm justify-center sm:justify-start w-full">
           <h5 className="pl-4 sm:pl-0">
             <span className="text-green-600 font-medium">12%</span>{' '}
             <span>more than previous week</span>
