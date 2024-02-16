@@ -19,7 +19,7 @@ export default function TodoPercent({ todos }: TodoPercentProps) {
   const percentNotCompleted = 100 - percentCompleted
 
   return (
-    <div className="ml-0 sm:ml-6 mt-2 sm:mt-4 flex flex-col text-sm items-center sm:items-start">
+    <div className="ml-0 sm:ml-[32px] mt-2 sm:mt-4 flex flex-col text-sm items-center sm:items-start">
       <h5 className="">
         <span className="text-green-600 font-medium">
           {percentCompleted.toFixed(1)}%

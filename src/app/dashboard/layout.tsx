@@ -9,10 +9,10 @@ export default function RootLayout({
 }) {
   return (
     <div className="flex">
-      <div className="w-full lg:w-2/12 min-h-screen bg-[--bgSoft] hidden sm:flex p-2 sm:p-4">
+      <div className="w-full sm:w-1/4 lg:w-2/12 min-h-screen bg-[--bgSoft] hidden sm:flex p-2 sm:p-4">
         <Sidebar />
       </div>
-      <div className="w-full lg:w-10/12 p-2 sm:p-4">
+      <div className="w-full sm:w-3/4 lg:w-10/12 p-2 sm:p-4">
         <Navbar />
         {children}
         <Footer />
