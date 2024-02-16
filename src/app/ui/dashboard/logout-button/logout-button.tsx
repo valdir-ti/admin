@@ -6,7 +6,7 @@ import { confirmAlert } from 'react-confirm-alert'
 
 import { Types } from '@/app/enum/types'
 import { TypesColors } from '@/app/enum/typeColors'
-import DialogConfirm from '../dialog-confirm/dialog-confirm'
+import DialogConfirm from '@/app/ui/dashboard/dialog-confirm/dialog-confirm'
 import { logoutUserServerAction } from '@/app/actions/users/logout-user-action'
 
 type LogoutButtonProps = {
@@ -44,7 +44,7 @@ export default function LogoutButton({ color }: LogoutButtonProps) {
       className={`flex items-center gap-2 cursor-pointer font-bold text-sm bg-transparent border-0 ${colorsVariants[color]}`}
     >
       <MdLogout />
-      <div className="hidden md:block">Log Out</div>
+      <div className="">Log Out</div>
     </button>
   )
 }

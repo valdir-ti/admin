@@ -10,9 +10,13 @@ import {
   MdOutlineMenu
 } from 'react-icons/md'
 import { usePathname } from 'next/navigation'
+
+import { useSidebarMobileStore } from '@/app/store/sidebarMobileStore'
 import DropDownMenu from '@/app/ui/dashboard/dropdown-menu/dropdown-menu'
 
 export default function Navbar() {
+  const { handleOpen } = useSidebarMobileStore()
+
   const pathName = usePathname()
   const [isHidden, setIsHidden] = useState(true)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -48,7 +52,7 @@ export default function Navbar() {
     <div className="flex justify-between p-2 items-center bg-[--bgSoft] rounded-md min-w-full">
       <div className="flex items-center">
         <div className="sm:hidden flex mr-2">
-          <MdOutlineMenu />
+          <MdOutlineMenu onClick={handleOpen} />
         </div>
         <div className="text-[--textSoft] font-bold capitalize">
           {pathName.split('/').pop()}
