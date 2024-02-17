@@ -5,8 +5,8 @@ import { Fragment, useEffect, useState } from 'react'
 import { Product } from '@/types'
 import DeleteForm from '@/app/dashboard/products/delete-form'
 import ZoomImage from '@/app/ui/dashboard/zoomImage/zoomImage'
+import { convertParseISODate } from '@/utils/convertParseISODate'
 import ViewButton from '@/app/ui/dashboard/view-button/view-button'
-import { convertParseISODate } from '@/app/utils/convertParseISODate'
 
 type ProductsTableProps = {
   data: Array<Product>

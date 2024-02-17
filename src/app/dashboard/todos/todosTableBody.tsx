@@ -5,7 +5,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { Todo } from '@/types'
 import DeleteForm from '@/app/dashboard/todos/delete-form'
 import UpdateForm from '@/app/dashboard/todos/update-form'
-import { convertParseISODate } from '@/app/utils/convertParseISODate'
+import { convertParseISODate } from '@/utils/convertParseISODate'
 
 type TodosTableProps = {
   data: Array<Todo>

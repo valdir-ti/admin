@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache'
 
 import { User } from '@/types'
 import { updateUser } from '@/app/services/api-users'
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
+import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const updateUserServerAction = async (formData: User) => {
   const { _id: id, address, name, phone, isActive, isAdmin } = formData

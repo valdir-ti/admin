@@ -1,8 +1,9 @@
 'use server'
 
-import { deleteProduct } from '@/app/services/api-products'
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
 import { revalidatePath } from 'next/cache'
+
+import { getErrorMessage } from '@/utils/getErrorMessage'
+import { deleteProduct } from '@/app/services/api-products'
 
 export const deleteProductServerAction = async (id: string) => {
   try {

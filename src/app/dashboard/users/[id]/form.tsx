@@ -1,12 +1,12 @@
 'use client'
 
 import { FormEvent, useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
 
 import Image from 'next/image'
+import { toast } from 'react-toastify'
 
 import { User } from '@/types'
-import { convertStringToBoolean } from '@/app/utils/convertStringToBoolean'
+import { convertStringToBoolean } from '@/utils/convertStringToBoolean'
 import { updateUserServerAction } from '@/app/actions/users/update-user-action'
 
 type FormProps = {

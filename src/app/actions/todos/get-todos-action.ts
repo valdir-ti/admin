@@ -2,8 +2,8 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
-import { getTodosCache } from '@/app/utils/getItemsCache'
+import { getTodosCache } from '@/utils/getItemsCache'
+import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const getTodosServerAction = async () => {
   try {

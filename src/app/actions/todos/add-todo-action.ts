@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 
 import { TTodoSchema } from '@/schemas/todoSchema'
 import { createTodo } from '@/app/services/api-todos'
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
+import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const addTodoServerAction = async (formData: TTodoSchema) => {
   try {

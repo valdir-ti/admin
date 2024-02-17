@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 
 import { createUser } from '@/app/services/api-users'
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
+import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const addUserServerAction = async (formData: FormData) => {
   const rawFormData = {
