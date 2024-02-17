@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { TTodoSchema, TodoSchema } from '@/app/schemas/todoSchema'
+import { TTodoSchema, TodoSchema } from '@/schemas/todoSchema'
 import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
 import { addTodoServerAction } from '@/app/actions/todos/add-todo-action'
 
