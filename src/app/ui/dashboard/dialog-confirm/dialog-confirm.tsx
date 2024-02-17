@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Types } from '@/app/enum/types'
+import { Types } from '@/enum/types'
 
 type DialogConfirmProps = {
   onConfirm: () => void
