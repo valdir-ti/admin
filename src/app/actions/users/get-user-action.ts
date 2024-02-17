@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { getUser } from '@/app/services/api-users'
+import { getUser } from '@/services/api-users'
 import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const getUserServerAction = async (id: string) => {

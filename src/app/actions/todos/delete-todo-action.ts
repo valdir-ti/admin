@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { deleteTodo } from '@/app/services/api-todos'
+import { deleteTodo } from '@/services/api-todos'
 import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const deleteTodoServerAction = async (id: string) => {

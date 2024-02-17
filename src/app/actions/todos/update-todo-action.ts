@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { updateTodo } from '@/app/services/api-todos'
+import { updateTodo } from '@/services/api-todos'
 import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const updateTodoServerAction = async (id: string) => {

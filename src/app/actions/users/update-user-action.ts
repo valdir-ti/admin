@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 
 import { User } from '@/types'
-import { updateUser } from '@/app/services/api-users'
+import { updateUser } from '@/services/api-users'
 import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const updateUserServerAction = async (formData: User) => {

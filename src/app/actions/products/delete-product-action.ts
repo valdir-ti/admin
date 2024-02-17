@@ -2,8 +2,8 @@
 
 import { revalidatePath } from 'next/cache'
 
+import { deleteProduct } from '@/services/api-products'
 import { getErrorMessage } from '@/utils/getErrorMessage'
-import { deleteProduct } from '@/app/services/api-products'
 
 export const deleteProductServerAction = async (id: string) => {
   try {

@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { deleteUser } from '@/app/services/api-users'
+import { deleteUser } from '@/services/api-users'
 import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const deleteUserServerAction = async (id: string) => {

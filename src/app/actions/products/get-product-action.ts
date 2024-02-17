@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { getProduct } from '@/app/services/api-products'
+import { getProduct } from '@/services/api-products'
 import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const getProductServerAction = async (id: string) => {
