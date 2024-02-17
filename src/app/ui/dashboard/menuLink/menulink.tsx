@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { useSidebarMobileStore } from '@/app/store/sidebarMobileStore'
+import { useSidebarMobileStore } from '@/store/sidebarMobileStore'
 
 type MenuLinkProps = {
   item: {

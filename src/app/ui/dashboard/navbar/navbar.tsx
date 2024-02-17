@@ -11,7 +11,7 @@ import {
 } from 'react-icons/md'
 import { usePathname } from 'next/navigation'
 
-import { useSidebarMobileStore } from '@/app/store/sidebarMobileStore'
+import { useSidebarMobileStore } from '@/store/sidebarMobileStore'
 import DropDownMenu from '@/app/ui/dashboard/dropdown-menu/dropdown-menu'
 
 export default function Navbar() {

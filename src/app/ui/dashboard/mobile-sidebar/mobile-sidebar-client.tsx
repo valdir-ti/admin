@@ -6,7 +6,7 @@ import { MdClose } from 'react-icons/md'
 import { TypesColors } from '@/app/enum/typeColors'
 import { menuItemsData } from '@/app/utils/menuItemsData'
 import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
-import { useSidebarMobileStore } from '@/app/store/sidebarMobileStore'
+import { useSidebarMobileStore } from '@/store/sidebarMobileStore'
 import LogoutButton from '@/app/ui/dashboard/logout-button/logout-button'
 
 type MobileSidebarClientProps = {
