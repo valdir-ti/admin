@@ -1,13 +1,14 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
 
 import Image from 'next/image'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
-import { Product } from '@/app/types'
+import { Product } from '@/types'
+import { convertStringToBoolean } from '@/utils/convertStringToBoolean'
 import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
-import { convertStringToBoolean } from '@/app/utils/convertStringToBoolean'
 import { updateProductServerAction } from '@/app/actions/products/update-product.action'
 
 type FormProps = {
@@ -16,11 +17,15 @@ type FormProps = {
 
 export default function Form({ product }: FormProps) {
   const [data, setData] = useState<Product | null>(product)
+  const router = useRouter()
 
   const updateProductClientAction = async (formData: FormData) => {
     const result = await updateProductServerAction(formData)
     if (result?.error) {
       toast.error(result?.error)
+    } else {
+      toast.success('Product edited successfully')
+      router.push('/dashboard/products')
     }
   }
 
@@ -55,14 +60,14 @@ export default function Form({ product }: FormProps) {
     _id,
     isActive
   } = data || {}
-  const productImage = image || '/noproduct.jpg'
+  const productImage = image || '/noproduct.png'
 
   return (
     <>
       <div className="w-2/6 p-12 bg-[--bgSoft] rounded-md mt-6 h-max">
         <div className="w-[100%] h-[300px] font-bold flex items-center justify-center flex-col">
           <Image
-            alt={title!}
+            alt={title || 'Product title'}
             src={productImage}
             width="0"
             height="0"

@@ -2,7 +2,7 @@ import { useState, FormEvent } from 'react'
 import { toast } from 'react-toastify'
 import { confirmAlert } from 'react-confirm-alert'
 
-import { Types } from '@/app/enum/types'
+import { Types } from '@/enum/types'
 import DialogConfirm from '@/app/ui/dashboard/dialog-confirm/dialog-confirm'
 import { DeleteButton } from '@/app/ui/dashboard/delete-button/delete-button'
 import { deleteTodoServerAction } from '@/app/actions/todos/delete-todo-action'

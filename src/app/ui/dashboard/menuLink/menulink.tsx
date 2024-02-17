@@ -1,8 +1,11 @@
 'use client'
 
+import { ReactNode } from 'react'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ReactNode } from 'react'
+
+import { useSidebarMobileStore } from '@/store/sidebarMobileStore'
 
 type MenuLinkProps = {
   item: {
@@ -13,6 +16,7 @@ type MenuLinkProps = {
 }
 
 export default function MenuLink({ item }: MenuLinkProps) {
+  const { handleOpen } = useSidebarMobileStore()
   const pathName = usePathname()
 
   const { path, icon, title } = item
@@ -23,6 +27,7 @@ export default function MenuLink({ item }: MenuLinkProps) {
       className={`p-3 flex items-center gap-3 m-1 rounded-md hover:bg-[--bgHover] ${
         pathName === path && 'bg-[--bgHover]'
       }`}
+      onClick={handleOpen}
     >
       {icon}
       {title}

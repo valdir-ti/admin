@@ -6,12 +6,17 @@ import {
   MdOutlineChat,
   MdOutlineManageAccounts,
   MdPublic,
-  MdSearch
+  MdSearch,
+  MdOutlineMenu
 } from 'react-icons/md'
 import { usePathname } from 'next/navigation'
+
+import { useSidebarMobileStore } from '@/store/sidebarMobileStore'
 import DropDownMenu from '@/app/ui/dashboard/dropdown-menu/dropdown-menu'
 
 export default function Navbar() {
+  const { handleOpen } = useSidebarMobileStore()
+
   const pathName = usePathname()
   const [isHidden, setIsHidden] = useState(true)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -45,11 +50,16 @@ export default function Navbar() {
 
   return (
     <div className="flex justify-between p-2 items-center bg-[--bgSoft] rounded-md min-w-full">
-      <div className="text-[--textSoft] font-bold capitalize">
-        {pathName.split('/').pop()}
+      <div className="flex items-center">
+        <div className="sm:hidden flex mr-2">
+          <MdOutlineMenu onClick={handleOpen} />
+        </div>
+        <div className="text-[--textSoft] font-bold capitalize">
+          {pathName.split('/').pop()}
+        </div>
       </div>
       <div className="flex items-center gap-4">
-        <div className="flex items-center gap-3 bg-[--bgHover] rounded-md p-2">
+        <div className="hidden sm:flex items-center gap-3 bg-[--bgHover] rounded-md p-2">
           <MdSearch />
           <input
             type="text"

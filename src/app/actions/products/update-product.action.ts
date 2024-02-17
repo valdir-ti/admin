@@ -1,10 +1,10 @@
 'use server'
 
-import { updateProduct } from '@/app/services/api-products'
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
-import { getStringFormDataValue } from '@/app/utils/getStringFormDataValue'
 import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
+
+import { updateProduct } from '@/services/api-products'
+import { getErrorMessage } from '@/utils/getErrorMessage'
+import { getStringFormDataValue } from '@/utils/getStringFormDataValue'
 
 export const updateProductServerAction = async (formData: FormData) => {
   const id = getStringFormDataValue(formData, '_id')
@@ -43,5 +43,4 @@ export const updateProductServerAction = async (formData: FormData) => {
   }
 
   revalidatePath('/dashboard/products')
-  redirect('/dashboard/products')
 }

@@ -2,8 +2,8 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { createProduct } from '@/app/services/api-products'
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
+import { createProduct } from '@/services/api-products'
+import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const addProductServerAction = async (formData: FormData) => {
   const rawFormData = {

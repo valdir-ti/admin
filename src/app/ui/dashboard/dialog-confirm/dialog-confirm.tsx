@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Types } from '@/app/enum/types'
+import { Types } from '@/enum/types'
 
 type DialogConfirmProps = {
   onConfirm: () => void
@@ -30,8 +30,8 @@ export default function DialogConfirm({
   }
 
   const typesColorVariantsConfirmButton = {
-    green: 'bg-green-600 hover:bg-green-500',
-    red: 'bg-red-600 hover:bg-red-500'
+    green: 'bg-green-600 hover:bg-green-400 disabled:bg-green-200',
+    red: 'bg-red-600 hover:bg-red-400 disabled:bg-red-200'
   }
 
   return (
@@ -71,12 +71,13 @@ export default function DialogConfirm({
               <div className="w-full flex items-center justify-center">
                 <button
                   type="button"
-                  className={`${typesColorVariantsConfirmButton[type]} flex items-center justify-center w-full rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white shadow-sm focus:outline-none focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 min-w-[84px]`}
+                  className={`${typesColorVariantsConfirmButton[type]} flex items-center justify-center w-full rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white shadow-sm focus:outline-none focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 min-w-[84px] disabled:cursor-not-allowed`}
                   onClick={() => {
                     setLoading(true)
                     onConfirm()
                     callOnClose && onClose()
                   }}
+                  disabled={loading}
                 >
                   {loading && <span className="loading mr-2"></span>}
                   Sim

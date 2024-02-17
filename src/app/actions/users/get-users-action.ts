@@ -1,8 +1,9 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { getUsersCache } from '@/app/utils/getItemsCache'
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
+
+import { getUsersCache } from '@/utils/getItemsCache'
+import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const getUsersServerAction = async () => {
   try {

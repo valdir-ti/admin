@@ -2,8 +2,8 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
-import { getProductsCache } from '@/app/utils/getItemsCache'
+import { getProductsCache } from '@/utils/getItemsCache'
+import { getErrorMessage } from '@/utils/getErrorMessage'
 
 export const getProductsServerAction = async () => {
   try {

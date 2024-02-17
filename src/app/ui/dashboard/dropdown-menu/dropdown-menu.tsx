@@ -1,4 +1,4 @@
-import { TypesColors } from '@/app/enum/typeColors'
+import { TypesColors } from '@/enum/typeColors'
 import LogoutButton from '@/app/ui/dashboard/logout-button/logout-button'
 
 type DropDownMenuProps = {

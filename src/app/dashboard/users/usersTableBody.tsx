@@ -4,11 +4,10 @@ import { Fragment, useEffect, useState } from 'react'
 
 import Image from 'next/image'
 
-import { User } from '@/app/types'
-
+import { User } from '@/types'
 import DeleteForm from '@/app/dashboard/users/delete-form'
+import { convertParseISODate } from '@/utils/convertParseISODate'
 import ViewButton from '@/app/ui/dashboard/view-button/view-button'
-import { convertParseISODate } from '@/app/utils/convertParseISODate'
 
 type UsersTableProps = {
   data: Array<User>

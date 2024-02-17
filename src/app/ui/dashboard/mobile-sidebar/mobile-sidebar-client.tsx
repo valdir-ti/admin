@@ -1,16 +1,41 @@
-import Image from 'next/image'
+'use client'
 
-import { auth } from '@/app/auth'
+import Image from 'next/image'
+import { MdClose } from 'react-icons/md'
+
 import { TypesColors } from '@/enum/typeColors'
 import { menuItemsData } from '@/utils/menuItemsData'
 import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
+import { useSidebarMobileStore } from '@/store/sidebarMobileStore'
 import LogoutButton from '@/app/ui/dashboard/logout-button/logout-button'
 
-export default async function Sidebar() {
-  const session = await auth()
+type MobileSidebarClientProps = {
+  session: {
+    user: {
+      name: string
+      email?: string
+      image: string
+    }
+    expires: string
+    image: string
+  } | null
+}
+
+export default function MobileSidebarClient({
+  session
+}: MobileSidebarClientProps) {
+  const { handleOpen, open } = useSidebarMobileStore()
 
   return (
-    <div className="sticky">
+    <div
+      className={`${
+        !open ? 'left-[-200px]' : 'left-[0px]'
+      } inline-block sm:hidden absolute min-w-[200px] bg-[--bg] min-h-screen z-10 rounded-md`}
+    >
+      <div className="flex justify-end p-2">
+        <MdClose onClick={handleOpen} />
+      </div>
+
       <div className="flex gap-4 mb-4 ml-2 items-center">
         <Image
           src={session?.user?.image || '/noavatar.png'}

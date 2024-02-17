@@ -2,13 +2,13 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { createTodo } from '@/app/services/api-todos'
-import { getErrorMessage } from '@/app/utils/getErrorMessage'
+import { createTodo } from '@/services/api-todos'
+import { TTodoSchema } from '@/schemas/todoSchema'
+import { getErrorMessage } from '@/utils/getErrorMessage'
 
-export const addTodoServerAction = async (formData: FormData) => {
-  const description = formData.get('description')
+export const addTodoServerAction = async (formData: TTodoSchema) => {
   try {
-    await createTodo({ description })
+    await createTodo(formData)
     revalidatePath('/dashboard/todos')
   } catch (error) {
     return {

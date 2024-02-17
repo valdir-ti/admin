@@ -3,7 +3,7 @@ import { MdPlayCircleFilled } from 'react-icons/md'
 
 export default function RightBar() {
   return (
-    <div className="flex flex-1 flex-col mr-2">
+    <div className="flex flex-1 flex-col mr-0 lg:mr-2">
       <div className="relative bg-gradient-to-b from-[--bgHover] p-4 rounded-md">
         <div className="absolute bottom-0 right-0 w-[50%] h-[50%]">
           <Image
