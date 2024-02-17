@@ -1,8 +1,8 @@
 import { cache } from 'react'
 
-import { getTodos } from '@/app/services/api-todos'
-import { getUsers } from '@/app/services/api-users'
-import { getProducts } from '../services/api-products'
+import { getTodos } from '@/services/api-todos'
+import { getUsers } from '@/services/api-users'
+import { getProducts } from '@/services/api-products'
 
 export const getTodosCache = cache(async () => {
   const todos = await getTodos()

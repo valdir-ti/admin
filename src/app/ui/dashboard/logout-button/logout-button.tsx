@@ -4,8 +4,8 @@ import { MouseEvent } from 'react'
 import { MdLogout } from 'react-icons/md'
 import { confirmAlert } from 'react-confirm-alert'
 
-import { Types } from '@/app/enum/types'
-import { TypesColors } from '@/app/enum/typeColors'
+import { Types } from '@/enum/types'
+import { TypesColors } from '@/enum/typeColors'
 import DialogConfirm from '@/app/ui/dashboard/dialog-confirm/dialog-confirm'
 import { logoutUserServerAction } from '@/app/actions/users/logout-user-action'
 

@@ -2,11 +2,11 @@
 
 import { Fragment, useEffect, useState } from 'react'
 
-import { Product } from '@/app/types'
-import ZoomImage from '@/app/ui/dashboard/zoomImage/zoomImage'
-import ViewButton from '@/app/ui/dashboard/view-button/view-button'
-import { convertParseISODate } from '@/app/utils/convertParseISODate'
+import { Product } from '@/types'
 import DeleteForm from '@/app/dashboard/products/delete-form'
+import ZoomImage from '@/app/ui/dashboard/zoomImage/zoomImage'
+import { convertParseISODate } from '@/utils/convertParseISODate'
+import ViewButton from '@/app/ui/dashboard/view-button/view-button'
 
 type ProductsTableProps = {
   data: Array<Product>
