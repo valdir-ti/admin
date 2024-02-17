@@ -5,10 +5,9 @@ import { toast } from 'react-toastify'
 
 import Image from 'next/image'
 
+import { User } from '@/types'
 import { convertStringToBoolean } from '@/app/utils/convertStringToBoolean'
 import { updateUserServerAction } from '@/app/actions/users/update-user-action'
-
-import { User } from '@/app/types'
 
 type FormProps = {
   user: User

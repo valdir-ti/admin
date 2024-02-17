@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-import { Product } from '@/app/types'
+import { Product } from '@/types'
 import SubmitButton from '@/app/ui/dashboard/submit-button/submit-button'
 import { convertStringToBoolean } from '@/app/utils/convertStringToBoolean'
 import { updateProductServerAction } from '@/app/actions/products/update-product.action'

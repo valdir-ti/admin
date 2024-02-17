@@ -1,5 +1,5 @@
-import { User } from '../types'
-import { api } from './api'
+import { User } from '@/types'
+import { api } from '@/app/services/api'
 
 export async function getUser(id: string) {
   const { data } = await api.get(`/users/${id}`)

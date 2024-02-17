@@ -2,8 +2,7 @@
 
 import { Fragment, useEffect, useState } from 'react'
 
-import { Todo } from '@/app/types'
-
+import { Todo } from '@/types'
 import DeleteForm from '@/app/dashboard/todos/delete-form'
 import UpdateForm from '@/app/dashboard/todos/update-form'
 import { convertParseISODate } from '@/app/utils/convertParseISODate'
