@@ -63,8 +63,8 @@ export default function Form({ product }: FormProps) {
   const productImage = image || '/noproduct.png'
 
   return (
-    <>
-      <div className="w-2/6 p-12 bg-[--bgSoft] rounded-md mt-6 h-max">
+    <div className="flex flex-col sm:flex-row justify-between w-full">
+      <div className="w-full sm:w-2/6 p-12 bg-[--bgSoft] rounded-md mt-6 h-max mr-2">
         <div className="w-[100%] h-[300px] font-bold flex items-center justify-center flex-col">
           <Image
             alt={title || 'Product title'}
@@ -77,7 +77,7 @@ export default function Form({ product }: FormProps) {
           <h4 className="mt-2 text-[--textSoft]">{title}</h4>
         </div>
       </div>
-      <div className="w-4/6 p-12 bg-[--bgSoft] rounded-md mt-6">
+      <div className="w-full sm:w-4/6 p-12 bg-[--bgSoft] rounded-md mt-6">
         <form className="flex flex-col" action={updateProductClientAction}>
           <input type="hidden" name="_id" id="_id" value={_id} />
           <label htmlFor="name" className="text-xs">
@@ -177,6 +177,6 @@ export default function Form({ product }: FormProps) {
           <SubmitButton />
         </form>
       </div>
-    </>
+    </div>
   )
 }
