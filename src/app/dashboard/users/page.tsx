@@ -19,7 +19,7 @@ export default async function Home() {
         </Link>
       </div>
       <div className="relative overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full text-sm text-left rtl:text-right">
           <thead>
             <tr className="text-lg text-slate-400">
               <th scope="col" className="px-6 py-3">
