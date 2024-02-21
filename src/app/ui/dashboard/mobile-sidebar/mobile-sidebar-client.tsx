@@ -29,8 +29,8 @@ export default function MobileSidebarClient({
   return (
     <div
       className={`${
-        !open ? 'left-[-200px]' : 'left-[0px]'
-      } inline-block sm:hidden absolute min-w-[200px] bg-[--bg] min-h-screen z-10 rounded-md`}
+        !open ? 'left-[-260px]' : 'left-[0px]'
+      } inline-block sm:hidden absolute min-w-[260px] bg-[--bg] min-h-screen z-10 rounded-md`}
     >
       <div className="flex justify-end p-2">
         <MdClose onClick={handleOpen} />
