@@ -8,7 +8,7 @@ type ViewButtonProps = {
 export default function ViewButton({ id, path }: ViewButtonProps) {
   return (
     <Link href={`/dashboard/${path}/${id}`}>
-      <button className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md min-w-[100px]">
+      <button className="p-1 text-[--text] border-0 cursor-pointer bg-teal-600 rounded-md min-w-[82px] sm:min-w-[100px]">
         View
       </button>
     </Link>

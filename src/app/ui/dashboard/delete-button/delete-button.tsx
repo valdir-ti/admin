@@ -6,11 +6,11 @@ type DeleteButton = {
 export function DeleteButton({ disabled, loading }: DeleteButton) {
   return (
     <button
-      className="p-1 text-[--text] border-0 cursor-pointer bg-red-600 rounded-md min-w-[120px] disabled:bg-red-900 disabled:cursor-not-allowed"
+      className="p-1 text-[--text] border-0 cursor-pointer bg-red-600 rounded-md min-w-[92px] sm:min-w-[120px] disabled:bg-red-900 disabled:cursor-not-allowed"
       disabled={disabled || loading}
     >
       <div className="w-full flex items-center justify-center">
-        <div className="flex items-center justify-around min-w-[120px]">
+        <div className="flex items-center justify-around min-w-[92px] sm:min-w-[120px]">
           {loading ? (
             <>
               <span className="loading"></span>
