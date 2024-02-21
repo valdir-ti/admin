@@ -17,19 +17,33 @@ export default async function Home() {
           </button>
         </Link>
       </div>
-      <table className="w-full">
-        <thead>
-          <tr className="text-lg text-slate-400">
-            <td className="w-[30%]">Title</td>
-            <td className="w-[30%]">Description</td>
-            <td className="w-[10%]">Price</td>
-            <td className="w-[10%]">Created At</td>
-            <td className="w-[8%]">Stock</td>
-            <td className="w-[12%]">Actions</td>
-          </tr>
-        </thead>
-        <ProductsTableBody data={data} />
-      </table>
+      <div className="relative overflow-x-auto">
+        <table className="w-full">
+          <thead>
+            <tr className="text-lg text-slate-400">
+              <th scope="col" className="px-6 py-3">
+                Title
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Description
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Price
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Creation
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Stock
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <ProductsTableBody data={data} />
+        </table>
+      </div>
       <Pagination disabled={true} />
     </div>
   )
