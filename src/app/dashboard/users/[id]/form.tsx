@@ -70,8 +70,8 @@ export default function Form({ user }: FormProps) {
   const userImage = image || '/noavatar.png'
 
   return (
-    <>
-      <div className="w-2/6 p-12 bg-[--bgSoft] rounded-md mt-6 h-max">
+    <div className="flex flex-col sm:flex-row justify-between w-full">
+      <div className="w-full sm:w-2/6 p-12 bg-[--bgSoft] rounded-md mt-6 h-max mr-2">
         <div className="w-[100%] h-[300px] font-bold flex items-center justify-center flex-col">
           <Image
             alt={name || 'User image'}
@@ -84,7 +84,7 @@ export default function Form({ user }: FormProps) {
           <h4 className="mt-2 text-[--textSoft]">{name}</h4>
         </div>
       </div>
-      <div className="w-4/6 p-12 bg-[--bgSoft] rounded-md mt-6">
+      <div className="w-full sm:w-4/6 p-12 bg-[--bgSoft] rounded-md mt-6">
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <input
             type="hidden"
@@ -187,6 +187,6 @@ export default function Form({ user }: FormProps) {
           </button>
         </form>
       </div>
-    </>
+    </div>
   )
 }

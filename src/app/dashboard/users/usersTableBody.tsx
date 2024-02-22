@@ -29,8 +29,11 @@ export default function UsersTableBody({ data }: UsersTableProps) {
 
         return (
           <Fragment key={user._id}>
-            <tr>
-              <td>
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
                 <div className="flex items-center gap-2 mb-2">
                   <Image
                     src={userImage}

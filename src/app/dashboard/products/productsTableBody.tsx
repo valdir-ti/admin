@@ -27,18 +27,21 @@ export default function ProductsTableBody({ data }: ProductsTableProps) {
 
         return (
           <Fragment key={product._id}>
-            <tr>
-              <td>
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
                 <div className="flex items-center gap-2 mb-2 mt-2">
                   <ZoomImage image={productImage} title={product.title || ''} />
                   {product.title}
                 </div>
-              </td>
-              <td>{product.description}</td>
-              <td>${product.price}</td>
-              <td>{formattedDate}</td>
-              <td>{product.stock}</td>
-              <td>
+              </th>
+              <td className="px-6 py-4">{product.description}</td>
+              <td className="px-6 py-4">${product.price}</td>
+              <td className="px-6 py-4">{formattedDate}</td>
+              <td className="px-6 py-4">{product.stock}</td>
+              <td className="px-6 py-4">
                 <div className="gap-2 flex">
                   <ViewButton id={product._id!} path="products" />
                   <DeleteForm id={product._id!} />

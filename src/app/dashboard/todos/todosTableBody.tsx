@@ -25,11 +25,11 @@ export default function TodosTableBody({ data }: TodosTableProps) {
 
         return (
           <Fragment key={todo._id}>
-            <tr className="h-[45px]">
-              <td className={`${todo.done ? 'line-through' : ''}`}>
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td className={`${todo.done ? 'line-through' : ''} px-6 py-4`}>
                 {todo.description}
               </td>
-              <td>
+              <td className="px-6 py-4">
                 {todo.done ? (
                   <span className="bg-slate-600 py-1 px-6 rounded-sm cursor-auto">
                     Done
@@ -40,8 +40,8 @@ export default function TodosTableBody({ data }: TodosTableProps) {
                   </span>
                 )}
               </td>
-              <td>{formattedDate}</td>
-              <td>
+              <td className="px-6 py-4">{formattedDate}</td>
+              <td className="px-6 py-4">
                 <div className="gap-2 flex">
                   <UpdateForm id={todo._id!} disabled={!!todo.done} />
                   <DeleteForm id={todo._id!} disabled={!!todo.done} />
