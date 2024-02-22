@@ -31,11 +31,11 @@ export default function TodosTableBody({ data }: TodosTableProps) {
               </td>
               <td className="px-6 py-4">
                 {todo.done ? (
-                  <span className="bg-slate-600 py-1 px-6 rounded-sm cursor-auto">
+                  <span className="bg-slate-600 py-1 px-6 rounded-sm cursor-auto text-white">
                     Done
                   </span>
                 ) : (
-                  <span className="bg-yellow-600 py-1 px-6 rounded-sm cursor-auto">
+                  <span className="bg-yellow-600 py-1 px-6 rounded-sm cursor-auto text-white">
                     Open
                   </span>
                 )}
