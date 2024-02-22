@@ -1,14 +1,15 @@
 import Link from 'next/link'
 
+import Table from '@/app/ui/dashboard/table/table'
 import Search from '@/app/ui/dashboard/search/search'
-import Pagination from '@/app/ui/dashboard/pagination/pagination'
-import TodosTableBody from '@/app/dashboard/todos/todosTableBody'
 import { getTodosServerAction } from '@/app/actions/todos/get-todos-action'
 
 export const revalidate = 30
 
 export default async function Page() {
   const data = await getTodosServerAction()
+
+  const tableColumns = ['Description', 'Status', 'Creation', 'Actions']
 
   return (
     <div className="mt-4 bg-[--bgSoft] p-4 rounded-md">
@@ -20,28 +21,7 @@ export default async function Page() {
           </button>
         </Link>
       </div>
-      <div className="relative overflow-x-auto">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr className="text-lg text-slate-400">
-              <th scope="col" className="px-6 py-3">
-                Description
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Status
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Creation
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <TodosTableBody data={data} />
-        </table>
-        <Pagination disabled={true} />
-      </div>
+      <Table columns={tableColumns} data={data} type="todos" />
     </div>
   )
 }
