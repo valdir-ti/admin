@@ -10,11 +10,11 @@ export const getTodosCache = cache(async () => {
 })
 
 export const getUsersCache = cache(async () => {
-  const todos = await getUsers()
-  return todos
+  const users = await getUsers()
+  return users
 })
 
 export const getProductsCache = cache(async () => {
-  const todos = await getProducts()
-  return todos
+  const products = await getProducts()
+  return products
 })
