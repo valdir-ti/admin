@@ -4,10 +4,16 @@ import Table from '@/app/ui/dashboard/table/table'
 import Search from '@/app/ui/dashboard/search/search'
 import { getTodosServerAction } from '@/app/actions/todos/get-todos-action'
 
-export const revalidate = 30
+type HomeProps = {
+  searchParams: {
+    q: string
+  }
+}
 
-export default async function Page() {
-  const data = await getTodosServerAction()
+export default async function Home({ searchParams }: HomeProps) {
+  const q = searchParams?.q || ''
+
+  const data = await getTodosServerAction(q)
 
   const tableColumns = ['Description', 'Status', 'Creation', 'Actions']
 

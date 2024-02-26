@@ -4,8 +4,8 @@ import { getTodos } from '@/services/api-todos'
 import { getUsers } from '@/services/api-users'
 import { getProducts } from '@/services/api-products'
 
-export const getTodosCache = cache(async () => {
-  const todos = await getTodos()
+export const getTodosCache = cache(async (q: string) => {
+  const todos = await getTodos(q)
   return todos
 })
 

@@ -1,7 +1,7 @@
 import { api } from './api'
 
-export async function getTodos() {
-  const { data } = await api.get('/todos')
+export async function getTodos(q: string) {
+  const { data } = await api.get(`/todos?q=${q}`)
   return data
 }
 
