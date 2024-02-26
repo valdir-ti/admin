@@ -3,17 +3,22 @@ import Link from 'next/link'
 import Table from '@/app/ui/dashboard/table/table'
 import Search from '@/app/ui/dashboard/search/search'
 import { getTodosServerAction } from '@/app/actions/todos/get-todos-action'
+import { ITEM_PER_PAGE } from '@/utils/itemsPerPage'
 
 type HomeProps = {
   searchParams: {
     q: string
+    page: string
+    itemsPerPage: string
   }
 }
 
 export default async function Home({ searchParams }: HomeProps) {
   const q = searchParams?.q || ''
-
-  const data = await getTodosServerAction(q)
+  const page = searchParams?.page || '1'
+  const itemsPerPage = searchParams?.itemsPerPage || ITEM_PER_PAGE
+  const data = await getTodosServerAction(q, page, itemsPerPage)
+  const { count, todos } = data
 
   const tableColumns = ['Description', 'Status', 'Creation', 'Actions']
 
@@ -27,7 +32,7 @@ export default async function Home({ searchParams }: HomeProps) {
           </button>
         </Link>
       </div>
-      <Table columns={tableColumns} data={data} type="todos" />
+      <Table columns={tableColumns} data={todos} count={count} type="todos" />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { MdSearch } from 'react-icons/md'
+import { ITEM_PER_PAGE } from '@/utils/itemsPerPage'
 import { useDebouncedCallback } from 'use-debounce'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
@@ -16,6 +17,10 @@ export default function Search({ placeholder }: SearchProps) {
   const handleSearch = useDebouncedCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const params = new URLSearchParams(searchParams)
+
+      params.set('page', '1')
+      params.set('itemPerPage', ITEM_PER_PAGE)
+
       if (e.target.value) {
         e.target.value.length > 1 && params.set('q', e.target.value)
       } else {

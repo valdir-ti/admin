@@ -1,8 +1,26 @@
 import { api } from './api'
 
-export async function getTodos(q: string) {
-  const { data } = await api.get(`/todos?q=${q}`)
-  return data
+export async function getTodos(q: string, page: string, itemsPerPage: string) {
+  let response
+  if (q) {
+    response = await api.get(
+      `/todos?itemsPerPage=${itemsPerPage}?page=${page}?q=${q}`
+    )
+  } else {
+    response = await api.get(`/todos?itemsPerPage=${itemsPerPage}?page=${page}`)
+  }
+
+  let todos, count
+
+  if (response && response.data) {
+    todos = response.data.todos
+    count = response.data.count
+  } else {
+    todos = []
+    count = 0
+  }
+
+  return { todos, count }
 }
 
 export async function deleteTodo(id: string) {
