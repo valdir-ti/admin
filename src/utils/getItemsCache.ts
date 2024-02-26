@@ -14,7 +14,7 @@ export const getUsersCache = cache(async (q: string) => {
   return users
 })
 
-export const getProductsCache = cache(async () => {
-  const products = await getProducts()
+export const getProductsCache = cache(async (q: string) => {
+  const products = await getProducts(q)
   return products
 })

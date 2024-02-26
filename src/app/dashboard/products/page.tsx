@@ -4,8 +4,15 @@ import Table from '@/app/ui/dashboard/table/table'
 import Search from '@/app/ui/dashboard/search/search'
 import { getProductsServerAction } from '@/app/actions/products/get-products-action'
 
-export default async function Home() {
-  const data = await getProductsServerAction()
+type HomeProps = {
+  searchParams: {
+    q: string
+  }
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const q = searchParams?.q || ''
+  const data = await getProductsServerAction(q)
 
   const tableColumns = [
     'Title',
