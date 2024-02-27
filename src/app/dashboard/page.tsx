@@ -9,7 +9,7 @@ import Transactions from '@/app/ui/dashboard/transactions/transactions'
 
 export default async function Home() {
   const users = await getUsersServerAction('')
-  const todos = await getTodosServerAction('')
+  const todos = await getTodosServerAction('', '')
   const products = await getProductsServerAction('')
 
   return (
