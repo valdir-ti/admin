@@ -7,9 +7,10 @@ type TableProps = {
   columns: string[]
   data: unknown[]
   type: string
+  count?: number
 }
 
-export default function Table({ columns, data, type }: TableProps) {
+export default function Table({ columns, data, type, count }: TableProps) {
   let TableBodyComponent: React.FC<{ data: unknown[] }> | null = null
 
   switch (type) {
@@ -41,7 +42,7 @@ export default function Table({ columns, data, type }: TableProps) {
         </thead>
         {TableBodyComponent && <TableBodyComponent data={data} />}
       </table>
-      <Pagination disabled={true} />
+      <Pagination count={count} />
     </div>
   )
 }
