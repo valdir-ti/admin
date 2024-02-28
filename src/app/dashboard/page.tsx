@@ -10,7 +10,7 @@ import Transactions from '@/app/ui/dashboard/transactions/transactions'
 export default async function Home() {
   const users = await getUsersServerAction('')
   const todos = await getTodosServerAction('', '')
-  const products = await getProductsServerAction('')
+  const products = await getProductsServerAction('', '')
 
   return (
     <div className="flex justify-between gap-4 mt-2 sm:mt-4 flex-col lg:flex-row">

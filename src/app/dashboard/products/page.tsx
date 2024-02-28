@@ -7,12 +7,16 @@ import { getProductsServerAction } from '@/app/actions/products/get-products-act
 type HomeProps = {
   searchParams: {
     q: string
+    page: string
   }
 }
 
 export default async function Home({ searchParams }: HomeProps) {
   const q = searchParams?.q || ''
-  const data = await getProductsServerAction(q)
+  const page = searchParams?.page || '1'
+
+  const data = await getProductsServerAction(q, page)
+  const { count, products } = data
 
   const tableColumns = [
     'Title',
@@ -33,7 +37,12 @@ export default async function Home({ searchParams }: HomeProps) {
           </button>
         </Link>
       </div>
-      <Table columns={tableColumns} data={data} type="products" />
+      <Table
+        columns={tableColumns}
+        data={products}
+        type="products"
+        count={count}
+      />
     </div>
   )
 }

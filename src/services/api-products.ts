@@ -6,8 +6,8 @@ export async function getProduct(id: string) {
   return data
 }
 
-export async function getProducts(q: string) {
-  const { data } = await api.get(`/products?q=${q}`)
+export async function getProducts(q: string, page: string) {
+  const { data } = await api.get(`/products?q=${q}&page=${page}`)
   return data
 }
 
