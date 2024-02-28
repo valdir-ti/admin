@@ -1,5 +1,6 @@
 'use client'
 
+import { ITEMS_PER_PAGE } from '@/utils/itemsPerPage'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 
 type PaginationProps = {
@@ -14,7 +15,6 @@ export default function Pagination({ count = 0 }: PaginationProps) {
   const page = searchParams.get('page') || '1'
 
   const params = new URLSearchParams(searchParams)
-  const ITEMS_PER_PAGE = 5
 
   const hasPrev = ITEMS_PER_PAGE * (parseInt(page) - 1) > 0
   const hasNext = ITEMS_PER_PAGE * (parseInt(page) - 1) + ITEMS_PER_PAGE < count
