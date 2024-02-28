@@ -15,8 +15,8 @@ export default async function Home({ searchParams }: HomeProps) {
   const q = searchParams?.q || ''
   const page = searchParams?.page || '1'
 
-  const data = await getProductsServerAction(q, page)
-  const { count, products } = data
+  const productsData = await getProductsServerAction(q, page)
+  const { count, data } = productsData
 
   const tableColumns = [
     'Title',
@@ -37,12 +37,7 @@ export default async function Home({ searchParams }: HomeProps) {
           </button>
         </Link>
       </div>
-      <Table
-        columns={tableColumns}
-        data={products}
-        type="products"
-        count={count}
-      />
+      <Table columns={tableColumns} data={data} type="products" count={count} />
     </div>
   )
 }

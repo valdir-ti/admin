@@ -15,8 +15,8 @@ export default async function Home({ searchParams }: HomeProps) {
   const q = searchParams?.q || ''
   const page = searchParams?.page || '1'
 
-  const data = await getUsersServerAction(q, page)
-  const { count, users } = data
+  const usersData = await getUsersServerAction(q, page)
+  const { count, data } = usersData
 
   const tableColumns = [
     'Name',
@@ -37,7 +37,7 @@ export default async function Home({ searchParams }: HomeProps) {
           </button>
         </Link>
       </div>
-      <Table columns={tableColumns} data={users} type="users" count={count} />
+      <Table columns={tableColumns} data={data} type="users" count={count} />
     </div>
   )
 }

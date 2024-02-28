@@ -8,17 +8,17 @@ import RightBar from '@/app/ui/dashboard/rightbar/rightbar'
 import Transactions from '@/app/ui/dashboard/transactions/transactions'
 
 export default async function Home() {
-  const users = await getUsersServerAction('', '')
-  const todos = await getTodosServerAction('', '')
-  const products = await getProductsServerAction('', '')
+  const usersData = await getUsersServerAction('', '')
+  const todosData = await getTodosServerAction('', '')
+  const productsData = await getProductsServerAction('', '')
 
   return (
     <div className="flex justify-between gap-4 mt-2 sm:mt-4 flex-col lg:flex-row">
       <div className="w-full lg:9/12 gap-2">
         <div className="flex justify-between gap-2">
-          <Card itemName="Users" items={users} />
-          <Card itemName="Products" items={products} />
-          <Card itemName="Todos" items={todos} />
+          <Card itemName="Users" item={usersData} />
+          <Card itemName="Products" item={productsData} />
+          <Card itemName="Todos" item={todosData} />
         </div>
         <div className="flex gap-2">
           <Transactions />

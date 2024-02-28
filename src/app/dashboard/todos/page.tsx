@@ -15,8 +15,8 @@ export default async function Home({ searchParams }: HomeProps) {
   const q = searchParams?.q || ''
   const page = searchParams?.page || '1'
 
-  const data = await getTodosServerAction(q, page)
-  const { count, todos } = data
+  const todosData = await getTodosServerAction(q, page)
+  const { count, data } = todosData
 
   const tableColumns = ['Description', 'Status', 'Creation', 'Actions']
 
@@ -30,7 +30,7 @@ export default async function Home({ searchParams }: HomeProps) {
           </button>
         </Link>
       </div>
-      <Table columns={tableColumns} data={todos} type="todos" count={count} />
+      <Table columns={tableColumns} data={data} type="todos" count={count} />
     </div>
   )
 }

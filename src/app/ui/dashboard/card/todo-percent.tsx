@@ -7,15 +7,15 @@ type TodoProps = {
 
 type TodoPercentProps = {
   todos: TodoProps[]
+  count: number
 }
 
-export default function TodoPercent({ todos }: TodoPercentProps) {
-  const total = todos.length
+export default function TodoPercent({ todos, count }: TodoPercentProps) {
   const completedTasks =
-    total > 0
+    count > 0
       ? todos?.reduce((count, todo) => count + (todo?.done ? 1 : 0), 0)
       : 0
-  const percentCompleted = total > 0 ? (completedTasks / total) * 100 : 0
+  const percentCompleted = count > 0 ? (completedTasks / count) * 100 : 0
   const percentNotCompleted = 100 - percentCompleted
 
   return (

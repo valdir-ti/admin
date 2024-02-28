@@ -1,15 +1,17 @@
 import Link from 'next/link'
-import TodoPercent from './todo-percent'
 import CardIcon from './card-icon'
+
+type DataProps = {
+  data: []
+  count: number
+}
 
 type CardProps = {
   itemName: string
-  items?: []
+  item: DataProps
 }
 
-export default function Card({ itemName, items }: CardProps) {
-  const total = items?.length
-
+export default function Card({ itemName, item }: CardProps) {
   return (
     <Link
       href={`/dashboard/${itemName.toLowerCase()}`}
@@ -22,11 +24,17 @@ export default function Card({ itemName, items }: CardProps) {
         </h4>
       </div>
       <div className="mt-2 sm:mt-4 ml-0 sm:ml-[32px] flex items-center sm:items-start justify-center sm:justify-start">
-        <h3 className="text-2xl font-bold">{total}</h3>
+        <h3 className="text-2xl font-bold">{item?.count}</h3>
       </div>
       {itemName.toLowerCase() === 'todos' ? (
-        <TodoPercent todos={items!} />
+        <div className="ml-0 sm:ml-[32px] mt-2 sm:mt-4 flex items-center text-sm justify-center sm:justify-start w-full">
+          <h5 className="pl-4 sm:pl-0">
+            <span className="text-green-600 font-medium">12%</span>{' '}
+            <span>more than previous week</span>
+          </h5>
+        </div>
       ) : (
+        //<TodoPercent todos={item?.data} count={item?.count} />
         <div className="ml-0 sm:ml-[32px] mt-2 sm:mt-4 flex items-center text-sm justify-center sm:justify-start w-full">
           <h5 className="pl-4 sm:pl-0">
             <span className="text-green-600 font-medium">12%</span>{' '}
