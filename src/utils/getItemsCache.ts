@@ -9,8 +9,8 @@ export const getTodosCache = cache(async (q: string, page: string) => {
   return todos
 })
 
-export const getUsersCache = cache(async (q: string) => {
-  const users = await getUsers(q)
+export const getUsersCache = cache(async (q: string, page: string) => {
+  const users = await getUsers(q, page)
   return users
 })
 

@@ -6,8 +6,8 @@ export async function getUser(id: string) {
   return data
 }
 
-export async function getUsers(q: string) {
-  const { data } = await api.get(`/users?q=${q}`)
+export async function getUsers(q: string, page: string) {
+  const { data } = await api.get(`/users?q=${q}&page=${page}`)
   return data
 }
 

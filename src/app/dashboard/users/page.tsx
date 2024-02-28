@@ -7,13 +7,16 @@ import { getUsersServerAction } from '@/app/actions/users/get-users-action'
 type HomeProps = {
   searchParams: {
     q: string
+    page: string
   }
 }
 
 export default async function Home({ searchParams }: HomeProps) {
   const q = searchParams?.q || ''
+  const page = searchParams?.page || '1'
 
-  const data = await getUsersServerAction(q)
+  const data = await getUsersServerAction(q, page)
+  const { count, users } = data
 
   const tableColumns = [
     'Name',
@@ -34,7 +37,7 @@ export default async function Home({ searchParams }: HomeProps) {
           </button>
         </Link>
       </div>
-      <Table columns={tableColumns} data={data} type="users" />
+      <Table columns={tableColumns} data={users} type="users" count={count} />
     </div>
   )
 }
