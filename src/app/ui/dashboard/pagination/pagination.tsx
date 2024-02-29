@@ -1,5 +1,6 @@
 'use client'
 
+import PaginationButton from './pagination-button'
 import { ITEMS_PER_PAGE } from '@/utils/itemsPerPage'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 
@@ -20,36 +21,52 @@ export default function Pagination({ count = 0 }: PaginationProps) {
   const hasNext = ITEMS_PER_PAGE * (parseInt(page) - 1) + ITEMS_PER_PAGE < count
 
   const handleChangePage = (type: string) => {
-    type === 'prev'
-      ? params.set('page', String(parseInt(page) - 1))
-      : params.set('page', String(parseInt(page) + 1))
+    const lastPage = count / ITEMS_PER_PAGE
+
+    switch (type) {
+      case 'first':
+        params.set('page', '1')
+        break
+      case 'prev':
+        params.set('page', String(parseInt(page) - 1))
+        break
+      case 'next':
+        params.set('page', String(parseInt(page) + 1))
+        break
+      case 'last':
+        params.set('page', String(Math.ceil(lastPage)))
+        break
+    }
+
     replace(`${pathname}?${params}`)
   }
 
   return (
-    <div className="flex justify-between mt-6">
-      <button
-        className={`p-1 rounded-sm min-w-[100px] ${
-          !hasPrev
-            ? 'bg-gray-500 text-gray-950 cursor-not-allowed'
-            : 'bg-white text-black cursor-pointer'
-        }`}
+    <div className="flex justify-between mt-6 w-full sm:w-3/12">
+      <PaginationButton
         disabled={!hasPrev}
-        onClick={() => handleChangePage('prev')}
-      >
-        Previous
-      </button>
-      <button
-        className={`p-1 rounded-sm min-w-[100px] ${
-          !hasNext
-            ? 'bg-gray-500 text-gray-950 cursor-not-allowed'
-            : 'bg-white text-black cursor-pointer'
-        }`}
+        handleChangePage={() => handleChangePage('first')}
+        title="First Page"
+        type="first"
+      />
+      <PaginationButton
+        disabled={!hasPrev}
+        handleChangePage={() => handleChangePage('prev')}
+        title="Previous Page"
+        type="prev"
+      />
+      <PaginationButton
         disabled={!hasNext}
-        onClick={() => handleChangePage('next')}
-      >
-        Next
-      </button>
+        handleChangePage={() => handleChangePage('next')}
+        title="Next Page"
+        type="next"
+      />
+      <PaginationButton
+        disabled={!hasNext}
+        handleChangePage={() => handleChangePage('last')}
+        title="Last Page"
+        type="last"
+      />
     </div>
   )
 }
