@@ -21,7 +21,7 @@ export default async function Home({ searchParams }: HomeProps) {
   const tableColumns = ['Description', 'Status', 'Creation', 'Actions']
 
   return (
-    <div className="mt-4 bg-[--bgSoft] p-4 rounded-md">
+    <div className="mt-4 bg-[--bgSoft] p-4 rounded-md h-[82vh] sm:h-[60vh]">
       <div className="flex items-center justify-between mb-4">
         <Search placeholder="Search for a todo..." />
         <Link href="/dashboard/todos/add">

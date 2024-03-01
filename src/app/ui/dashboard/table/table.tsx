@@ -29,20 +29,24 @@ export default function Table({ columns, data, type, count }: TableProps) {
   }
 
   return (
-    <div className="relative overflow-x-auto">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr className="text-lg text-slate-400">
-            {columns.map((item) => (
-              <th key={item} scope="col" className="px-6 py-3">
-                {item}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        {TableBodyComponent && <TableBodyComponent data={data} />}
-      </table>
-      <Pagination count={count} />
-    </div>
+    <>
+      <div className="relative overflow-x-auto h-[85%] sm:h-[75%]">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr className="text-lg text-slate-400">
+              {columns.map((item) => (
+                <th key={item} scope="col" className="px-6 py-3">
+                  {item}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          {TableBodyComponent && <TableBodyComponent data={data} />}
+        </table>
+      </div>
+      <div>
+        <Pagination count={count} />
+      </div>
+    </>
   )
 }
