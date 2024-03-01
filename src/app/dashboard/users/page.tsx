@@ -1,7 +1,4 @@
-import Link from 'next/link'
-
-import Table from '@/app/ui/dashboard/table/table'
-import Search from '@/app/ui/dashboard/search/search'
+import TableWrapper from '@/app/ui/dashboard/table-wrapper/table-wrapper'
 import { getUsersServerAction } from '@/app/actions/users/get-users-action'
 
 type HomeProps = {
@@ -28,16 +25,13 @@ export default async function Home({ searchParams }: HomeProps) {
   ]
 
   return (
-    <div className="mt-4 bg-[--bgSoft] p-4 rounded-md">
-      <div className="flex items-center justify-between mb-4">
-        <Search placeholder="Search for a user..." />
-        <Link href="/dashboard/users/add">
-          <button className="p-2 bg-[--purpleColor] rounded-md text-white border-0 cursor-pointer">
-            Add New
-          </button>
-        </Link>
-      </div>
-      <Table columns={tableColumns} data={data} type="users" count={count} />
-    </div>
+    <TableWrapper
+      link="/dashboard/users/add"
+      count={count}
+      data={data}
+      tableColumns={tableColumns}
+      type="users"
+      searchPlaceholder="Search for a user..."
+    />
   )
 }
