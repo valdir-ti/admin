@@ -15,7 +15,7 @@ export default function PaginationButton({
 }: PaginationButtonProps) {
   return (
     <button
-      className={`flex justify-center p-1 rounded-sm min-w-[60px] ${
+      className={`flex justify-center p-1 rounded-sm min-w-[40px] ${
         disabled
           ? 'bg-gray-500 text-gray-950 cursor-not-allowed'
           : 'bg-white text-black cursor-pointer hover:bg-slate-300'
