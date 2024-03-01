@@ -15,10 +15,9 @@ export default function Pagination({ count = 0 }: PaginationProps) {
   const searchParams = useSearchParams()
   const { replace } = useRouter()
   const pathname = usePathname()
-
-  const [currentPage, setCurrentPage] = useState(searchParams.get('page') || 1)
-
   const page = searchParams.get('page') || '1'
+
+  const [currentPage, setCurrentPage] = useState(parseInt(page))
   const lastPage = count / ITEMS_PER_PAGE
 
   const params = new URLSearchParams(searchParams)
