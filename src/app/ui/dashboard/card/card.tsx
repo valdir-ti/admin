@@ -1,9 +1,12 @@
 import Link from 'next/link'
 import CardIcon from './card-icon'
+import TodoPercent from './todo-percent'
 
 type DataProps = {
   data: []
   count: number
+  totalOpen: number
+  totalDone: number
 }
 
 type CardProps = {
@@ -27,17 +30,15 @@ export default function Card({ itemName, item }: CardProps) {
         <h3 className="text-2xl font-bold">{item?.count}</h3>
       </div>
       {itemName.toLowerCase() === 'todos' ? (
-        <div className="ml-0 sm:ml-[32px] mt-2 sm:mt-4 flex items-center text-sm justify-center sm:justify-start w-full">
-          <h5 className="pl-4 sm:pl-0">
-            <span className="text-green-600 font-medium">12%</span>{' '}
-            <span>more than previous week</span>
-          </h5>
-        </div>
+        <TodoPercent
+          count={item?.count}
+          totalDone={item?.totalDone}
+          totalOpen={item?.totalOpen}
+        />
       ) : (
-        //<TodoPercent todos={item?.data} count={item?.count} />
         <div className="ml-0 sm:ml-[32px] mt-2 sm:mt-4 flex items-center text-sm justify-center sm:justify-start w-full">
           <h5 className="pl-4 sm:pl-0">
-            <span className="text-green-600 font-medium">12%</span>{' '}
+            <span className="text-green-600 font-medium">12%</span>&nbsp;
             <span>more than previous week</span>
           </h5>
         </div>
