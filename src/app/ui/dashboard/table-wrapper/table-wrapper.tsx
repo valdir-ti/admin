@@ -20,7 +20,7 @@ export default function TableWrapper({
   searchPlaceholder
 }: TableWrapperProps) {
   return (
-    <div className="mt-4 bg-[--bgSoft] p-4 rounded-md h-[82vh] sm:h-[60vh]">
+    <div className="mt-4 bg-[--bgSoft] p-4 rounded-md h-auto sm:h-[78vh]">
       <div className="flex items-center justify-between mb-4">
         <Search placeholder={searchPlaceholder} />
         <Link href={link}>
