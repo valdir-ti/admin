@@ -5,25 +5,36 @@ import { useDebouncedCallback } from 'use-debounce'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 
 import PaginationButton from './pagination-button'
-import { ITEMS_PER_PAGE } from '@/utils/itemsPerPage'
+import { ITEMS_PER_PAGE, TODOS_PER_PAGE } from '@/utils/itemsPerPage'
 
 type PaginationProps = {
-  count?: number
+  count: number
+  type: string
 }
 
-export default function Pagination({ count = 0 }: PaginationProps) {
+export default function Pagination({ count = 0, type }: PaginationProps) {
   const searchParams = useSearchParams()
   const { replace } = useRouter()
   const pathname = usePathname()
   const page = searchParams.get('page') || '1'
 
   const [currentPage, setCurrentPage] = useState(parseInt(page))
-  const lastPage = count / ITEMS_PER_PAGE
 
   const params = new URLSearchParams(searchParams)
 
-  const hasPrev = ITEMS_PER_PAGE * (parseInt(page) - 1) > 0
-  const hasNext = ITEMS_PER_PAGE * (parseInt(page) - 1) + ITEMS_PER_PAGE < count
+  let hasPrev = false
+  let hasNext = false
+  let lastPage = 0
+
+  if (type === 'todos') {
+    hasPrev = TODOS_PER_PAGE * (parseInt(page) - 1) > 0
+    hasNext = TODOS_PER_PAGE * (parseInt(page) - 1) + TODOS_PER_PAGE < count
+    lastPage = count / TODOS_PER_PAGE
+  } else {
+    hasPrev = ITEMS_PER_PAGE * (parseInt(page) - 1) > 0
+    hasNext = ITEMS_PER_PAGE * (parseInt(page) - 1) + ITEMS_PER_PAGE < count
+    lastPage = count / ITEMS_PER_PAGE
+  }
 
   const handleChangePage = useDebouncedCallback((type: string) => {
     switch (type) {
@@ -49,7 +60,7 @@ export default function Pagination({ count = 0 }: PaginationProps) {
   }, 300)
 
   return (
-    <div className="flex justify-between mt-6 mb-6 w-full sm:w-3/12">
+    <div className="flex justify-between mt-16 mb-6 w-full sm:w-3/12">
       <PaginationButton
         disabled={!hasPrev}
         handleChangePage={() => handleChangePage('first')}

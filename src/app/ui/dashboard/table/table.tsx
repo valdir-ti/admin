@@ -7,7 +7,7 @@ type TableProps = {
   columns: string[]
   data: unknown[]
   type: string
-  count?: number
+  count: number
 }
 
 export default function Table({ columns, data, type, count }: TableProps) {
@@ -30,7 +30,7 @@ export default function Table({ columns, data, type, count }: TableProps) {
 
   return (
     <>
-      <div className="relative overflow-x-auto h-[85%] sm:h-[75%]">
+      <div className="relative h-[85%] sm:h-[75%] overflow-x-auto">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr className="text-lg text-slate-400">
@@ -44,9 +44,7 @@ export default function Table({ columns, data, type, count }: TableProps) {
           {TableBodyComponent && <TableBodyComponent data={data} />}
         </table>
       </div>
-      <div>
-        <Pagination count={count} />
-      </div>
+      <Pagination count={count} type={type} />
     </>
   )
 }
