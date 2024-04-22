@@ -2,11 +2,6 @@ import NextAuth from 'next-auth'
 import { cookies } from 'next/headers'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
-const api_url =
-  process.env.NEXT_PUBLIC_ENVIRONMENT === 'development'
-    ? process.env.NEXT_PUBLIC_API_URL
-    : process.env.NEXT_PUBLIC_API_PROD
-
 const handler = NextAuth({
   pages: {
     signIn: '/login'
@@ -31,7 +26,12 @@ const handler = NextAuth({
             password: credentials.password
           }
 
-          const res = await fetch(api_url!, {
+          const api_url =
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'development'
+              ? process.env.NEXT_PUBLIC_API_URL
+              : process.env.NEXT_PUBLIC_API_PROD
+
+          const res = await fetch(`${api_url}login`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
