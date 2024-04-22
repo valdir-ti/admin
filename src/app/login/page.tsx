@@ -1,18 +1,38 @@
 'use client'
 
-import { useFormState, useFormStatus } from 'react-dom'
-import { loginUserServerAction } from '@/app/actions/users/login-user-action'
+import { FormEvent, useState } from 'react'
+import { signIn } from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
+
+import LoginButton from './loginButton'
 
 export default function LoginPage() {
-  const [errorMessage, dispatch] = useFormState(
-    loginUserServerAction,
-    undefined
-  )
+  const searchParams = useSearchParams()
+  const [loading, setLoading] = useState(false)
+
+  const error = searchParams.get('error')
+
+  function handleLogin(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+
+    const data = {
+      email: formData.get('email'),
+      password: formData.get('password')
+    }
+
+    setLoading(true)
+
+    signIn('credentials', {
+      ...data,
+      callbackUrl: '/dashboard'
+    })
+  }
 
   return (
     <div className="grid place-content-center h-screen w-full">
       <form
-        action={dispatch}
+        onSubmit={handleLogin}
         className="flex flex-col items-center justify-center bg-[--bgSoft] rounded-md w-96 h-96 gap-8"
       >
         <h3 className="font-bold text-3xl">Login</h3>
@@ -28,33 +48,15 @@ export default function LoginPage() {
           placeholder="Password"
           className="w-[80%] h-12 rounded-sm bg-[--bg] pl-2 border-0"
         />
-        <LoginButton />
+        <LoginButton loading={loading} />
         <span>
-          {errorMessage && (
-            <>
-              {' '}
-              <p className="text-sm text-red-500">{errorMessage}</p>
-            </>
+          {error === 'CredentialsSignin' && (
+            <div className="text-red-500 text-center text-sm mt-2">
+              Erro no login
+            </div>
           )}
         </span>
       </form>
     </div>
-  )
-}
-
-function LoginButton() {
-  const { pending } = useFormStatus()
-
-  return (
-    <button
-      className="w-[80%] h-12 rounded-sm bg-teal-600 cursor-pointer pl-2 border-0 mt-2 disabled:bg-teal-800 disabled:cursor-not-allowed"
-      aria-disabled={pending}
-      disabled={pending}
-    >
-      <div className="w-full flex items-center justify-center">
-        {pending && <span className="loading mr-2"></span>}
-        Log in
-      </div>
-    </button>
   )
 }

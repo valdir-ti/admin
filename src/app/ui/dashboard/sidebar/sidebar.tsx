@@ -1,13 +1,13 @@
 import Image from 'next/image'
 
-import { auth } from '@/app/auth'
 import { TypesColors } from '@/enum/typeColors'
 import { menuItemsData } from '@/utils/menuItemsData'
 import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
 import LogoutButton from '@/app/ui/dashboard/logout-button/logout-button'
+import { getServerSession } from 'next-auth'
 
 export default async function Sidebar() {
-  const session = await auth()
+  const session = await getServerSession()
 
   return (
     <div className="sticky">
