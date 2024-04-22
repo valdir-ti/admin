@@ -15,6 +15,9 @@ const nextConfig = {
         hostname: 'images.pexels.com'
       }
     ]
+  },
+  experimental: {
+    missingSuspenseWithCSRBailout: false
   }
 }
 
