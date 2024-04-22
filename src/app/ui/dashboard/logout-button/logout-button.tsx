@@ -2,12 +2,12 @@
 
 import { MouseEvent } from 'react'
 import { MdLogout } from 'react-icons/md'
+import { signOut } from 'next-auth/react'
 import { confirmAlert } from 'react-confirm-alert'
 
 import { Types } from '@/enum/types'
 import { TypesColors } from '@/enum/typeColors'
 import DialogConfirm from '@/app/ui/dashboard/dialog-confirm/dialog-confirm'
-import { logoutUserServerAction } from '@/app/actions/users/logout-user-action'
 
 type LogoutButtonProps = {
   color: TypesColors
@@ -28,7 +28,7 @@ export default function LogoutButton({ color }: LogoutButtonProps) {
         return (
           <DialogConfirm
             onClose={onClose}
-            onConfirm={() => logoutUserServerAction()}
+            onConfirm={() => signOut({ callbackUrl: '/login' })}
             message="Deseja realmente sair?"
             type={Types.red}
             callOnClose={false}
