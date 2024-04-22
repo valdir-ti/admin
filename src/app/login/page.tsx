@@ -5,7 +5,7 @@ import { signIn } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
 
 import LoginButton from './loginButton'
-import GoogleButton from './googleButton'
+import SocialButton from './socialButton'
 
 export default function LoginPage() {
   const searchParams = useSearchParams()
@@ -59,7 +59,16 @@ export default function LoginPage() {
         </span>
       </form>
       <div className="flex justify-center space-x-2 mt-2">
-        <GoogleButton />
+        <SocialButton
+          alt="Google Icon"
+          icon="/g-icon.png"
+          signInService="google"
+        />
+        <SocialButton
+          alt="Github Icon"
+          icon="/git-icon.png"
+          signInService="github"
+        />
       </div>
     </div>
   )
