@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
 
 import LoginButton from './loginButton'
+import GoogleButton from './googleButton'
 
 export default function LoginPage() {
   const searchParams = useSearchParams()
@@ -57,6 +58,9 @@ export default function LoginPage() {
           )}
         </span>
       </form>
+      <div className="flex justify-center space-x-2 mt-2">
+        <GoogleButton />
+      </div>
     </div>
   )
 }
