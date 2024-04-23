@@ -17,7 +17,7 @@ export default async function Sidebar() {
           alt="avatar"
           width={50}
           height={50}
-          className="rounded-full object-cover cursor-pointer max-h-[50px]"
+          className="rounded-full object-cover cursor-pointer max-h-[50px] w-[50px] h-[50px]"
         />
         <div className="flex flex-col">
           <span className="font-bold">
