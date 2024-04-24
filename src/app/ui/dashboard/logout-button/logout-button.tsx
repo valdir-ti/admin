@@ -4,6 +4,7 @@ import { MouseEvent } from 'react'
 import { MdLogout } from 'react-icons/md'
 import { signOut } from 'next-auth/react'
 import { confirmAlert } from 'react-confirm-alert'
+import { deleteCookie } from 'cookies-next'
 
 import { Types } from '@/enum/types'
 import { TypesColors } from '@/enum/typeColors'
@@ -20,6 +21,11 @@ export default function LogoutButton({ color }: LogoutButtonProps) {
     secondary: 'text-gray-800 hover:bg-gray-500 w-full p-2'
   }
 
+  const callLogout = () => {
+    deleteCookie('location')
+    signOut({ callbackUrl: '/login' })
+  }
+
   const handleLogout = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
@@ -28,7 +34,7 @@ export default function LogoutButton({ color }: LogoutButtonProps) {
         return (
           <DialogConfirm
             onClose={onClose}
-            onConfirm={() => signOut({ callbackUrl: '/login' })}
+            onConfirm={callLogout}
             message="Deseja realmente sair?"
             type={Types.red}
             callOnClose={false}

@@ -1,6 +1,3 @@
-import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth'
-
 import { getTodosServerAction } from '@/app/actions/todos/get-todos-action'
 import { getUsersServerAction } from '@/app/actions/users/get-users-action'
 import { getProductsServerAction } from '@/app/actions/products/get-products-action'
@@ -11,12 +8,6 @@ import RightBar from '@/app/ui/dashboard/rightbar/rightbar'
 import Transactions from '@/app/ui/dashboard/transactions/transactions'
 
 export default async function Home() {
-  const session = await getServerSession()
-
-  if (!session) {
-    redirect('/login')
-  }
-
   const usersData = await getUsersServerAction('', '')
   const todosData = await getTodosServerAction('', '')
   const productsData = await getProductsServerAction('', '')
