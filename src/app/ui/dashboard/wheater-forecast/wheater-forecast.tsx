@@ -1,14 +1,16 @@
 'use client'
 
+import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { MdSunny } from 'react-icons/md'
 import { getCookie, setCookie } from 'cookies-next'
-import { useCallback, useEffect, useState } from 'react'
+
+import { DataWheaterForecastProps } from '@/types'
 
 export default function WheaterForecast() {
   const cookieLocation = getCookie('location')
   const value = JSON.parse(cookieLocation || '{}')
-  const [data, setData] = useState({})
+  const [data, setData] = useState<DataWheaterForecastProps>()
   const [fireSearch, setFireSearch] = useState(false)
   const [title, setTitle] = useState('Searching...')
 
@@ -44,17 +46,19 @@ export default function WheaterForecast() {
       }
     }
 
-    getWheaterForecastData(value?.latitude, value?.longitude)
-      .then((data) => {
-        setData(data)
-        setTitle('Wheater Forecast')
-      })
-      .catch((err) => console.error(err))
+    if (fireSearch) {
+      getWheaterForecastData(value?.latitude, value?.longitude)
+        .then((data) => {
+          setData(data)
+          setTitle('Wheater Forecast')
+        })
+        .catch((err) => console.error(err))
+    }
   }, [value?.latitude, value?.longitude, fireSearch])
 
   const url = `https:${data?.current?.condition?.icon}`
 
-  return data?.error?.code === 1006 ? (
+  return !fireSearch || data?.error?.code === 1006 ? (
     <>
       <div className="ml-2 flex flex-col gap-4">
         <span className="font-bold">
