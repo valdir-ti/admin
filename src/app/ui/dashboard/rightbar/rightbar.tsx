@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { MdPlayCircleFilled } from 'react-icons/md'
+import ExchangeRate from '../exchange-rate/exchange-rate'
 import WheaterForecast from '../wheater-forecast/wheater-forecast'
 
 export default function RightBar() {
@@ -7,6 +8,10 @@ export default function RightBar() {
     <div className="flex flex-1 flex-col mr-0 lg:mr-2">
       <div className="relative bg-gradient-to-b from-[--bgHover] p-4 rounded-md mb-4">
         <WheaterForecast />
+      </div>
+
+      <div className="relative bg-gradient-to-b from-[--bgHover] p-4 rounded-md mb-4">
+        <ExchangeRate />
       </div>
 
       <div className="relative bg-gradient-to-b from-[--bgHover] p-4 rounded-md mt-2">
