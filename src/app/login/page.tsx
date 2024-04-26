@@ -3,7 +3,7 @@
 import { FormEvent, useCallback, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
-import { LiaEyeSlash, LiaEye } from 'react-icons/lia'
+import { ImEyeBlocked, ImEye } from 'react-icons/im'
 
 import LoginButton from './loginButton'
 import SocialButton from './socialButton'
@@ -68,7 +68,7 @@ export default function LoginPage() {
             className="absolute right-[52px] top-[16px] cursor-pointer"
             onClick={handleShowPassord}
           >
-            {showPassword ? <LiaEyeSlash /> : <LiaEye />}
+            {showPassword ? <ImEye /> : <ImEyeBlocked />}
           </div>
         </div>
         <LoginButton loading={loading} />
