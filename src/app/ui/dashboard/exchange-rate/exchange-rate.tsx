@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { MdMonetizationOn } from 'react-icons/md'
 
-import { formatCurrency } from '@/utils/formatCurrency'
+import MoneyValue from './money-value'
 
 async function getExchangeRate() {
   try {
@@ -20,8 +20,11 @@ export default async function ExchangeRate() {
   const data = await getExchangeRate()
 
   const dolar = data.USDBRL.bid
+  const dolarVariation = data.USDBRL.varBid
   const euro = data.EURBRL.bid
+  const euroVariation = data.EURBRL.varBid
   const btc = data.BTCBRL.bid
+  const btcVariation = data.BTCBRL.varBid
 
   return (
     <>
@@ -41,20 +44,10 @@ export default async function ExchangeRate() {
             <p className="ml-2 text-yellow-500">Exchange Rate</p>
           </div>
         </span>
-        <h3 className="font-semibold text-base">
-          Dólar: {formatCurrency(dolar)}
-        </h3>
-        <h3 className="font-semibold text-base">
-          Euro: {formatCurrency(euro)}
-        </h3>
-        <h3 className="font-semibold text-base">
-          Bitcoin: {formatCurrency(btc)}
-        </h3>
+        <MoneyValue name="Dólar" value={dolar} variation={dolarVariation} />
+        <MoneyValue name="Euro" value={euro} variation={euroVariation} />
+        <MoneyValue name="BTC" value={btc} variation={btcVariation} />
       </div>
     </>
   )
-}
-
-{
-  /* https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL */
 }
