@@ -1,8 +1,9 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { FormEvent, useCallback, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
+import { ImEyeBlocked, ImEye } from 'react-icons/im'
 
 import LoginButton from './loginButton'
 import SocialButton from './socialButton'
@@ -10,8 +11,19 @@ import SocialButton from './socialButton'
 export default function LoginPage() {
   const searchParams = useSearchParams()
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [typePassword, setTypePassword] = useState('password')
 
   const error = searchParams.get('error')
+
+  const handleShowPassord = useCallback(() => {
+    setShowPassword(!showPassword)
+    if (!showPassword) {
+      setTypePassword('text')
+    } else {
+      setTypePassword('password')
+    }
+  }, [showPassword])
 
   function handleLogin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -37,18 +49,28 @@ export default function LoginPage() {
         className="flex flex-col items-center justify-center bg-[--bgSoft] rounded-md w-96 h-96 gap-8"
       >
         <h3 className="font-bold text-3xl">Login</h3>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="w-[80%] h-12 rounded-sm bg-[--bg] pl-2 border-0"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="w-[80%] h-12 rounded-sm bg-[--bg] pl-2 border-0"
-        />
+        <div className="w-full text-center">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="w-[80%] h-12 rounded-sm bg-[--bg] pl-2 border-0"
+          />
+        </div>
+        <div className="relative w-full text-center">
+          <input
+            type={typePassword}
+            name="password"
+            placeholder="Password"
+            className="w-[80%] h-12 rounded-sm bg-[--bg] pl-2 border-0"
+          />
+          <div
+            className="absolute right-[52px] top-[16px] cursor-pointer"
+            onClick={handleShowPassord}
+          >
+            {showPassword ? <ImEye /> : <ImEyeBlocked />}
+          </div>
+        </div>
         <LoginButton loading={loading} />
         <span>
           {error === 'CredentialsSignin' && (
