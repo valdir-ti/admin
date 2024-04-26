@@ -23,7 +23,7 @@ export default async function Sidebar() {
           <span className="font-bold">
             {session?.user?.name || 'User name'}
           </span>
-          <span className="text-sm text-[--textSoft]">Administrator</span>
+          <span className="text-sm text-[--textSoft]">User</span>
         </div>
       </div>
       <ul className="">
