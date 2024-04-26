@@ -1,7 +1,6 @@
 import { api } from './api'
 
 export async function getTodos(q: string, page: string) {
-  console.log('api => ', api.defaults.baseURL)
   const { data } = await api.get(`/todos?q=${q}&page=${page}`)
   return data
 }
