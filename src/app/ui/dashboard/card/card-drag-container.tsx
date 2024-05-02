@@ -33,7 +33,7 @@ export default function CardDragContainer({ data }: CardDragContainerProps) {
           <Reorder.Item
             value={item}
             key={item.index}
-            className="bg-[--bgSoft] hover:bg-[--bgHover] p-[4px] sm:p-4 rounded-md min-w-[32%]"
+            className="bg-[--bgSoft] hover:bg-[--bgHover] p-[4px] sm:p-4 rounded-md min-w-[32%] cursor-grab"
           >
             <Card data={item.data} index={item.index} />
           </Reorder.Item>
