@@ -6,8 +6,8 @@ type TodoPercentProps = {
 
 export default function TodoPercent({
   count,
-  totalDone,
-  totalOpen
+  totalDone = 0,
+  totalOpen = 0
 }: TodoPercentProps) {
   const completedTasks = (totalDone * 100) / count
   const openedTasks = (totalOpen * 100) / count
