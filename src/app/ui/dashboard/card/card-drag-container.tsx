@@ -3,53 +3,8 @@
 import { useState } from 'react'
 import { Reorder } from 'framer-motion'
 
-import Card, { CardProps } from './card'
-
-interface UserData {
-  _id: string
-  name: string
-  email: string
-  isAdmin: boolean
-  isActive: boolean
-  createdAt: string
-  image?: string
-}
-
-interface TodoData {
-  _id: string
-  description: string
-  done: boolean
-  createdAt: string
-}
-
-interface ProductData {
-  _id: string
-  title: string
-  description: string
-  price: number
-  stock: number
-  category: string
-  isActive: boolean
-  image?: string
-  createdAt: string
-  size?: number
-}
-
-export interface DataCardProps {
-  count: number
-  totalDone?: number
-  totalOpen?: number
-  data: (UserData | TodoData | ProductData)[]
-}
-
-export interface DataItem {
-  index: string
-  data: DataCardProps
-}
-
-type CardDragContainerProps = {
-  data: { index: string; data: CardProps[] }[]
-}
+import Card from './card'
+import { CardDragContainerProps, CardProps } from '@/types/card'
 
 export default function CardDragContainer({ data }: CardDragContainerProps) {
   const storedIndicesString = localStorage.getItem('cardsOrder')
@@ -60,7 +15,7 @@ export default function CardDragContainer({ data }: CardDragContainerProps) {
     : data
   const [items, setItems] = useState(initialItems)
 
-  const handleReorder = (data: DataItem[]) => {
+  const handleReorder = (data: CardProps[]) => {
     const indices = data?.map((item) => item.index)
     localStorage.setItem('cardsOrder', JSON.stringify(indices))
     setItems(data)
@@ -74,13 +29,13 @@ export default function CardDragContainer({ data }: CardDragContainerProps) {
         onReorder={handleReorder}
         className="grid grid-cols-3 w-full gap-4"
       >
-        {items.map((item: DataItem) => (
+        {items.map((item: CardProps) => (
           <Reorder.Item
             value={item}
             key={item.index}
             className="bg-[--bgSoft] hover:bg-[--bgHover] p-[4px] sm:p-4 rounded-md min-w-[32%]"
           >
-            <Card item={item.data} itemName={item.index} />
+            <Card data={item.data} index={item.index} />
           </Reorder.Item>
         ))}
       </Reorder.Group>
