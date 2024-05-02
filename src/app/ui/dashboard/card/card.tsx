@@ -1,16 +1,10 @@
+import { DataCardProps } from './card-drag-container'
 import CardIcon from './card-icon'
 import TodoPercent from './todo-percent'
 
-type DataProps = {
-  data: []
-  count: number
-  totalOpen?: number
-  totalDone?: number
-}
-
 export type CardProps = {
   itemName: string
-  item: DataProps
+  item: DataCardProps
 }
 
 export default function Card({ item, itemName }: CardProps) {

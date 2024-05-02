@@ -35,7 +35,7 @@ interface ProductData {
   size?: number
 }
 
-interface DataProps {
+export interface DataCardProps {
   count: number
   totalDone?: number
   totalOpen?: number
@@ -44,7 +44,7 @@ interface DataProps {
 
 export interface DataItem {
   index: string
-  data: DataProps
+  data: DataCardProps
 }
 
 type CardDragContainerProps = {
