@@ -7,14 +7,14 @@ import { IoArrowRedoSharp } from 'react-icons/io5'
 export default function Card({ data, index }: CardProps) {
   return (
     <>
-      <div className="flex flex-col justify-between sm:flex-row items-center mt-2 sm:mt-0">
-        <div className="flex items-center">
+      <div className="flex flex-col justify-around items-center mt-2 sm:justify-between sm:flex-row sm:mt-0 sm:p-2">
+        <div className="flex items-center flex-col sm:flex-row">
           <CardIcon type={index?.toLowerCase()} />
-          <h4 className="ml-0 sm:ml-3 font-medium mt-1 sm:mt-0">
+          <h4 className="ml-0 sm:ml-2 font-medium mt-1 sm:mt-0">
             Total {index}
           </h4>
         </div>
-        <div className="flex">
+        <div className="flex mt-2 mb-2 sm:mt-0 sm:mb-0 justify-center items-center w-full sm:w-2">
           <Link
             href={`/dashboard/${index.toLowerCase()}`}
             className="ml-4"
