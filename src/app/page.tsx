@@ -4,6 +4,9 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 
+import Header from './ui/site/header/header'
+import Footer from './ui/site/footer/footer'
+
 export default function Home() {
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'development') {
@@ -26,10 +29,11 @@ export default function Home() {
 
   return (
     <main>
-      Home page
+      <Header />
       <div className="mt-2 cursor-pointer">
         <Link href="/dashboard">Go to Dashboard</Link>
       </div>
+      <Footer />
     </main>
   )
 }
