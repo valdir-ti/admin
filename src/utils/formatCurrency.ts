@@ -1,5 +1,5 @@
-export const formatCurrency = (value: string): string => {
-  const valueFormatted = parseFloat(value.replace(',', '.'))
+export const formatCurrency = (value: number): string => {
+  const valueFormatted = parseFloat(value.toFixed(2))
 
   if (!isNaN(valueFormatted)) {
     const formattedValue = valueFormatted.toLocaleString('pt-BR', {

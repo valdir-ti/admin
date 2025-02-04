@@ -1,11 +1,11 @@
 import { MdExpandLess, MdExpandMore, MdHorizontalRule } from 'react-icons/md'
 
 type VariationIconProps = {
-  value: string
+  value: number
 }
 
 const VariationIcon = ({ value }: VariationIconProps) => {
-  const numericValue = parseFloat(value)
+  const numericValue = parseFloat(value.toFixed(2))
 
   if (numericValue > 0) {
     return (

@@ -3,8 +3,8 @@ import VariationIcon from './variation-icon'
 
 type MoneyValueProps = {
   name: string
-  value: string
-  variation: string
+  value: number
+  variation: number
 }
 
 const MoneyValue = ({ name, value, variation }: MoneyValueProps) => {

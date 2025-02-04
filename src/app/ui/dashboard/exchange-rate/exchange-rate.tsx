@@ -3,11 +3,20 @@ import { MdMonetizationOn } from 'react-icons/md'
 
 import MoneyValue from './money-value'
 
-async function getExchangeRate() {
+type ExchangeRateData = {
+  bid?: string | null
+  varBid?: string | null
+}
+
+type ExchangeRateResponse = {
+  USDBRL?: ExchangeRateData
+  EURBRL?: ExchangeRateData
+  BTCBRL?: ExchangeRateData
+}
+
+async function fetchExchangeRate() {
   try {
-    const response = await fetch(
-      'https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL'
-    )
+    const response = await fetch(process.env.EXCHANGE_RATE_API_URL || '')
     const data = await response.json()
     return data
   } catch (error) {
@@ -17,14 +26,19 @@ async function getExchangeRate() {
 }
 
 export default async function ExchangeRate() {
-  const data = await getExchangeRate()
+  const data: ExchangeRateResponse = await fetchExchangeRate()
 
-  const dolar = data.USDBRL.bid
-  const dolarVariation = data.USDBRL.varBid
-  const euro = data.EURBRL.bid
-  const euroVariation = data.EURBRL.varBid
-  const btc = data.BTCBRL.bid
-  const btcVariation = data.BTCBRL.varBid
+  const parseNumber = (
+    value: string | null | undefined,
+    defaultValue = 0
+  ): number => parseFloat(value ?? '') || defaultValue
+
+  const dolar = parseNumber(data.USDBRL?.bid)
+  const dolarVariation = parseNumber(data.USDBRL?.varBid)
+  const euro = parseNumber(data.EURBRL?.bid)
+  const euroVariation = parseNumber(data.EURBRL?.varBid)
+  const btc = parseNumber(data.BTCBRL?.bid)
+  const btcVariation = parseNumber(data.BTCBRL?.varBid)
 
   return (
     <>
