@@ -1,7 +1,13 @@
 import { api } from './api'
 
-export async function getTodos(q: string, page: string) {
-  const response = await api.get(`/todos?q=${q}&page=${page}`)
+export type getTodosParams = {
+  q: string
+  page: string
+  order: string
+}
+
+export async function getTodos({ q, page, order }: getTodosParams) {
+  const response = await api.get(`/todos?q=${q}&page=${page}&order=${order}`)
   return response.data
 }
 
