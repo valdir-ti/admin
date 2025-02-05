@@ -9,7 +9,11 @@ import CardDragContainer from '../ui/dashboard/card/card-drag-container'
 
 export default async function Home() {
   const usersData = await getUsersServerAction('', '')
-  const todosData = await getTodosServerAction('', '')
+  const todosData = await getTodosServerAction({
+    q: '',
+    page: '1',
+    order: 'desc'
+  })
   const productsData = await getProductsServerAction('', '')
 
   const cards = [

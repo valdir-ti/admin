@@ -5,14 +5,16 @@ type HomeProps = {
   searchParams: {
     q: string
     page: string
+    order: string
   }
 }
 
 export default async function Home({ searchParams }: HomeProps) {
   const q = searchParams?.q || ''
   const page = searchParams?.page || '1'
+  const order = searchParams?.order || 'desc'
 
-  const todosData = await getTodosServerAction(q, page)
+  const todosData = await getTodosServerAction({ q, page, order })
   const { count, data } = todosData
 
   const tableColumns = ['Description', 'Status', 'Creation', 'Actions']
