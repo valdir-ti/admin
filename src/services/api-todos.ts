@@ -1,9 +1,8 @@
 import { api } from './api'
 
 export async function getTodos(q: string, page: string) {
-  console.log('api => ', api.defaults.baseURL)
-  const { data } = await api.get(`/todos?q=${q}&page=${page}`)
-  return data
+  const response = await api.get(`/todos?q=${q}&page=${page}`)
+  return response.data
 }
 
 export async function deleteTodo(id: string) {
