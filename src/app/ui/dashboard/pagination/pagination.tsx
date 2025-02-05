@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 
@@ -19,6 +19,10 @@ export default function Pagination({ count = 0, type }: PaginationProps) {
   const page = searchParams.get('page') || '1'
 
   const [currentPage, setCurrentPage] = useState(parseInt(page))
+
+  useEffect(() => {
+    setCurrentPage(parseInt(page))
+  }, [page])
 
   const params = new URLSearchParams(searchParams)
 

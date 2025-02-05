@@ -30,7 +30,7 @@ export default function Search({ placeholder }: SearchProps) {
       }
       replace(`${pathname}?${params}`)
     },
-    300
+    500
   )
 
   const handleCleanSearch = () => {

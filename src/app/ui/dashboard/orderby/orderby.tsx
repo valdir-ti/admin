@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -16,14 +16,18 @@ export default function Orderby({ order }: OrderbyProps) {
   const pathname = usePathname()
 
   const handleOrderBy = () => {
-    setOrderBy((prev) => (prev === 'asc' ? 'desc' : 'asc'))
-  }
+    setOrderBy((prev) => {
+      const newOrder = prev === 'asc' ? 'desc' : 'asc'
 
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams)
-    params.set('order', orderBy)
-    replace(`${pathname}?${params}`)
-  }, [orderBy, pathname, replace, searchParams])
+      const params = new URLSearchParams(searchParams)
+      params.set('page', '1')
+      params.set('order', newOrder)
+
+      replace(`${pathname}?${params}`)
+
+      return newOrder
+    })
+  }
 
   return (
     <button
