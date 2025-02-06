@@ -57,7 +57,6 @@ export default function Page() {
               placeholder="description"
               id="description"
               required
-              autoFocus
               autoComplete="off"
               className="w-full p-4 bg-[--bg] text-[--text] mb-2 mt-2 rounded-md border-[1px] border-gray-600"
             />
