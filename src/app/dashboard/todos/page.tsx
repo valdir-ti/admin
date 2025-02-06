@@ -17,7 +17,7 @@ export default async function Home({ searchParams }: HomeProps) {
   const todosData = await getTodosServerAction({ q, page, order })
   const { count, data } = todosData
 
-  const tableColumns = ['Description', 'Status', 'Creation', 'Actions']
+  const tableColumns = ['Title', 'Description', 'Status', 'Creation', 'Actions']
 
   return (
     <TableWrapper

@@ -34,6 +34,23 @@ export default function Page() {
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
         <div className="flex justify-between">
           <div className="flex flex-col w-full">
+            <label htmlFor="title">Title</label>
+            <input
+              {...register('title')}
+              placeholder="title"
+              id="title"
+              required
+              autoFocus
+              autoComplete="off"
+              className="w-full p-4 bg-[--bg] text-[--text] mb-2 mt-2 rounded-md border-[1px] border-gray-600"
+            />
+            {errors.description && (
+              <p className="text-red-500 mb-2">{errors.description?.message}</p>
+            )}
+          </div>
+        </div>
+        <div className="flex justify-between mb-8">
+          <div className="flex flex-col w-full">
             <label htmlFor="description">Description</label>
             <input
               {...register('description')}
