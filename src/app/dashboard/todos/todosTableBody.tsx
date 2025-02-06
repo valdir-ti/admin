@@ -27,6 +27,9 @@ export default function TodosTableBody({ data }: TodosTableProps) {
           <Fragment key={todo._id}>
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <td className={`${todo.done ? 'line-through' : ''} px-6 py-4`}>
+                {todo.title ?? '-'}
+              </td>
+              <td className={`${todo.done ? 'line-through' : ''} px-6 py-4`}>
                 {todo.description}
               </td>
               <td className="px-6 py-4">
