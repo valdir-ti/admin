@@ -1,13 +1,16 @@
+'use client'
+
 import Image from 'next/image'
 
 import { TypesColors } from '@/enum/typeColors'
 import { menuItemsData } from '@/utils/menuItemsData'
 import MenuLink from '@/app/ui/dashboard/menuLink/menulink'
 import LogoutButton from '@/app/ui/dashboard/logout-button/logout-button'
-import { getServerSession } from 'next-auth'
+import { useSession } from 'next-auth/react'
+import { formatName } from '@/utils/formatName'
 
-export default async function Sidebar() {
-  const session = await getServerSession()
+export default function Sidebar() {
+  const { data: session } = useSession()
 
   return (
     <div className="sticky">
@@ -21,7 +24,7 @@ export default async function Sidebar() {
         />
         <div className="flex flex-col">
           <span className="font-bold">
-            {session?.user?.name || 'User name'}
+            {formatName(session?.user?.name || 'User name')}
           </span>
           <span className="text-sm text-[--textSoft]">User</span>
         </div>

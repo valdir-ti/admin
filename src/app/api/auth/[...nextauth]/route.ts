@@ -1,10 +1,11 @@
-import NextAuth from 'next-auth'
-import { cookies } from 'next/headers'
+import NextAuth, { Session, User } from 'next-auth'
+import { JWT } from 'next-auth/jwt'
 import GoogleProvider from 'next-auth/providers/google'
 import GitHubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import { cookies } from 'next/headers'
 
-const handler = NextAuth({
+export const authOptions = {
   pages: {
     signIn: '/login'
   },
@@ -43,7 +44,7 @@ const handler = NextAuth({
 
           const { user, token } = response
 
-          const combinedObject = { ...user, token }
+          const combinedObject = { ...user, id: user.id, token }
 
           if (res.status === 201 && combinedObject) {
             cookies().set('jwt', token)
@@ -63,7 +64,23 @@ const handler = NextAuth({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!
     })
-  ]
-})
+  ],
+  callbacks: {
+    async jwt({ token, user }: { token: JWT; user?: User }) {
+      if (user) {
+        token.id = user.id ?? user.sub
+      }
+      return token
+    },
+    async session({ session, token }: { session: Session; token: JWT }) {
+      if (session.user && token.id) {
+        session.user.id = token.id as string
+      }
+      return session
+    }
+  }
+}
+
+const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }

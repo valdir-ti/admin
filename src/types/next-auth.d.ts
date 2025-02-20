@@ -10,6 +10,8 @@ declare module 'next-auth' {
     name: string
     user: {
       /** The user's postal address. */
+      id: string
+      sub: string
       image: string
       name: string
     }
