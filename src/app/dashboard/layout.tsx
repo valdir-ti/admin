@@ -5,8 +5,8 @@ import Footer from '@/app/ui/dashboard/footer/footer'
 import Navbar from '@/app/ui/dashboard/navbar/navbar'
 import Sidebar from '@/app/ui/dashboard/sidebar/sidebar'
 import MobileSidebar from '@/app/ui/dashboard/mobile-sidebar/mobile-sidebar'
-import { authOptions } from '../api/auth/[...nextauth]/route'
 import AuthProvider from '@/providers/AuthProvider'
+import { authOptions } from '@/lib/authOptions'
 
 export default async function RootLayout({
   children
