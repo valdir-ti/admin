@@ -45,7 +45,7 @@ export default function Search({ placeholder }: SearchProps) {
   }
 
   return (
-    <div className="flex items-center gap-3 bg-[--bgHover] rounded-md p-2">
+    <div className="flex items-center gap-3 bg-[--bgHover] rounded-md p-2 w-48">
       {!showCloseIcon ? (
         <MdSearch />
       ) : (
@@ -55,7 +55,7 @@ export default function Search({ placeholder }: SearchProps) {
         ref={inputRef}
         type="text"
         placeholder={placeholder}
-        className="bg-transparent border-0 text-[--bgHover] outline-none text-white"
+        className="bg-transparent border-0 text-[--bgHover] outline-none text-white w-36"
         onChange={handleSearch}
       />
     </div>

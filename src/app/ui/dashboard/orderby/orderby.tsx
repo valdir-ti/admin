@@ -31,7 +31,7 @@ export default function Orderby({ order }: OrderbyProps) {
 
   return (
     <button
-      className="p-2 bg-[--purpleColor] rounded-md text-white border-0 cursor-pointer"
+      className="p-2 bg-[--purpleColor] rounded-md text-white border-0 cursor-pointer ml-2 sm:ml-8"
       onClick={handleOrderBy}
       title={`Order ${orderBy ?? 'desc'}`}
     >
