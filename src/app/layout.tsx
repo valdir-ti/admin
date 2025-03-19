@@ -11,8 +11,8 @@ import GoogleAnalytics from '../utils/googleAnalytics'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Dashboard Intratec',
-  description: 'Intratec Tecnologia'
+  title: 'Portfólio Intratec',
+  description: 'Portfólio - Intratec Tecnologia'
 }
 
 export default async function RootLayout({

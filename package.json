@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "reset:dev": "rimraf .next && rimraf yarn.lock && rimraf package-lock.json && rimraf node_modules && npm install && npm run dev",
     "lint": "next lint",
     "test": "jest",
     "test:w": "test --watch",

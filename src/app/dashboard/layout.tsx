@@ -1,3 +1,6 @@
+import '@/app/ui/dashboard.css'
+
+import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 
@@ -7,6 +10,11 @@ import Sidebar from '@/app/ui/dashboard/sidebar/sidebar'
 import MobileSidebar from '@/app/ui/dashboard/mobile-sidebar/mobile-sidebar'
 import AuthProvider from '@/providers/AuthProvider'
 import { authOptions } from '@/lib/authOptions'
+
+export const metadata: Metadata = {
+  title: 'Dashboard Intratec',
+  description: 'Dashboard - Intratec Tecnologia'
+}
 
 export default async function RootLayout({
   children
