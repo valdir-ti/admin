@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: 'Dashboard - Intratec Tecnologia'
 }
 
-export default async function RootLayout({
+export default async function DashboardLayout({
   children
 }: {
   children: React.ReactNode
@@ -29,7 +29,7 @@ export default async function RootLayout({
 
   return (
     <AuthProvider session={session}>
-      <div className="flex">
+      <main className="flex dashboard">
         <div className="w-full sm:w-1/4 lg:w-2/12 min-h-screen bg-[--bgSoft] hidden sm:flex p-2 sm:p-4">
           <Sidebar />
         </div>
@@ -39,7 +39,7 @@ export default async function RootLayout({
           {children}
           <Footer />
         </div>
-      </div>
+      </main>
     </AuthProvider>
   )
 }

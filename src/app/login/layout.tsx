@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   description: 'Dashboard - Intratec Tecnologia'
 }
 
-export default async function RootLayout({
+export default async function LoginLayout({
   children
 }: {
   children: React.ReactNode
 }) {
-  return <div className="flex">{children}</div>
+  return <main className="login">{children}</main>
 }

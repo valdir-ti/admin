@@ -55,6 +55,7 @@ export default function LoginPage() {
             name="email"
             placeholder="Email"
             className="w-[80%] h-12 rounded-sm bg-[--bg] pl-2 border-0"
+            autoComplete="username"
           />
         </div>
         <div className="relative w-full text-center">
@@ -63,6 +64,7 @@ export default function LoginPage() {
             name="password"
             placeholder="Password"
             className="w-[80%] h-12 rounded-sm bg-[--bg] pl-2 border-0"
+            autoComplete="current-password"
           />
           <div
             className="absolute right-[52px] top-[16px] cursor-pointer"

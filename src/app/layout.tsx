@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { JetBrains_Mono } from 'next/font/google'
 import { ToastContainer } from 'react-toastify'
 
 import 'react-confirm-alert/src/react-confirm-alert.css'
@@ -8,7 +8,11 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import GoogleAnalytics from '../utils/googleAnalytics'
 
-const inter = Inter({ subsets: ['latin'] })
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+  variable: '--font-jetBrainsMono'
+})
 
 export const metadata: Metadata = {
   title: 'Portfólio Intratec',
@@ -22,7 +26,10 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body className={`${jetBrainsMono.className} home`}>
         <GoogleAnalytics />
         <ToastContainer autoClose={1600} />
         {children}
