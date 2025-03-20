@@ -1,10 +1,10 @@
+import './ui/globals.css'
+import 'react-confirm-alert/src/react-confirm-alert.css'
+import 'react-toastify/dist/ReactToastify.css'
+
 import type { Metadata } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
 import { ToastContainer } from 'react-toastify'
-
-import 'react-confirm-alert/src/react-confirm-alert.css'
-import './ui/globals.css'
-import 'react-toastify/dist/ReactToastify.css'
 
 import GoogleAnalytics from '../utils/googleAnalytics'
 
@@ -29,7 +29,7 @@ export default async function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${jetBrainsMono.className} home`}>
+      <body className={`${jetBrainsMono.className}`}>
         <GoogleAnalytics />
         <ToastContainer autoClose={1600} />
         {children}

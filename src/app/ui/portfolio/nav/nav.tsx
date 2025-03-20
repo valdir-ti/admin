@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const links = [
-  { name: 'home', path: '/' },
-  { name: 'services', path: '/services' },
-  { name: 'resume', path: '/resume' },
-  { name: 'work', path: '/work' },
-  { name: 'contact', path: '/contact' }
+  { name: 'home', path: '/homepage' },
+  { name: 'services', path: '/homepage/services' },
+  { name: 'resume', path: '/homepage/resume' },
+  { name: 'work', path: '/homepage/work' },
+  { name: 'contact', path: '/homepage/contact' }
 ]
 
 export const Nav = () => {

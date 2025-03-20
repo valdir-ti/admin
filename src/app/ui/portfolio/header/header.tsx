@@ -16,7 +16,7 @@ export const Header = () => {
         {/* Desktop Nav */}
         <div className="hidden xl:flex items-center gap-8">
           <Nav />
-          <Link href="/contact">
+          <Link href="/homepage/contact">
             <Button>Hire me</Button>
           </Link>
         </div>

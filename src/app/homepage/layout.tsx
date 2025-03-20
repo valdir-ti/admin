@@ -1,20 +1,22 @@
 import '@/app/ui/dashboard.css'
 
 import type { Metadata } from 'next'
+import { Header } from '../ui/portfolio/header/header'
 
 export const metadata: Metadata = {
   title: 'Dashboard Intratec',
   description: 'Dashboard - Intratec Tecnologia'
 }
 
-export default async function LoginLayout({
+export default function HomeLayout({
   children
 }: {
   children: React.ReactNode
 }) {
   return (
-    <div className="login">
+    <section className="home h-screen">
+      <Header />
       <main>{children}</main>
-    </div>
+    </section>
   )
 }
