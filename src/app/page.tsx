@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
+import { Header } from './ui/portfolio/header/header'
 
 export default function Home() {
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function Home() {
 
   return (
     <main>
-      Home page
+      <Header />
       <div className="mt-2 cursor-pointer">
         <Link href="/dashboard">Go to Dashboard</Link>
       </div>
