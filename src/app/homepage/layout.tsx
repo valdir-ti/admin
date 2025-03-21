@@ -1,8 +1,10 @@
 import '@/app/ui/dashboard.css'
 
 import type { Metadata } from 'next'
+
 import { Header } from '../ui/portfolio/header/header'
 import PageTransition from '../ui/portfolio/page-transition/page-transition'
+import StairTransition from '../ui/portfolio/stair-transition/stair-transition'
 
 export const metadata: Metadata = {
   title: 'Dashboard Intratec',
@@ -17,6 +19,7 @@ export default function HomeLayout({
   return (
     <section className="home h-screen">
       <Header />
+      <StairTransition />
       <PageTransition>{children}</PageTransition>
     </section>
   )

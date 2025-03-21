@@ -37,6 +37,7 @@
 .text-portfolioAccent {
   color: var(--portfolioAccent);
 }
+
 .border-portfolioAccent {
   border-color: var(--portfolioAccent);
 }
