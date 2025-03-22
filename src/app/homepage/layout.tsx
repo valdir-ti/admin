@@ -17,7 +17,7 @@ export default function HomeLayout({
   children: React.ReactNode
 }) {
   return (
-    <section className="home h-screen">
+    <section className="home h-full xl:h-screen pb-16 xl:pb-0">
       <Header />
       <StairTransition />
       <PageTransition>{children}</PageTransition>

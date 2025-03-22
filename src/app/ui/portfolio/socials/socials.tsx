@@ -1,11 +1,9 @@
 import Link from 'next/link'
-import { FaGithub, FaLinkedinIn, FaYoutube, FaTwitter } from 'react-icons/fa'
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
 
 const socials = [
-  { icon: <FaGithub />, link: '' },
-  { icon: <FaLinkedinIn />, link: '' },
-  { icon: <FaYoutube />, link: '' },
-  { icon: <FaTwitter />, link: '' }
+  { icon: <FaGithub />, link: 'https://github.com/valdir-ti' },
+  { icon: <FaLinkedinIn />, link: 'https://www.linkedin.com/in/valdirti/' }
 ]
 
 type TSocials = {
@@ -17,7 +15,12 @@ const Socials = ({ containerStyles, iconStyles }: TSocials) => {
   return (
     <div className={containerStyles}>
       {socials.map((social, index) => (
-        <Link href={social.link} key={index} className={iconStyles}>
+        <Link
+          href={social.link}
+          key={index}
+          className={iconStyles}
+          target="_blank"
+        >
           {social.icon}
         </Link>
       ))}
