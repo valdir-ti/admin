@@ -1,27 +1,67 @@
 'use client'
 
+import { differenceInCalendarYears } from 'date-fns'
+import { useState, useEffect } from 'react'
+
 import CountUp from 'react-countup'
 
-const stats = [
-  {
-    num: 12,
-    text: 'Years of experience'
-  },
-  {
-    num: 26,
-    text: 'Projects completed'
-  },
-  {
-    num: 8,
-    text: 'Technologies mastered'
-  },
-  {
-    num: 500,
-    text: 'Code commits'
-  }
-]
-
 const Stats = () => {
+  const [totalCommits, setTotalCommits] = useState(0)
+  const [repoCount, setRepoCount] = useState(0)
+
+  useEffect(() => {
+    const fetchCommits = async () => {
+      try {
+        const commitResponse = await fetch(
+          'https://api.github.com/search/commits?q=author:valdir-ti'
+        )
+        const commitResponsedata = await commitResponse.json()
+        if (commitResponsedata) {
+          setTotalCommits(commitResponsedata.total_count)
+        }
+
+        const repoData = await fetch(
+          'https://api.github.com/users/valdir-ti/repos'
+        )
+        const repoDataResponse = await repoData.json()
+        if (repoDataResponse) {
+          setRepoCount(repoDataResponse.length)
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchCommits()
+  }, [])
+
+  const yearsExperience = differenceInCalendarYears(
+    new Date(),
+    new Date(2015, 1, 1)
+  )
+
+  const stats = [
+    {
+      num: yearsExperience,
+      text: 'Years of experience',
+      title: `${yearsExperience}+ years of experience`
+    },
+    {
+      num: repoCount,
+      text: 'Projects on Github',
+      title: `${repoCount} projects on github`
+    },
+    {
+      num: 24,
+      text: 'Technologies mastered',
+      title:
+        'JavaScript/TypeScript, Python, JQuery, Github, ReactJS, NextJS, React Native, Node.js, NestJS, Jest, Firebase, MongoDB, MySQL, PostgreSQL, GraphQL, PHP, Gitlab, CI/CD, Sass, Styled Components, Material UI, TailwindCSS, Bootstrap'
+    },
+    {
+      num: totalCommits,
+      text: 'Code commits',
+      title: `${totalCommits} total code commits`
+    }
+  ]
   return (
     <section>
       <div className="container mx-auto">
@@ -31,6 +71,7 @@ const Stats = () => {
               <div
                 className="flex-1 flex gap-4 items-center justify-center xl:justify-start"
                 key={index}
+                title={stat.title}
               >
                 <CountUp
                   end={stat.num}
