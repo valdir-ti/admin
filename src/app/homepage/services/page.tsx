@@ -8,31 +8,31 @@ import { BsArrowDownRight } from 'react-icons/bs'
 const services = [
   {
     num: '01',
-    title: 'Web Development',
+    title: 'FullStack Developer',
     description:
-      'We build websites that serve as powerful marketing tools and bring memorable brand experiences.',
-    href: '/web-development'
+      'I create complete web solutions, from interface design to backend and database implementation. I focus on scalability, performance, and usability to meet the specific needs of your project.',
+    href: ''
   },
   {
     num: '02',
     title: 'Developer React',
     description:
-      'We build websites that serve as powerful marketing tools and bring memorable brand experiences.',
-    href: '/web-development'
+      'I build modern and interactive interfaces using React. I ensure responsive and optimized design to provide the best user experience across all devices.',
+    href: ''
   },
   {
     num: '03',
-    title: 'FullStack Developer',
+    title: 'API and Microservices Development',
     description:
-      'We build websites that serve as powerful marketing tools and bring memorable brand experiences.',
-    href: '/web-development'
+      "I create scalable and efficient RESTful APIs and microservices architectures to integrate systems and boost your application's performance.",
+    href: ''
   },
   {
     num: '04',
-    title: 'FullStack Developer',
+    title: 'Performance and SEO Optimization',
     description:
-      'We build websites that serve as powerful marketing tools and bring memorable brand experiences.',
-    href: '/web-development'
+      "I ensure your website is fast, secure, and optimized for search engines. Improve user experience and increase your business's online visibility.",
+    href: ''
   }
 ]
 
