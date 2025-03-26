@@ -76,5 +76,35 @@ export const menuItemsData = [
         icon: <MdHelpCenter />
       }
     ]
+  },
+  {
+    title: 'Portfolio',
+    list: [
+      {
+        title: 'General',
+        path: '/dashboard/portfolio/general',
+        icon: <MdOutlineSettings />
+      },
+      {
+        title: 'Services',
+        path: '/dashboard/portfolio/services',
+        icon: <MdListAlt />
+      },
+      {
+        title: 'Resume',
+        path: '/dashboard/portfolio/resume',
+        icon: <MdHelpCenter />
+      },
+      {
+        title: 'Work',
+        path: '/dashboard/portfolio/work',
+        icon: <MdHelpCenter />
+      },
+      {
+        title: 'Contact',
+        path: '/dashboard/portfolio/contact',
+        icon: <MdHelpCenter />
+      }
+    ]
   }
 ]
