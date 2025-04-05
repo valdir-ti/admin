@@ -61,8 +61,8 @@ const Contact = () => {
                 Let&apos;s work together
               </h3>
               <p className="text-white/60">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum
-                dolorum doloribus explicabo.
+                If you have any questions, feel free to reach out. I will get
+                back to you as soon as possible.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input type="firstname" placeholder="Firstname" />
