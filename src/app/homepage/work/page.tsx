@@ -21,36 +21,127 @@ import 'swiper/css'
 const projects = [
   {
     num: '01',
-    title: 'project 01',
+    title: 'Intratec Tecnologia',
     category: 'front end',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt hic atque aut ad cupiditate distinctio ipsa.',
-    stack: [{ name: 'html 5' }, { name: 'css 3' }, { name: 'javascript' }],
-    image: '/assets/work/thumb1.png',
-    live: '',
-    github: ''
+      "Project developed to demonstrate the company's services and products. The project was developed using Next.js, TypeScript, and Tailwind CSS.",
+    stack: [
+      { name: 'nextjs' },
+      { name: 'typescript' },
+      { name: 'tailwindcss' }
+    ],
+    image: '/assets/work/project1.png',
+    live: 'https://intratec.dev.br',
+    github: 'https://github.com/valdir-ti/admin'
   },
   {
     num: '02',
-    title: 'project 02',
+    title: 'Exercise Gym',
     category: 'back end',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt hic atque aut ad cupiditate distinctio ipsa.',
-    stack: [{ name: 'html 5' }, { name: 'css 3' }, { name: 'javascript' }],
-    image: '/assets/work/thumb2.png',
-    live: '',
-    github: ''
+      'Exercise Gym is a web application that allows users to search for exercises and create their own workout routines. The project was developed using React, Material UI, and JavaScript.',
+    stack: [{ name: 'react' }, { name: 'material-ui' }, { name: 'javascript' }],
+    image: '/assets/work/project2.png',
+    live: 'https://exercise-gym.netlify.app/',
+    github: 'https://github.com/valdir-ti/gym_exercises'
   },
   {
     num: '03',
-    title: 'project 03',
-    category: 'fullstack',
+    title: 'Admin Intratec Tecnologia',
+    category: 'fullStack app',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt hic atque aut ad cupiditate distinctio ipsa.',
-    stack: [{ name: 'html 5' }, { name: 'css 3' }, { name: 'javascript' }],
-    image: '/assets/work/thumb3.png',
-    live: '',
-    github: ''
+      'This project is an admin panel for the Intratec Tecnologia website. The project was developed using Next.js, TypeScript, and Tailwind CSS.',
+    stack: [
+      { name: 'nextjs' },
+      { name: 'typescript' },
+      { name: 'tailwindcss' }
+    ],
+    image: '/assets/work/project3.png',
+    live: 'https://intratec.dev.br/dashboard',
+    github: 'https://github.com/valdir-ti/admin'
+  },
+  {
+    num: '04',
+    title: 'Intratec Web App',
+    category: 'fullstack app',
+    description:
+      'This project is a web application that allows users to create and manage their own projects. The project was developed using React, Firebase, and TypeScript.',
+    stack: [
+      { name: 'react' },
+      { name: 'firebase' },
+      { name: 'typescript' },
+      { name: 'material' },
+      { name: 'supabase' }
+    ],
+    image: '/assets/work/project4.png',
+    live: 'https://intratec-web.netlify.app/',
+    github: 'https://github.com/valdir-ti/intratec-web'
+  },
+  {
+    num: '05',
+    title: 'Netflix Clone',
+    category: 'fullstack app',
+    description:
+      'This project is a web application that allows users to create and manage their own projects. The project was developed using React, Firebase, and TypeScript.',
+    stack: [{ name: 'react' }, { name: 'javascript' }, { name: 'axios' }],
+    image: '/assets/work/project5.png',
+    live: 'https://netflix-clone-gamma.vercel.app/',
+    github: 'https://github.com/valdir-ti/netflix-clone'
+  },
+  {
+    num: '06',
+    title: 'BookApp',
+    category: 'fullstack app',
+    description:
+      'BookApp is a web application that allows users to search for books and create their own book lists. The project was developed using React, Firebase, and TypeScript.',
+    stack: [{ name: 'react' }, { name: 'javascript' }, { name: 'axios' }],
+    image: '/assets/work/project6.png',
+    live: 'https://bookapp-intratec.vercel.app/',
+    github: 'https://github.com/valdir-ti/bookapp'
+  },
+  {
+    num: '07',
+    title: 'First Portfolio Project',
+    category: 'fullstack app',
+    description:
+      'BookApp is a web application that allows users to search for books and create their own book lists. The project was developed using React, Firebase, and TypeScript.',
+    stack: [{ name: 'vite' }, { name: 'typescript' }, { name: 'tailwindcss' }],
+    image: '/assets/work/project7.png',
+    live: 'https://portfolio-lovat-omega-47.vercel.app/',
+    github: 'https://github.com/valdir-ti/portfolio'
+  },
+  {
+    num: '08',
+    title: 'DT Money',
+    category: 'frontend app',
+    description:
+      'DT Money is a web application that allows users to manage their finances. The project was developed using React and TypeScript.',
+    stack: [{ name: 'react' }, { name: 'typescript' }],
+    image: '/assets/work/project8.png',
+    live: 'https://dt-money-gules.vercel.app/',
+    github: 'https://github.com/valdir-ti/dt-money'
+  },
+  {
+    num: '09',
+    title: 'ChatGPT Clone',
+    category: 'frontend app',
+    description:
+      'ChatGPT Clone is a web application that allows users to chat with an AI. The project was developed using React and TypeScript.',
+    stack: [{ name: 'next' }, { name: 'typescript' }, { name: 'tailwindcss' }],
+    image: '/assets/work/project9.png',
+    live: 'https://chatgpt-clone-iota-ecru.vercel.app/',
+    github: 'https://github.com/valdir-ti/chatgpt-clone'
+  },
+  {
+    num: '10',
+    title: 'Car Showcase',
+    category: 'frontend app',
+    description:
+      'Car Showcase is a web application that allows users to showcase their cars. The project was developed using React and TypeScript.',
+    stack: [{ name: 'next' }, { name: 'typescript' }, { name: 'tailwindcss' }],
+    image: '/assets/work/project10.png',
+    live: 'https://car-showcase-five.vercel.app/',
+    github: 'https://github.com/valdir-ti/car-showcase'
   }
 ]
 
@@ -94,7 +185,7 @@ const Work = () => {
               </ul>
               <div className="border border-white/20"></div>
               <div className="flex items-center gap-4">
-                <Link href={project.live} title={project.title}>
+                <Link href={project.live} title={project.title} target="_blank">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -106,7 +197,11 @@ const Work = () => {
                     </Tooltip>
                   </TooltipProvider>
                 </Link>
-                <Link href={project.github} title={project.title}>
+                <Link
+                  href={project.github}
+                  title={project.title}
+                  target="_blank"
+                >
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -132,7 +227,6 @@ const Work = () => {
                 return (
                   <SwiperSlide key={idx} className="w-full">
                     <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                      {/* <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div> */}
                       <div className="relative w-full h-full">
                         <Image
                           src={project.image}
