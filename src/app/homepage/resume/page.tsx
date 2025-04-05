@@ -6,9 +6,21 @@ import {
   FaReact,
   FaJs,
   FaNodeJs,
-  FaFigma
+  FaPython,
+  FaGithub,
+  FaPhp
 } from 'react-icons/fa'
-import { SiTailwindcss, SiNextdotjs } from 'react-icons/si'
+import {
+  SiMongodb,
+  SiMysql,
+  SiPostgresql,
+  SiSqlite,
+  SiTypescript,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiRabbitmq
+} from 'react-icons/si'
+import { DiRedis } from 'react-icons/di'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
@@ -23,7 +35,7 @@ import { motion } from 'framer-motion'
 const about = {
   title: 'About me',
   description:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut magni nam natus alias quos sequi dolorem voluptate.',
+    'Web developer with 10+ years of experience in the IT industry. I have a strong background in FullStack development. I am passionate about creating efficient and scalable web apps.',
   info: [
     {
       fieldName: 'Name',
@@ -60,32 +72,32 @@ const experience = {
   icon: '/assets/resume/badge.svg',
   title: 'My experience',
   description:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut magni nam natus alias quos sequi dolorem voluptate.',
+    'Experienced professional with a great history of working in the information technology and services industry. Professional engineering with a focus on FullStack development.',
   items: [
     {
-      company: 'Tech Solutions Inc.',
-      position: 'FullStack Developer',
+      company: 'Veloon',
+      position: 'Senior FullStack Developer',
+      duration: '2025 - Current'
+    },
+    {
+      company: 'Veloon',
+      position: 'Senior FullStack Developer',
+      duration: '2025 - Current'
+    },
+    {
+      company: 'ACT Digital',
+      position: 'Senior FullStack Developer',
       duration: '2022 - 2025'
     },
     {
-      company: 'Tech Solutions 2 Inc.',
-      position: 'FullStack Developer',
-      duration: '2020 - 2022'
+      company: 'Avanade',
+      position: 'Software Engineer',
+      duration: '2019 - 2022'
     },
     {
-      company: 'Tech Solutions Inc.',
-      position: 'FullStack Developer',
-      duration: '2017 - 2020'
-    },
-    {
-      company: 'Tech Solutions Inc.',
-      position: 'FullStack Developer',
-      duration: '2017 - 2020'
-    },
-    {
-      company: 'Tech Solutions Inc.',
-      position: 'FullStack Developer',
-      duration: '2017 - 2020'
+      company: 'InHouse Contact Center',
+      position: 'Web Developer',
+      duration: '2017 - 2019'
     }
   ]
 }
@@ -94,7 +106,7 @@ const education = {
   icon: '/assets/resume/cap.svg',
   title: 'My education',
   description:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut magni nam natus alias quos sequi dolorem voluptate.',
+    'Degree in System Analysis and Development with a focus on FullStack development. Strong engineering professional with a focus on FullStack development.',
   items: [
     {
       institution: 'Faculdade Anhanguera',
@@ -102,24 +114,19 @@ const education = {
       duration: '2012 - 2015'
     },
     {
+      institution: 'Rocketseat',
+      degree: 'Python, React.js, Node.js, Next.js, RN',
+      duration: '2019 - 2023'
+    },
+    {
       institution: 'Udemy',
-      degree: 'FullStack Developer',
-      duration: '2012 - 2015'
+      degree: 'React.js, Node.js, RN, Next.js',
+      duration: 'Since 2017'
     },
     {
       institution: 'Alura',
-      degree: 'FullStack Developer',
-      duration: '2012 - 2015'
-    },
-    {
-      institution: 'Rocket Seat',
-      degree: 'FullStack Developer',
-      duration: '2012 - 2015'
-    },
-    {
-      institution: 'Rocket Seat',
-      degree: 'FullStack Developer',
-      duration: '2012 - 2015'
+      degree: 'Python',
+      duration: '2023 - 2024'
     }
   ]
 }
@@ -127,7 +134,7 @@ const education = {
 const skills = {
   title: 'My skills',
   description:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut magni nam natus alias quos sequi dolorem voluptate.',
+    'Skilled in JavaScript, React.js, Node.js, Next.js, and Tailwind CSS. Strong engineering professional with a focus on FullStack development.',
   skillsList: [
     {
       icon: <FaHtml5 />,
@@ -136,6 +143,10 @@ const skills = {
     {
       icon: <FaCss3 />,
       name: 'css 3'
+    },
+    {
+      icon: <SiTypescript />,
+      name: 'typescript'
     },
     {
       icon: <FaJs />,
@@ -158,8 +169,40 @@ const skills = {
       name: 'node.js'
     },
     {
-      icon: <FaFigma />,
-      name: 'figma'
+      icon: <FaPython />,
+      name: 'python'
+    },
+    {
+      icon: <FaPhp />,
+      name: 'php'
+    },
+    {
+      icon: <SiMongodb />,
+      name: 'mongodb'
+    },
+    {
+      icon: <SiMysql />,
+      name: 'mysql'
+    },
+    {
+      icon: <SiPostgresql />,
+      name: 'postgresql'
+    },
+    {
+      icon: <SiSqlite />,
+      name: 'sqllite'
+    },
+    {
+      icon: <FaGithub />,
+      name: 'github'
+    },
+    {
+      icon: <DiRedis />,
+      name: 'redis'
+    },
+    {
+      icon: <SiRabbitmq />,
+      name: 'rabbitmq'
     }
   ]
 }
@@ -186,7 +229,7 @@ const Resume = () => {
             <TabsTrigger value="about">About me</TabsTrigger>
           </TabsList>
 
-          <div className="min-h-[70vh] w-full">
+          <div className="w-full">
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
@@ -255,38 +298,37 @@ const Resume = () => {
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {skills.description}
                 </p>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                  {skills.skillsList.map((skill, idx) => {
-                    return (
-                      <li key={idx}>
-                        <TooltipProvider delayDuration={100}>
-                          <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                              <div className="text-6xl group-hover:text-[#00ff99] transition-all duration-300">
-                                {skill.icon}
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p className="capitalize">{skill.name}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </li>
-                    )
-                  })}
-                </ul>
+                <ScrollArea className="h-[400px]">
+                  <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
+                    {skills.skillsList.map((skill, idx) => {
+                      return (
+                        <li key={idx}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                                <div className="text-6xl group-hover:text-[#00ff99] transition-all duration-300">
+                                  {skill.icon}
+                                </div>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p className="capitalize">{skill.name}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </ScrollArea>
               </div>
             </TabsContent>
-            <TabsContent
-              value="about"
-              className="w-full text-center xl:text-left"
-            >
-              <div className="flex flex-col gap-[30px]">
+            <TabsContent value="about" className="w-full">
+              <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {about.description}
                 </p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 mqx-w-[620px] mx-auto xl:mx-0">
+                <ul className="grid grid-cols-1 xl:grid-cols-2 mqx-w-[620px] mx-auto xl:mx-0 h-[400px]">
                   {about.info.map((item, idx) => {
                     return (
                       <li
