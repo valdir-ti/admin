@@ -15,5 +15,5 @@ export interface CardProps {
 }
 
 export type CardDragContainerProps = {
-  data: { index: string; data: CardProps[] }[]
+  data: CardProps[]
 }
