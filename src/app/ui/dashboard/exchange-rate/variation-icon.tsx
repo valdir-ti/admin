@@ -5,8 +5,6 @@ type VariationIconProps = {
 }
 
 const VariationIcon = ({ value }: VariationIconProps) => {
-  const numericValue = parseFloat(value.toFixed(2))
-
   const icons = {
     positive: (
       <MdExpandLess
@@ -28,11 +26,9 @@ const VariationIcon = ({ value }: VariationIconProps) => {
     )
   }
 
-  return numericValue > 0
-    ? icons.positive
-    : numericValue < 0
-      ? icons.negative
-      : icons.neutral
+  if (value > 0) return icons.positive
+  if (value < 0) return icons.negative
+  return icons.neutral
 }
 
 export default VariationIcon

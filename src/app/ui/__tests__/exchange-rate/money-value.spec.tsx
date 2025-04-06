@@ -5,8 +5,8 @@ describe('MoneyValue', () => {
   it('should rendes correctly', () => {
     const props = {
       name: 'Dólar',
-      value: '100.00',
-      variation: '5.00'
+      value: 100.0,
+      variation: 5.0
     }
     const { getByTestId, getByText } = render(<MoneyValue {...props} />)
 
@@ -21,18 +21,18 @@ describe('MoneyValue', () => {
     const variationIcon = getByTestId('expand-less-icon')
     expect(variationIcon).toBeInTheDocument()
   })
-  const testVariationIcon = (variation: string) => {
+  const testVariationIcon = (variation: number) => {
     const props = {
       name: 'Dólar',
-      value: '100.00',
+      value: 100.0,
       variation: variation
     }
     const { getByTestId } = render(<MoneyValue {...props} />)
+
     let iconTestId = ''
-    const numericValue = parseFloat(variation)
-    if (numericValue > 0) {
+    if (variation > 0) {
       iconTestId = 'expand-less-icon'
-    } else if (numericValue < 0) {
+    } else if (variation < 0) {
       iconTestId = 'expand-more-icon'
     } else {
       iconTestId = 'expand-rule-icon'
@@ -42,14 +42,14 @@ describe('MoneyValue', () => {
   }
 
   it('should check get icon with expand-less-icon', () => {
-    testVariationIcon('5')
+    testVariationIcon(5)
   })
 
   it('should check get icon with expand-more-icon', () => {
-    testVariationIcon('-5')
+    testVariationIcon(-5)
   })
 
   it('should check get icon with expand-rule-icon', () => {
-    testVariationIcon('0')
+    testVariationIcon(0)
   })
 })
