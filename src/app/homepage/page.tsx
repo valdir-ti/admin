@@ -1,7 +1,3 @@
-'use client'
-
-import { useEffect } from 'react'
-import { toast } from 'react-toastify'
 import { FiDownload } from 'react-icons/fi'
 
 import { Button } from '@/components/ui/button'
@@ -11,25 +7,6 @@ import Stats from '../ui/portfolio/stats/stats'
 import Socials from '../ui/portfolio/socials/socials'
 
 export default function HomePage() {
-  useEffect(() => {
-    if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'development') {
-      const restartServer = async () => {
-        await fetch(process.env.NEXT_PUBLIC_API_PROD!)
-          .then(() => {})
-          .catch((err) => {
-            console.error('O seguinte erro ocorreu:', err?.message)
-            toast.error('Error, please try again')
-          })
-      }
-
-      toast.promise(restartServer, {
-        pending: 'Please wait while we are restarting our servers',
-        success: 'Servers alive',
-        error: 'Error, please try again'
-      })
-    }
-  }, [])
-
   return (
     <div className="container mx-auto">
       <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">

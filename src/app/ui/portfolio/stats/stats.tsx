@@ -1,38 +1,30 @@
-'use client'
-
 import { differenceInCalendarYears } from 'date-fns'
-import { useState, useEffect } from 'react'
+import { Suspense } from 'react'
+import CountUpComponent from './CountUp'
 
-import CountUp from 'react-countup'
+async function fetchGithubData() {
+  const headers = {
+    Accept: 'application/vnd.github.cloak-preview',
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
+  }
 
-const Stats = () => {
-  const [totalCommits, setTotalCommits] = useState(0)
-  const [repoCount, setRepoCount] = useState(0)
+  const commitResponse = await fetch(
+    'https://api.github.com/search/commits?q=author:valdir-ti',
+    { headers }
+  )
+  const commitData = await commitResponse.json()
 
-  useEffect(() => {
-    const fetchCommits = async () => {
-      try {
-        const commitResponse = await fetch(
-          'https://api.github.com/search/commits?q=author:valdir-ti'
-        )
-        const commitResponsedata = await commitResponse.json()
-        if (commitResponsedata) {
-          setTotalCommits(commitResponsedata.total_count)
-        }
+  const repoResponse = await fetch(
+    'https://api.github.com/users/valdir-ti/repos',
+    { headers }
+  )
+  const repoData = await repoResponse.json()
 
-        const repoData = await fetch(
-          'https://api.github.com/users/valdir-ti/repos'
-        )
-        const repoDataResponse = await repoData.json()
-        if (repoDataResponse) {
-          setRepoCount(repoDataResponse.length)
-        }
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    fetchCommits()
-  }, [])
+  return { commitData, repoData }
+}
+
+export default async function Stats() {
+  const { commitData, repoData } = await fetchGithubData()
 
   const yearsExperience = differenceInCalendarYears(
     new Date(),
@@ -46,9 +38,9 @@ const Stats = () => {
       title: `${yearsExperience}+ years of experience`
     },
     {
-      num: repoCount,
+      num: repoData.length,
       text: 'Projects on Github',
-      title: `${repoCount} projects on github`
+      title: `${repoData.length} projects on github`
     },
     {
       num: 24,
@@ -57,40 +49,20 @@ const Stats = () => {
         'JavaScript/TypeScript, Python, JQuery, Github, ReactJS, NextJS, React Native, Node.js, NestJS, Jest, Firebase, MongoDB, MySQL, PostgreSQL, GraphQL, PHP, Gitlab, CI/CD, Sass, Styled Components, Material UI, TailwindCSS, Bootstrap'
     },
     {
-      num: totalCommits,
+      num: commitData.total_count,
       text: 'Code commits',
-      title: `${totalCommits} total code commits`
+      title: `${commitData.total_count} total code commits`
     }
   ]
   return (
     <section>
       <div className="container mx-auto">
         <div className="flex flex-wrap gap-6 max-w-[80vw] mx-auto xl:max-w-none">
-          {stats.map((stat, index) => {
-            return (
-              <div
-                className="flex-1 flex gap-4 items-center justify-center xl:justify-start"
-                key={index}
-                title={stat.title}
-              >
-                <CountUp
-                  end={stat.num}
-                  duration={5}
-                  delay={2}
-                  className="text-4xl xl:text-6xl font-extrabold"
-                />
-                <p
-                  className={`${stat.text.length < 15 ? 'max-w-[100px]' : 'max-w-[150px]'} leading-snug text-white/80`}
-                >
-                  {stat.text}
-                </p>
-              </div>
-            )
-          })}
+          <Suspense fallback={<p>Loading...</p>}>
+            <CountUpComponent stats={stats} />
+          </Suspense>
         </div>
       </div>
     </section>
   )
 }
-
-export default Stats
