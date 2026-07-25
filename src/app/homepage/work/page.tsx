@@ -36,6 +36,17 @@ const projects = [
   },
   {
     num: '02',
+    title: 'Lotofácil Prediction',
+    category: 'fullstack app',
+    description:
+      'Project developed to predict Lotofácil results. Built using Python with Django.',
+    stack: [{ name: 'python' }, { name: 'django' }],
+    image: '/assets/work/lotofacil-predict.png',
+    live: 'https://lotof.intratec.dev.br',
+    github: 'https://github.com/valdir-ti/lotofacil-predict-python'
+  },
+  {
+    num: '03',
     title: 'Exercise Gym',
     category: 'back end',
     description:
@@ -46,7 +57,7 @@ const projects = [
     github: 'https://github.com/valdir-ti/gym_exercises'
   },
   {
-    num: '03',
+    num: '04',
     title: 'Admin Intratec Tecnologia',
     category: 'fullStack app',
     description:
@@ -61,7 +72,7 @@ const projects = [
     github: 'https://github.com/valdir-ti/admin'
   },
   {
-    num: '04',
+    num: '05',
     title: 'Intratec Web App',
     category: 'fullstack app',
     description:
@@ -78,7 +89,7 @@ const projects = [
     github: 'https://github.com/valdir-ti/intratec-web'
   },
   {
-    num: '05',
+    num: '06',
     title: 'Netflix Clone',
     category: 'fullstack app',
     description:
@@ -89,7 +100,7 @@ const projects = [
     github: 'https://github.com/valdir-ti/netflix-clone'
   },
   {
-    num: '06',
+    num: '07',
     title: 'BookApp',
     category: 'fullstack app',
     description:
@@ -100,7 +111,7 @@ const projects = [
     github: 'https://github.com/valdir-ti/bookapp'
   },
   {
-    num: '07',
+    num: '08',
     title: 'First Portfolio Project',
     category: 'fullstack app',
     description:
@@ -111,7 +122,7 @@ const projects = [
     github: 'https://github.com/valdir-ti/portfolio'
   },
   {
-    num: '08',
+    num: '09',
     title: 'DT Money',
     category: 'frontend app',
     description:
@@ -122,7 +133,7 @@ const projects = [
     github: 'https://github.com/valdir-ti/dt-money'
   },
   {
-    num: '09',
+    num: '10',
     title: 'ChatGPT Clone',
     category: 'frontend app',
     description:
@@ -133,7 +144,7 @@ const projects = [
     github: 'https://github.com/valdir-ti/chatgpt-clone'
   },
   {
-    num: '10',
+    num: '11',
     title: 'Car Showcase',
     category: 'frontend app',
     description:
